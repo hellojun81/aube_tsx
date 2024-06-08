@@ -1,95 +1,379 @@
-import Image from "next/image";
+"use client";
+// npm run dev or npm run start
+
+import React, { useRef, useEffect, useState,RefCallback,useCallback } from "react";
 import styles from "./page.module.css";
+import {
+  ScrollContainer,
+  SequenceSection,
+  HorizontalSection,
+  gellyAnimation,
+  parallaxAnimation,
+  useGlobalState
+} from "react-nice-scroll";
+import "react-nice-scroll/dist/styles.css";
 
-export default function Home() {
+// import SlicksSlide from "./slickslide";
+import SlicksSlide from "./slickslide"
+import { ScrollRotate } from 'react-scroll-rotate';
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+const studioName = 'AUBE';
+
+
+const App: React.FC = () => {
+  const [scroller] = useGlobalState("container");
+  const titleRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const divRef = useRef<HTMLDivElement | null>(null);
+  const rotateto = [-180, 180, -180, 180];
+  const rotatefrom = [-45, 45, 45, -45];
+  const addGellyAnimation = useCallback(
+    (containerAnimation: gsap.core.Tween) => {
+      const items = document.querySelectorAll(
+        ".ns-horizontal-section__item__inner"
+      ) as NodeListOf<HTMLDivElement>;
+
+      items.forEach((item) => {
+        ScrollTrigger.create({
+          trigger: item,
+          containerAnimation,
+          start: "left right",
+          end: "right left",
+          scrub: 0.5,
+          immediateRender: false,
+          onUpdate: () => {
+            const velocity = containerAnimation.scrollTrigger?.getVelocity();
+            if (velocity && item)
+              gellyAnimation(
+                item,
+                velocity,
+                "skewX",
+                150,
+                -20,
+                20,
+                0.8,
+                "power3"
+              );
+          }
+        });
+      });
+    },
+    []
+  );
+
+  const addParallaxAnimation = useCallback(
+    (containerAnimation: gsap.core.Tween) => {
+      const items = document.querySelectorAll(
+        ".ns-horizontal-section__item__fig"
+      ) as NodeListOf<HTMLDivElement>;
+
+      items.forEach((trigger) => {
+        const el = trigger.querySelector("img");
+        if (el && scroller) {
+          parallaxAnimation(
+            el,
+            trigger,
+            scroller,
+            "right left",
+            "left right",
+            "x",
+            -30,
+            30,
+            containerAnimation
+          );
+        }
+      });
+    },
+    [scroller]
+  );
+
+  useEffect(() => {
+    const div = divRef.current;
+    if (div) {
+      // 윈도우의 높이와 너비를 가져옵니다.
+      const windowHeight = window.innerHeight;
+      const windowWidth = window.innerWidth;
+
+      // div 요소의 높이와 너비를 가져옵니다.
+      const divHeight = div.offsetHeight;
+      const divWidth = div.offsetWidth;
+
+      // 중앙에 위치시키기 위한 계산을 합니다.
+      const topPosition = (windowHeight / 2) - (divHeight / 2);
+      const leftPosition = (windowWidth / 2) - (divWidth / 2);
+
+      // div 요소의 스타일을 설정합니다.
+      div.style.position = 'absolute';
+      div.style.top = `${topPosition}px`;
+      div.style.left = `${leftPosition}px`;
+    }
+    titleRefs.current.forEach(ref => {
+      if (ref) {
+        const parent = ref.parentElement as HTMLElement | null;
+        if (parent) {
+          const parentHeight = parent.clientHeight;
+          const parentWidth = parent.clientWidth;
+          const textHeight = ref.clientHeight;
+          const textWidth = ref.clientWidth;
+
+          ref.style.position = 'absolute';
+          ref.style.top = `${(parentHeight - textHeight) / 2}px`;
+          ref.style.left = `${(parentWidth - textWidth) / 2}px`;
+        }
+      }
+    });
+  }, []);
+
+  const setTitleRef = (index: number): RefCallback<HTMLDivElement> => {
+    return (el) => {
+      titleRefs.current[index] = el;
+    };
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+
+
+      <ScrollContainer>
+        <section
+          style={{
+            height: "100vh",
+            width: "100vw",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: 'relative'
+          }}
+        >
+          <div className="titleMain">
+            <div className="Hero_titleContainer Hero_title1" >
+              <div
+                className="title1Sub"
+                ref={setTitleRef(0)}
+                style={{ position: 'absolute' }}
+              > <ScrollRotate method={"perc"} from={rotatefrom[0]} to={rotateto[0]} >{studioName}</ScrollRotate></div>
+            </div>
+            <div className="Hero_titleContainer Hero_title2">
+              <div
+                className="title2Sub"
+                ref={setTitleRef(1)}
+                style={{ position: 'absolute' }}
+              ><ScrollRotate method={"perc"} from={rotatefrom[1]} to={rotateto[1]} >{studioName}</ScrollRotate></div>
+            </div>
+            <div ref={divRef} className="Hero_title_center Hero_titlecenter" >
+              <div className="titleCSub">{studioName}</div>
+            </div>
+            <div className="Hero_titleContainer Hero_title3">
+              <div
+                className="title3Sub"
+                ref={setTitleRef(2)}
+                style={{ position: 'absolute' }}
+              ><ScrollRotate method={"perc"} from={rotatefrom[2]} to={rotateto[2]} >{studioName}</ScrollRotate></div>
+            </div>
+            <div className="Hero_titleContainer Hero_title4">
+              <div
+                className="title4Sub"
+                ref={setTitleRef(3)}
+                style={{ position: 'absolute' }}
+              >
+                <ScrollRotate method="perc" from={rotatefrom[3]} to={rotateto[3]}>
+                  {studioName}
+                </ScrollRotate>
+              </div>
+            </div>
+            <SequenceSection
+              end="100%"
+              imagesPath="/images"
+              imagesCount={24}
+              imagesType="jpg"
+            >
+            </SequenceSection>
+          </div>
+        </section>
+        <section className="floor1"
+          style={{
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1 className="title">1floor</h1>
+        </section>
+        <section className="floor2"
+          style={{
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1 className="title">2floor</h1>
+        </section>
+        <SlicksSlide/>
+        {/* <Slideshow /> */}
+
+        <section className="floor3"
+          style={{
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1 className="title">3floor</h1>
+        </section>
+
+        <section className="outside"
+          style={{
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1 className="title">outside</h1>
+        </section>
+
+{/* /////////////////////////////////// */}
+<section
+        style={{
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
+        <h1>Hello World!</h1>
+      </section>
+      <HorizontalSection addAnimation={addGellyAnimation}>
+        <div className="ns-horizontal-section__item">
+          <div className="ns-horizontal-section__item__inner">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
+            ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
+            finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
+            auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
+            eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
+          </div>
         </div>
-      </div>
+        <div className="ns-horizontal-section__item">
+          <div className="ns-horizontal-section__item__inner">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
+            ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
+            finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
+            auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
+            eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
+          </div>
+        </div>
+        <div className="ns-horizontal-section__item">
+          <div className="ns-horizontal-section__item__inner">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
+            ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
+            finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
+            auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
+            eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
+          </div>
+        </div>
+      </HorizontalSection>
+      <section
+        style={{
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
+        <h1>Hello World!!</h1>
+      </section>
+      <HorizontalSection toRight={false} addAnimation={addParallaxAnimation}>
+        <div className="ns-horizontal-section__item">
+          <figure
+            style={{
+              height: "400px",
+              width: "300px",
+              minWidth: "300px",
+              overflow: "hidden",
+              margin: "0"
+            }}
+            className="ns-horizontal-section__item__fig"
+          >
+            <img
+              style={{
+                transform: "scale(1.2)",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover"
+              }}
+              src="https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687"
+              alt="react nice scroll"
+            />
+          </figure>
+        </div>
+        <div className="ns-horizontal-section__item">
+          <figure
+            style={{
+              height: "400px",
+              width: "300px",
+              minWidth: "300px",
+              overflow: "hidden",
+              margin: "0"
+            }}
+            className="ns-horizontal-section__item__fig"
+          >
+            <img
+              style={{
+                transform: "scale(1.2)",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover"
+              }}
+              src="https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687"
+              alt="react nice scroll"
+            />
+          </figure>
+        </div>
+        <div className="ns-horizontal-section__item">
+          <figure
+            style={{
+              height: "100hv",
+              width: "100wv",
+              minWidth: "300px",
+              overflow: "hidden",
+              margin: "0"
+            }}
+            className="ns-horizontal-section__item__fig"
+          >
+            <img
+              style={{
+                transform: "scale(1.5)",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover"
+              }}
+              src="https://cafe24.poxo.com/ec01/plusjun1/65uN764GExGfUPmYExKJksnE57SYcD6gUng6vqfRwxzQDRaqGvIZ3YLkdcZKPNIx5qhHZTZyTJVHVkE+M7vZpQ==/_/images/layer%2011/layer20/0724_3%E1%84%8E%E1%85%B3%E1%86%BC4.jpg"
+              alt="react nice scroll"
+            />
+          </figure>
+        </div>
+      </HorizontalSection>
+      <section
+        style={{
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
+        <h1>Hello World!!!</h1>
+      </section>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+      </ScrollContainer>
+    </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
   );
 }
+
+
+export default App;

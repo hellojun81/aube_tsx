@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import App from "./page";
+import { StrictMode } from "react";
+import Menu from '@/app/components/menu'
 
+import { useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+// 클라이언트 사이드에서만 렌더링하도록 설정
+<html lang="ko"></html>
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,7 +24,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Menu />
+    
+    <App />
+
+
+
+    {/* <App2 /> */}
+
+
+      </body>
+    
     </html>
   );
 }
