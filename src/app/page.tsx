@@ -1,7 +1,7 @@
 "use client";
 // npm run dev or npm run start
 
-import React, { useRef, useEffect, useState,RefCallback,useCallback } from "react";
+import React, { useRef, useEffect, useState, RefCallback, useCallback } from "react";
 import styles from "./page.module.css";
 import {
   ScrollContainer,
@@ -13,19 +13,18 @@ import {
 } from "react-nice-scroll";
 import "react-nice-scroll/dist/styles.css";
 
-// import SlicksSlide from "./slickslide";
 import SlicksSlide from "./slickslide"
 import { ScrollRotate } from 'react-scroll-rotate';
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
-const studioName = 'AUBE';
+const studioName = 'Aube';
 
 
 const App: React.FC = () => {
   const [scroller] = useGlobalState("container");
   const titleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const divRef = useRef<HTMLDivElement | null>(null);
-  const rotateto = [-180, 180, -180, 180];
+  const rotateto = [-360, 360, -500, 500];
   const rotatefrom = [-45, 45, 45, -45];
   const addGellyAnimation = useCallback(
     (containerAnimation: gsap.core.Tween) => {
@@ -107,7 +106,9 @@ const App: React.FC = () => {
       div.style.top = `${topPosition}px`;
       div.style.left = `${leftPosition}px`;
     }
+    let index = 0;
     titleRefs.current.forEach(ref => {
+      index++;
       if (ref) {
         const parent = ref.parentElement as HTMLElement | null;
         if (parent) {
@@ -116,9 +117,16 @@ const App: React.FC = () => {
           const textHeight = ref.clientHeight;
           const textWidth = ref.clientWidth;
 
+          let checkindex = index % 2
+          // console.log('checkindex', checkindex);
           ref.style.position = 'absolute';
           ref.style.top = `${(parentHeight - textHeight) / 2}px`;
-          ref.style.left = `${(parentWidth - textWidth) / 2}px`;
+          // ref.style.left = `${(parentWidth - textWidth) / 2}px`;
+          if (checkindex == 1) {
+            ref.style.left = `10px`;
+          } else {
+            ref.style.right = `10px`;
+          }
         }
       }
     });
@@ -132,7 +140,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-
+      <div className="c-intro"></div>
 
       <ScrollContainer>
         <section
@@ -151,14 +159,14 @@ const App: React.FC = () => {
                 className="title1Sub"
                 ref={setTitleRef(0)}
                 style={{ position: 'absolute' }}
-              > <ScrollRotate method={"perc"} from={rotatefrom[0]} to={rotateto[0]} >{studioName}</ScrollRotate></div>
+              > <ScrollRotate method={"perc"} from={rotatefrom[0]} to={rotateto[0]} loops={3}>{studioName}</ScrollRotate></div>
             </div>
             <div className="Hero_titleContainer Hero_title2">
               <div
                 className="title2Sub"
                 ref={setTitleRef(1)}
                 style={{ position: 'absolute' }}
-              ><ScrollRotate method={"perc"} from={rotatefrom[1]} to={rotateto[1]} >{studioName}</ScrollRotate></div>
+              ><ScrollRotate method={"perc"} from={rotatefrom[1]} to={rotateto[1]} loops={3}>{studioName}</ScrollRotate></div>
             </div>
             <div ref={divRef} className="Hero_title_center Hero_titlecenter" >
               <div className="titleCSub">{studioName}</div>
@@ -168,7 +176,7 @@ const App: React.FC = () => {
                 className="title3Sub"
                 ref={setTitleRef(2)}
                 style={{ position: 'absolute' }}
-              ><ScrollRotate method={"perc"} from={rotatefrom[2]} to={rotateto[2]} >{studioName}</ScrollRotate></div>
+              ><ScrollRotate method={"perc"} from={rotatefrom[2]} to={rotateto[2]} loops={3}>{studioName}</ScrollRotate></div>
             </div>
             <div className="Hero_titleContainer Hero_title4">
               <div
@@ -176,7 +184,7 @@ const App: React.FC = () => {
                 ref={setTitleRef(3)}
                 style={{ position: 'absolute' }}
               >
-                <ScrollRotate method="perc" from={rotatefrom[3]} to={rotateto[3]}>
+                <ScrollRotate method="perc" from={rotatefrom[3]} to={rotateto[3]} loops={3}>
                   {studioName}
                 </ScrollRotate>
               </div>
@@ -184,7 +192,7 @@ const App: React.FC = () => {
             <SequenceSection
               end="100%"
               imagesPath="/images"
-              imagesCount={24}
+              imagesCount={13}
               imagesType="jpg"
             >
             </SequenceSection>
@@ -210,7 +218,7 @@ const App: React.FC = () => {
         >
           <h1 className="title">2floor</h1>
         </section>
-        <SlicksSlide/>
+        <SlicksSlide />
         {/* <Slideshow /> */}
 
         <section className="floor3"
@@ -235,137 +243,137 @@ const App: React.FC = () => {
           <h1 className="title">outside</h1>
         </section>
 
-{/* /////////////////////////////////// */}
-<section
-        style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <h1>Hello World!</h1>
-      </section>
-      <HorizontalSection addAnimation={addGellyAnimation}>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
-            ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
-            finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
-            auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
-            eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
+        {/* /////////////////////////////////// */}
+        <section
+          style={{
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <h1>Hello World!</h1>
+        </section>
+        <HorizontalSection addAnimation={addGellyAnimation}>
+          <div className="ns-horizontal-section__item">
+            <div className="ns-horizontal-section__item__inner">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
+              ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
+              finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
+              auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
+              eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
+            </div>
           </div>
-        </div>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
-            ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
-            finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
-            auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
-            eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
+          <div className="ns-horizontal-section__item">
+            <div className="ns-horizontal-section__item__inner">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
+              ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
+              finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
+              auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
+              eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
+            </div>
           </div>
-        </div>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
-            ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
-            finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
-            auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
-            eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
+          <div className="ns-horizontal-section__item">
+            <div className="ns-horizontal-section__item__inner">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
+              ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
+              finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
+              auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
+              eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
+            </div>
           </div>
-        </div>
-      </HorizontalSection>
-      <section
-        style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <h1>Hello World!!</h1>
-      </section>
-      <HorizontalSection toRight={false} addAnimation={addParallaxAnimation}>
-        <div className="ns-horizontal-section__item">
-          <figure
-            style={{
-              height: "400px",
-              width: "300px",
-              minWidth: "300px",
-              overflow: "hidden",
-              margin: "0"
-            }}
-            className="ns-horizontal-section__item__fig"
-          >
-            <img
+        </HorizontalSection>
+        <section
+          style={{
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <h1>Hello World!!</h1>
+        </section>
+        <HorizontalSection toRight={false} addAnimation={addParallaxAnimation}>
+          <div className="ns-horizontal-section__item">
+            <figure
               style={{
-                transform: "scale(1.2)",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover"
+                height: "400px",
+                width: "300px",
+                minWidth: "300px",
+                overflow: "hidden",
+                margin: "0"
               }}
-              src="https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687"
-              alt="react nice scroll"
-            />
-          </figure>
-        </div>
-        <div className="ns-horizontal-section__item">
-          <figure
-            style={{
-              height: "400px",
-              width: "300px",
-              minWidth: "300px",
-              overflow: "hidden",
-              margin: "0"
-            }}
-            className="ns-horizontal-section__item__fig"
-          >
-            <img
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.2)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687"
+                alt="react nice scroll"
+              />
+            </figure>
+          </div>
+          <div className="ns-horizontal-section__item">
+            <figure
               style={{
-                transform: "scale(1.2)",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover"
+                height: "400px",
+                width: "300px",
+                minWidth: "300px",
+                overflow: "hidden",
+                margin: "0"
               }}
-              src="https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687"
-              alt="react nice scroll"
-            />
-          </figure>
-        </div>
-        <div className="ns-horizontal-section__item">
-          <figure
-            style={{
-              height: "100hv",
-              width: "100wv",
-              minWidth: "300px",
-              overflow: "hidden",
-              margin: "0"
-            }}
-            className="ns-horizontal-section__item__fig"
-          >
-            <img
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.2)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687"
+                alt="react nice scroll"
+              />
+            </figure>
+          </div>
+          <div className="ns-horizontal-section__item">
+            <figure
               style={{
-                transform: "scale(1.5)",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover"
+                height: "100hv",
+                width: "100wv",
+                minWidth: "300px",
+                overflow: "hidden",
+                margin: "0"
               }}
-              src="https://cafe24.poxo.com/ec01/plusjun1/65uN764GExGfUPmYExKJksnE57SYcD6gUng6vqfRwxzQDRaqGvIZ3YLkdcZKPNIx5qhHZTZyTJVHVkE+M7vZpQ==/_/images/layer%2011/layer20/0724_3%E1%84%8E%E1%85%B3%E1%86%BC4.jpg"
-              alt="react nice scroll"
-            />
-          </figure>
-        </div>
-      </HorizontalSection>
-      <section
-        style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <h1>Hello World!!!</h1>
-      </section>
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.5)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="https://cafe24.poxo.com/ec01/plusjun1/65uN764GExGfUPmYExKJksnE57SYcD6gUng6vqfRwxzQDRaqGvIZ3YLkdcZKPNIx5qhHZTZyTJVHVkE+M7vZpQ==/_/images/layer%2011/layer20/0724_3%E1%84%8E%E1%85%B3%E1%86%BC4.jpg"
+                alt="react nice scroll"
+              />
+            </figure>
+          </div>
+        </HorizontalSection>
+        <section
+          style={{
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <h1>Hello World!!!</h1>
+        </section>
 
 
 
