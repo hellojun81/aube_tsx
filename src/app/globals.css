@@ -12,7 +12,8 @@
   height:100vh;
   z-index: 100;
   background-color: #ffffff;
-  display: none;
+  /* display: none; */
+  opacity: 0.5;
 }
 
 .floor1 {

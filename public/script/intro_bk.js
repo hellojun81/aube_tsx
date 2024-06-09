@@ -8,15 +8,15 @@
     const r = "resize"
       , i = "click"
       , s = "animationend";
-    // function ne(e="") {
-    //     return `.${e.trim().replace(/([\.:!\/])/g, "\\$1").replace(/ /g, ".")}`
-    // }
-    // function re(e, t) {
-    //     const n = x(t);
-    //     return n !== t && (n.style.backfaceVisibility = "hidden",
-    //     n.style["-webkit-backface-visibility"] = "hidden"),
-    //     n
-    // }
+    function ne(e="") {
+        return `.${e.trim().replace(/([\.:!\/])/g, "\\$1").replace(/ /g, ".")}`
+    }
+    function re(e, t) {
+        const n = x(t);
+        return n !== t && (n.style.backfaceVisibility = "hidden",
+        n.style["-webkit-backface-visibility"] = "hidden"),
+        n
+    }
     
     const ae = new Map
       , le = Symbol("riot-component")
@@ -149,162 +149,163 @@
         )),
         e
     }
-
-    // function it(e) {
-    //     const t = e.dom.cloneNode(!0)
-    //       , {head: n, tail: r} = function() {
-    //         const e = document.createTextNode("")
-    //           , t = document.createTextNode("");
-    //         return e[nt] = !0,
-    //         t[rt] = !0,
-    //         {
-    //             head: e,
-    //             tail: t
-    //         }
-    //     }();
-    //     return {
-    //         avoidDOMInjection: !0,
-    //         fragment: t,
-    //         head: n,
-    //         tail: r,
-    //         children: [n, ...Array.from(t.childNodes), r]
-    //     }
-    // }
-    // const st = Symbol("unmount")
-    //   , ot = {
-    //     nodes: [],
-    //     mount(e, t) {
-    //         return this.update(e, t)
-    //     },
-    //     update(e, t) {
-    //         const {placeholder: n, nodes: r, childrenMap: i} = this
-    //           , s = e === st ? null : this.evaluate(e)
-    //           , o = s ? Array.from(s) : []
-    //           , {newChildrenMap: a, batches: l, futureNodes: c} = function(e, t, n, r) {
-    //             const {condition: i, template: s, childrenMap: o, itemName: a, getKey: l, indexName: c, root: u, isTemplateTag: d} = r
-    //               , p = new Map
-    //               , f = []
-    //               , h = [];
-    //             return e.forEach(((e,r)=>{
-    //                 const m = function(e, t) {
-    //                     let {itemName: n, indexName: r, index: i, item: s} = t;
-    //                     Qe(e, n, s),
-    //                     r && Qe(e, r, i);
-    //                     return e
-    //                 }(Object.create(t), {
-    //                     itemName: a,
-    //                     indexName: c,
-    //                     index: r,
-    //                     item: e
-    //                 })
-    //                   , v = l ? l(m) : r
-    //                   , b = o.get(v)
-    //                   , w = [];
-    //                 if (function(e, t) {
-    //                     return !!e && !e(t)
-    //                 }(i, m))
-    //                     return;
-    //                 const x = !b
-    //                   , g = b ? b.template : s.clone()
-    //                   , y = g.el || u.cloneNode()
-    //                   , M = d && x ? it(g) : g.meta;
-    //                 x ? f.push((()=>g.mount(y, m, n, M))) : f.push((()=>g.update(m, n))),
-    //                 d ? w.push(...M.children) : w.push(y),
-    //                 o.delete(v),
-    //                 h.push(...w),
-    //                 p.set(v, {
-    //                     nodes: w,
-    //                     template: g,
-    //                     context: m,
-    //                     index: r
-    //                 })
-    //             }
-    //             )),
-    //             {
-    //                 newChildrenMap: p,
-    //                 batches: f,
-    //                 futureNodes: h
-    //             }
-    //         }(o, e, t, this);
-    //         return ((e,t,n,r)=>{
-    //             const i = t.length;
-    //             let s = e.length
-    //               , o = i
-    //               , a = 0
-    //               , l = 0
-    //               , c = null;
-    //             for (; a < s || l < o; )
-    //                 if (s === a) {
-    //                     const e = o < i ? l ? n(t[l - 1], -0).nextSibling : n(t[o - l], 0) : r;
-    //                     for (; l < o; )
-    //                         Ke(n(t[l++], 1), e)
-    //                 } else if (o === l)
-    //                     for (; a < s; )
-    //                         c && c.has(e[a]) || Xe(n(e[a], -1)),
-    //                         a++;
-    //                 else if (e[a] === t[l])
-    //                     a++,
-    //                     l++;
-    //                 else if (e[s - 1] === t[o - 1])
-    //                     s--,
-    //                     o--;
-    //                 else if (e[a] === t[o - 1] && t[l] === e[s - 1]) {
-    //                     const r = n(e[--s], -1).nextSibling;
-    //                     Ke(n(t[l++], 1), n(e[a++], -1).nextSibling),
-    //                     Ke(n(t[--o], 1), r),
-    //                     e[s] = t[o]
-    //                 } else {
-    //                     if (!c) {
-    //                         c = new Map;
-    //                         let e = l;
-    //                         for (; e < o; )
-    //                             c.set(t[e], e++)
-    //                     }
-    //                     if (c.has(e[a])) {
-    //                         const r = c.get(e[a]);
-    //                         if (l < r && r < o) {
-    //                             let i = a
-    //                               , p = 1;
-    //                             for (; ++i < s && i < o && c.get(e[i]) === r + p; )
-    //                                 p++;
-    //                             if (p > r - l) {
-    //                                 const i = n(e[a], 0);
-    //                                 for (; l < r; )
-    //                                     Ke(n(t[l++], 1), i)
-    //                             } else
-    //                                 u = n(t[l++], 1),
-    //                                 (d = n(e[a++], -1)) && d.parentNode && d.parentNode.replaceChild(u, d)
-    //                         } else
-    //                             a++
-    //                     } else
-    //                         Xe(n(e[a++], -1))
-    //                 }
-    //             var u, d
-    //         }
-    //         )(r, c, function(e, t) {
-    //             return (n,r)=>{
-    //                 if (r < 0) {
-    //                     const n = e[e.length - 1];
-    //                     if (n) {
-    //                         const {template: r, nodes: i, context: s} = n;
-    //                         i.pop(),
-    //                         i.length || (e.pop(),
-    //                         r.unmount(s, t, null))
-    //                     }
-    //                 }
-    //                 return n
-    //             }
-    //         }(Array.from(i.values()), t), n),
-    //         l.forEach((e=>e())),
-    //         this.childrenMap = a,
-    //         this.nodes = c,
-    //         this
-    //     },
-    //     unmount(e, t) {
-    //         return this.update(st, t),
-    //         this
-    //     }
-    // };
+    // const nt = Symbol()
+    //   , rt = Symbol();
+    function it(e) {
+        const t = e.dom.cloneNode(!0)
+          , {head: n, tail: r} = function() {
+            const e = document.createTextNode("")
+              , t = document.createTextNode("");
+            return e[nt] = !0,
+            t[rt] = !0,
+            {
+                head: e,
+                tail: t
+            }
+        }();
+        return {
+            avoidDOMInjection: !0,
+            fragment: t,
+            head: n,
+            tail: r,
+            children: [n, ...Array.from(t.childNodes), r]
+        }
+    }
+    const st = Symbol("unmount")
+      , ot = {
+        nodes: [],
+        mount(e, t) {
+            return this.update(e, t)
+        },
+        update(e, t) {
+            const {placeholder: n, nodes: r, childrenMap: i} = this
+              , s = e === st ? null : this.evaluate(e)
+              , o = s ? Array.from(s) : []
+              , {newChildrenMap: a, batches: l, futureNodes: c} = function(e, t, n, r) {
+                const {condition: i, template: s, childrenMap: o, itemName: a, getKey: l, indexName: c, root: u, isTemplateTag: d} = r
+                  , p = new Map
+                  , f = []
+                  , h = [];
+                return e.forEach(((e,r)=>{
+                    const m = function(e, t) {
+                        let {itemName: n, indexName: r, index: i, item: s} = t;
+                        Qe(e, n, s),
+                        r && Qe(e, r, i);
+                        return e
+                    }(Object.create(t), {
+                        itemName: a,
+                        indexName: c,
+                        index: r,
+                        item: e
+                    })
+                      , v = l ? l(m) : r
+                      , b = o.get(v)
+                      , w = [];
+                    if (function(e, t) {
+                        return !!e && !e(t)
+                    }(i, m))
+                        return;
+                    const x = !b
+                      , g = b ? b.template : s.clone()
+                      , y = g.el || u.cloneNode()
+                      , M = d && x ? it(g) : g.meta;
+                    x ? f.push((()=>g.mount(y, m, n, M))) : f.push((()=>g.update(m, n))),
+                    d ? w.push(...M.children) : w.push(y),
+                    o.delete(v),
+                    h.push(...w),
+                    p.set(v, {
+                        nodes: w,
+                        template: g,
+                        context: m,
+                        index: r
+                    })
+                }
+                )),
+                {
+                    newChildrenMap: p,
+                    batches: f,
+                    futureNodes: h
+                }
+            }(o, e, t, this);
+            return ((e,t,n,r)=>{
+                const i = t.length;
+                let s = e.length
+                  , o = i
+                  , a = 0
+                  , l = 0
+                  , c = null;
+                for (; a < s || l < o; )
+                    if (s === a) {
+                        const e = o < i ? l ? n(t[l - 1], -0).nextSibling : n(t[o - l], 0) : r;
+                        for (; l < o; )
+                            Ke(n(t[l++], 1), e)
+                    } else if (o === l)
+                        for (; a < s; )
+                            c && c.has(e[a]) || Xe(n(e[a], -1)),
+                            a++;
+                    else if (e[a] === t[l])
+                        a++,
+                        l++;
+                    else if (e[s - 1] === t[o - 1])
+                        s--,
+                        o--;
+                    else if (e[a] === t[o - 1] && t[l] === e[s - 1]) {
+                        const r = n(e[--s], -1).nextSibling;
+                        Ke(n(t[l++], 1), n(e[a++], -1).nextSibling),
+                        Ke(n(t[--o], 1), r),
+                        e[s] = t[o]
+                    } else {
+                        if (!c) {
+                            c = new Map;
+                            let e = l;
+                            for (; e < o; )
+                                c.set(t[e], e++)
+                        }
+                        if (c.has(e[a])) {
+                            const r = c.get(e[a]);
+                            if (l < r && r < o) {
+                                let i = a
+                                  , p = 1;
+                                for (; ++i < s && i < o && c.get(e[i]) === r + p; )
+                                    p++;
+                                if (p > r - l) {
+                                    const i = n(e[a], 0);
+                                    for (; l < r; )
+                                        Ke(n(t[l++], 1), i)
+                                } else
+                                    u = n(t[l++], 1),
+                                    (d = n(e[a++], -1)) && d.parentNode && d.parentNode.replaceChild(u, d)
+                            } else
+                                a++
+                        } else
+                            Xe(n(e[a++], -1))
+                    }
+                var u, d
+            }
+            )(r, c, function(e, t) {
+                return (n,r)=>{
+                    if (r < 0) {
+                        const n = e[e.length - 1];
+                        if (n) {
+                            const {template: r, nodes: i, context: s} = n;
+                            i.pop(),
+                            i.length || (e.pop(),
+                            r.unmount(s, t, null))
+                        }
+                    }
+                    return n
+                }
+            }(Array.from(i.values()), t), n),
+            l.forEach((e=>e())),
+            this.childrenMap = a,
+            this.nodes = c,
+            this
+        },
+        unmount(e, t) {
+            return this.update(st, t),
+            this
+        }
+    };
     const at = {
         mount(e, t) {
             return this.update(e, t)
@@ -987,7 +988,152 @@
     function ln() {
         return an() < 768
     }
-    
+    // var cn = {
+    //     css: null,
+    //     exports: {
+    //         state: {
+    //             a: null,
+    //             c: null,
+    //             w: null,
+    //             o: null,
+    //             wo: null,
+    //             rs: null,
+    //             h: !1,
+    //             m: ln()
+    //         },
+    //         onBeforeMount(e, t) {
+    //             if (t.h = !!e.dataCurrent,
+    //             t.h) {
+    //                 const n = "is-current";
+    //                 switch (e.dataCurrent) {
+    //                 case "about":
+    //                     t.a = n;
+    //                     break;
+    //                 case "contact":
+    //                     t.c = n;
+    //                     break;
+    //                 case "works":
+    //                     t.w = n;
+    //                     break;
+    //                 case "whats-on":
+    //                     t.wo = n;
+    //                     break;
+    //                 case "research":
+    //                     t.rs = n
+    //                 }
+    //             }
+    //             on(this.resized.bind(this))
+    //         },
+    //         clicked() {
+    //             const e = this;
+    //             e.update({
+    //                 o: e.state.o && e.state.m ? null : "is-open"
+    //             })
+    //         },
+    //         resized() {
+    //             this.update({
+    //                 m: ln()
+    //             })
+    //         }
+    //     },
+    //     template: (e,t,n,r)=>e('<div class="c-menu__wrp"><div class="c-menu__inr"><ul expr0="expr0"><template expr1="expr1"></template><template expr5="expr5"></template></ul></div></div><div expr10="expr10" class="c-menu__btn"></div>', [{
+    //         expressions: [{
+    //             type: t.ATTRIBUTE,
+    //             name: "class",
+    //             evaluate: e=>["c-menu ", e.state.o].join("")
+    //         }]
+    //     }, 
+    //     {
+    //         redundantAttribute: "expr0",
+    //         selector: "[expr0]",
+    //         expressions: [{
+    //             type: t.ATTRIBUTE,
+    //             name: "class",
+    //             evaluate: e=>["c-menu__ul ", !e.state.m && e.state.h ? "has-current" : null].join("")
+    //         }]
+    //     }, {
+    //         type: n.IF,
+    //         evaluate: e=>!e.props.isVague,
+    //         redundantAttribute: "expr1",
+    //         selector: "[expr1]",
+    //         template: e('<li expr2="expr2"><a href="/about/">About</a></li><li expr3="expr3"><a href="/works/">Works</a></li><li expr4="expr4"><a href="/contact/">Contact</a></li><li class="c-menu__li"><a href="/vague/">Vague</a></li>', [{
+    //             redundantAttribute: "expr2",
+    //             selector: "[expr2]",
+    //             expressions: [{
+    //                 type: t.ATTRIBUTE,
+    //                 name: "class",
+    //                 evaluate: e=>["c-menu__li ", e.state.a].join("")
+    //             }]
+    //         }, {
+    //             redundantAttribute: "expr3",
+    //             selector: "[expr3]",
+    //             expressions: [{
+    //                 type: t.ATTRIBUTE,
+    //                 name: "class",
+    //                 evaluate: e=>["c-menu__li ", e.state.w].join("")
+    //             }]
+    //         }, {
+    //             redundantAttribute: "expr4",
+    //             selector: "[expr4]",
+    //             expressions: [{
+    //                 type: t.ATTRIBUTE,
+    //                 name: "class",
+    //                 evaluate: e=>["c-menu__li ", e.state.c].join("")
+    //             }]
+    //         }])
+    //     }, {
+    //         type: n.IF,
+    //         evaluate: e=>e.props.isVague,
+    //         redundantAttribute: "expr5",
+    //         selector: "[expr5]",
+    //         template: e('<li expr6="expr6"><a href="/vague/about/">About</a></li><li expr7="expr7"><a href="/vague/whats-on/">What’s On</a></li><li expr8="expr8"><a href="/vague/research/">Research</a></li><li expr9="expr9"><a href="/vague/contact/">Contact</a></li><li class="c-menu__li"><a href="/">j2w</a></li><li class="c-menu__li"><a target="_blank" rel="noopener noreferrer" href="https://lichen-lichen.fr/">LICHEN</a></li>', [{
+    //             redundantAttribute: "expr6",
+    //             selector: "[expr6]",
+    //             expressions: [{
+    //                 type: t.ATTRIBUTE,
+    //                 name: "class",
+    //                 evaluate: e=>["c-menu__li ", e.state.a].join("")
+    //             }]
+    //         }, {
+    //             redundantAttribute: "expr7",
+    //             selector: "[expr7]",
+    //             expressions: [{
+    //                 type: t.ATTRIBUTE,
+    //                 name: "class",
+    //                 evaluate: e=>["c-menu__li ", e.state.wo].join("")
+    //             }]
+    //         }, {
+    //             redundantAttribute: "expr8",
+    //             selector: "[expr8]",
+    //             expressions: [{
+    //                 type: t.ATTRIBUTE,
+    //                 name: "class",
+    //                 evaluate: e=>["c-menu__li ", e.state.rs].join("")
+    //             }]
+    //         }, {
+    //             redundantAttribute: "expr9",
+    //             selector: "[expr9]",
+    //             expressions: [{
+    //                 type: t.ATTRIBUTE,
+    //                 name: "class",
+    //                 evaluate: e=>["c-menu__li ", e.state.c].join("")
+    //             }]
+    //         }])
+    //     }, {
+    //         type: n.IF,
+    //         evaluate: e=>e.state.m,
+    //         redundantAttribute: "expr10",
+    //         selector: "[expr10]",
+    //         template: e(null, [{
+    //             expressions: [{
+    //                 type: t.EVENT,
+    //                 name: "onclick",
+    //                 evaluate: e=>e.clicked
+    //             }]
+    //         }])
+    //     }]),
+    //     name: "c-menu"
+    // };
     class un {
         constructor() {
             this.O = []
@@ -1855,18 +2001,345 @@
     ,
     Fe(Cr) || Ne('riot.pure accepts only arguments of type "function"'),
     Cr[$e] = !0;
-    
+    // var kr = {
+    //     css: null,
+    //     exports: {
+    //         components: {
+    //             "c-category": En
+    //         },
+    //         state: {
+    //             s: !1
+    //         },
+    //         data: null,
+    //         onBeforeMount() {
+    //             const e = this;
+    //             if (e.data = JSON.parse(e.$("script").textContent),
+    //             e.state.s = !0 === e.data.s,
+    //             !e.state.s) {
+    //                 cr("/works");
+    //                 (function(e, t) {
+    //                     const n = []
+    //                       , r = jn(e, n, t)
+    //                       , i = Bn(...Wn(r, Object.assign({}, t, {
+    //                         keys: n
+    //                     })));
+    //                     return Gn(qn, i).on.error(Un)
+    //                 }
+    //                 )("/:category?/:slug?").on.value((e=>{
+    //                     const t = e.params.slug;
+    //                     t ? bn.notifyAll([t]) : bn.notifyAll(null)
+    //                 }
+    //                 )),
+    //                 Tr(e.root)
+    //             }
+    //         }
+    //     },
+    //     template: (e,t,n,r)=>e('<ul class="c-categories__ul"><li expr31="expr31" is="c-category"></li><li expr32="expr32" is="c-category"></li></ul>', [{
+    //         expressions: [{
+    //             type: t.ATTRIBUTE,
+    //             name: "class",
+    //             evaluate: e=>["c-categories ", e.state.s ? "-single" : null].join("")
+    //         }]
+    //     }, {
+    //         type: n.EACH,
+    //         getKey: null,
+    //         condition: null,
+    //         template: e(null, [{
+    //             type: n.TAG,
+    //             getComponent: r,
+    //             evaluate: e=>"c-category",
+    //             slots: [],
+    //             attributes: [{
+    //                 type: t.ATTRIBUTE,
+    //                 name: "c",
+    //                 evaluate: e=>e.c
+    //             }]
+    //         }]),
+    //         redundantAttribute: "expr31",
+    //         selector: "[expr31]",
+    //         itemName: "c",
+    //         indexName: null,
+    //         evaluate: e=>e.data.c
+    //     }, {
+    //         type: n.TAG,
+    //         getComponent: r,
+    //         evaluate: e=>"c-category",
+    //         slots: [],
+    //         attributes: [],
+    //         redundantAttribute: "expr32",
+    //         selector: "[expr32]"
+    //     }]),
+    //     name: "c-categories"
+    // }
+    //   , jr = {
+    //     css: null,
+    //     exports: {
+    //         state: {
+    //             t: null
+    //         },
+    //         notify(e, t) {
+    //             const n = this;
+    //             t && n.state.t !== e && !ln() ? n.update({
+    //                 t: e
+    //             }) : t || n.state.t !== e || n.update({
+    //                 t: null
+    //             })
+    //         },
+    //         onBeforeMount() {
+    //             wn.add(this)
+    //         }
+    //     },
+    //     template: (e,t,n,r)=>e('<template expr35="expr35"></template>', [{
+    //         expressions: [{
+    //             type: t.ATTRIBUTE,
+    //             name: "class",
+    //             evaluate: e=>"c-works-img"
+    //         }]
+    //     }, {
+    //         type: n.IF,
+    //         evaluate: e=>e.state.t,
+    //         redundantAttribute: "expr35",
+    //         selector: "[expr35]",
+    //         template: e('<img expr36="expr36" loading="lazy"/>', [{
+    //             redundantAttribute: "expr36",
+    //             selector: "[expr36]",
+    //             expressions: [{
+    //                 type: t.ATTRIBUTE,
+    //                 name: "src",
+    //                 evaluate: e=>e.state.t.src
+    //             }]
+    //         }])
+    //     }]),
+    //     name: "c-works-img"
+    // }
+    //   , _r = {
+    //     css: null,
+    //     exports: {
+    //         notify(e, t, n) {
+    //             const r = this;
+    //             t ? r.update({
+    //                 a: !r.state.a && e === r.state.key
+    //             }) : r.update({
+    //                 a: !1
+    //             })
+    //         },
+    //         state: {
+    //             a: !1,
+    //             key: ""
+    //         },
+    //         html: null,
+    //         clicked() {
+    //             const e = this;
+    //             xn.notifyAll(e.state.key, !e.state.a, e.state.a ? null : e.html)
+    //         },
+    //         onBeforeMount() {
+    //             xn.add(this)
+    //         },
+    //         onMounted() {
+    //             const e = this;
+    //             e.html = e.$(".c-career__inr");
+    //             const t = e.$(".c-career__h");
+    //             e.state.key = t.querySelector("u").textContent,
+    //             se(t, i, e.clicked.bind(e), {
+    //                 passive: !1
+    //             })
+    //         }
+    //     },
+    //     template: (e,t,n,r)=>e(null, [{
+    //         expressions: [{
+    //             type: t.ATTRIBUTE,
+    //             name: "class",
+    //             evaluate: e=>[e.props.class, " ", e.state.a ? "is-selected" : null].join("")
+    //         }]
+    //     }]),
+    //     name: "c-career"
+    // };
     function Ir(e, ...n) {
         const r = t.createElement(e);
         for (let e = n.length; e--; )
             r.classList.add(n[e]);
         return r
     }
-    
+    // var Pr = {
+    //     css: null,
+    //     exports: {
+    //         notify(e, t, n) {
+    //             this.update({
+    //                 a: t
+    //             })
+    //         },
+    //         state: {
+    //             a: !1
+    //         },
+    //         clicked() {
+    //             xn.notifyAll(null, !1)
+    //         },
+    //         onBeforeMount() {
+    //             xn.add(this)
+    //         },
+    //         onMounted() {
+    //             const e = this
+    //               , t = Ir("div");
+    //             e.$(".p-home__career").append(t),
+    //             nn(t, null, "c-career-req");
+    //             const n = Ir("div");
+    //             n.classList.add("c-career__c"),
+    //             e.$("header").append(n),
+    //             se(n, i, e.clicked.bind(e), {
+    //                 passive: !1
+    //             })
+    //         }
+    //     },
+    //     template: (e,t,n,r)=>e(null, [{
+    //         expressions: [{
+    //             type: t.ATTRIBUTE,
+    //             name: "class",
+    //             evaluate: e=>[e.props.class, " ", e.state.a ? "is-expand" : null].join("")
+    //         }]
+    //     }]),
+    //     name: "c-career-wrp"
+    // }
+    //   , Nr = {
+    //     css: null,
+    //     exports: {
+    //         notify(e, t, n) {
+    //             this.update({
+    //                 a: t,
+    //                 html: n
+    //             })
+    //         },
+    //         state: {
+    //             a: !1,
+    //             html: null
+    //         },
+    //         clicked() {
+    //             xn.notifyAll(null, !1)
+    //         },
+    //         onBeforeMount() {
+    //             xn.add(this)
+    //         },
+    //         onUpdated() {
+    //             const e = this;
+    //             e.state.a && (e.$(".c-career__req__inr").innerHTML = e.state.html.outerHTML)
+    //         }
+    //     },
+    //     template: (e,t,n,r)=>e('<template expr34="expr34"></template>', [{
+    //         expressions: [{
+    //             type: t.ATTRIBUTE,
+    //             name: "class",
+    //             evaluate: e=>"c-career__req"
+    //         }]
+    //     }, {
+    //         type: n.IF,
+    //         evaluate: e=>e.state.a,
+    //         redundantAttribute: "expr34",
+    //         selector: "[expr34]",
+    //         template: e('<div class="c-career__req__h">Requirements</div><div class="c-career__req__inr"></div>', [])
+    //     }]),
+    //     name: "c-career-req"
+    // };
     function zr(e, n=t) {
         return n.querySelector(e)
     }
-    
+    // var Dr = {
+    //     css: null,
+    //     exports: {
+    //         state: {
+    //             h: 0,
+    //             n: "height"
+    //         },
+    //         get: ()=>n.clientHeight - zr(".l-hd").getBoundingClientRect().height - zr(".l-ft").getBoundingClientRect().height,
+    //         resized() {
+    //             this.update({
+    //                 h: this.get()
+    //             })
+    //         },
+    //         onBeforeMount(e, t) {
+    //             const n = this;
+    //             on(n.resized.bind(n)),
+    //             t.h = n.get(),
+    //             e.min && (t.n = "min-height")
+    //         },
+    //         onMounted() {
+    //             const e = zr(".l-ft")
+    //               , t = new ResizeObserver((()=>{
+    //                 t.unobserve(e),
+    //                 this.resized()
+    //             }
+    //             ));
+    //             t.observe(e)
+    //         }
+    //     },
+    //     template: (e,t,n,r)=>e(null, [{
+    //         expressions: [{
+    //             type: t.ATTRIBUTE,
+    //             name: "class",
+    //             evaluate: e=>["c-screen ", e.props.class].join("")
+    //         }, {
+    //             type: t.ATTRIBUTE,
+    //             name: "style",
+    //             evaluate: e=>[e.state.n, ":", e.state.h, "px"].join("")
+    //         }]
+    //     }]),
+    //     name: "c-screen"
+    // }
+    //   , Br = {
+    //     css: null,
+    //     exports: {
+    //         onBeforeMount() {
+    //             const e = Ir("div");
+    //             zr(".p-about-vague__t").appendChild(e),
+    //             new te(this.$(".swiper"),{
+    //                 slideClass: "wp-block-image",
+    //                 loop: !0,
+    //                 slidesPerView: "auto",
+    //                 mousewheel: {
+    //                     forceToAxis: !0
+    //                 },
+    //                 effect: "fade",
+    //                 fadeEffect: {
+    //                     crossFade: !0
+    //                 },
+    //                 pagination: {
+    //                     el: e,
+    //                     clickable: !0,
+    //                     renderBullet: (e,t)=>`<span class="${t}"><span>${e + 1}</span></span>`
+    //                 },
+    //                 autoplay: {
+    //                     delay: 5e3
+    //                 }
+    //             })
+    //         }
+    //     },
+    //     template: null,
+    //     name: "c-about-swp"
+    // }
+    //   , Lr = {
+    //     css: null,
+    //     exports: {
+    //         callback(e, t) {
+    //             e[0].isIntersecting && (t.disconnect(),
+    //             this.update({
+    //                 a: !0
+    //             }))
+    //         },
+    //         onBeforeMount() {
+    //             const e = this;
+    //             new IntersectionObserver(e.callback.bind(e),{
+    //                 rootMargin: "0% 0% -30%"
+    //             }).observe(e.root)
+    //         }
+    //     },
+    //     template: (e,t,n,r)=>e(null, [{
+    //         expressions: [{
+    //             type: t.ATTRIBUTE,
+    //             name: "class",
+    //             evaluate: e=>[e.props.class, " ", e.state.a ? "-a" : null].join("")
+    //         }]
+    //     }]),
+    //     name: "c-vague-i"
+    // };
+   
     
     const Rr = e.intro;
     const Fr = zr(".p-whats-on__swp");
