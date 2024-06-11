@@ -12,15 +12,17 @@ import {
   useGlobalState
 } from "react-nice-scroll";
 import "react-nice-scroll/dist/styles.css";
-// import SlicksSlide from "./slickslide"
+import SlicksSlide from "./slickslide"
 import { ScrollRotate } from 'react-scroll-rotate';
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import Floor1 from "../components/1floor";
+import Floor3 from "../components/3floor";
 
 const studioName = 'Aube';
 
 
 const App: React.FC = () => {
-  const [scroller] = useGlobalState("container");
+  // const [scroller] = useGlobalState("container");
   const titleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const divRef = useRef<HTMLDivElement | null>(null);
   const rotateto = [-360, 360, -500, 500];
@@ -59,31 +61,31 @@ const App: React.FC = () => {
     []
   );
 
-  const addParallaxAnimation = useCallback(
-    (containerAnimation: gsap.core.Tween) => {
-      const items = document.querySelectorAll(
-        ".ns-horizontal-section__item__fig"
-      ) as NodeListOf<HTMLDivElement>;
+  // const addParallaxAnimation = useCallback(
+  //   (containerAnimation: gsap.core.Tween) => {
+  //     const items = document.querySelectorAll(
+  //       ".ns-horizontal-section__item__fig"
+  //     ) as NodeListOf<HTMLDivElement>;
 
-      items.forEach((trigger) => {
-        const el = trigger.querySelector("img");
-        if (el && scroller) {
-          parallaxAnimation(
-            el,
-            trigger,
-            scroller,
-            "right left",
-            "left right",
-            "x",
-            -30,
-            30,
-            containerAnimation
-          );
-        }
-      });
-    },
-    [scroller]
-  );
+  //     items.forEach((trigger) => {
+  //       const el = trigger.querySelector("img");
+  //       if (el && scroller) {
+  //         parallaxAnimation(
+  //           el,
+  //           trigger,
+  //           scroller,
+  //           "right left",
+  //           "left right",
+  //           "x",
+  //           -30,
+  //           30,
+  //           containerAnimation
+  //         );
+  //       }
+  //     });
+  //   },
+  //   [scroller]
+  // );
 
   useEffect(() => {
     const div = divRef.current;
@@ -208,7 +210,7 @@ const App: React.FC = () => {
           {/* <h1 className="title">1floor</h1> */}
         </section>
 
-        <HorizontalSection toRight={false} addAnimation={addParallaxAnimation}>
+        {/* <HorizontalSection toRight={false} addAnimation={addParallaxAnimation}>
         <div className="ns-horizontal-section__item">
             <figure
               style={{
@@ -345,9 +347,9 @@ const App: React.FC = () => {
               />
             </figure>
           </div>
-        </HorizontalSection>
+        </HorizontalSection> */}
 
-
+<Floor1/>
 
 
 
@@ -367,7 +369,7 @@ const App: React.FC = () => {
           </div>
           </HorizontalSection>
         </section>
-        {/* <SlicksSlide /> */}
+        <SlicksSlide />
         {/* <Slideshow /> */}
 
         <section className="floor3"
@@ -403,46 +405,6 @@ const App: React.FC = () => {
         >
           <h1>Hello World!</h1>
         </section>
-
-
-
-
-
-
-
-
-
-
-
-        <HorizontalSection addAnimation={addGellyAnimation}>
-          <div className="ns-horizontal-section__item">
-            <div className="ns-horizontal-section__item__inner">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
-              ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
-              finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
-              auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
-              eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
-            </div>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <div className="ns-horizontal-section__item__inner">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
-              ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
-              finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
-              auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
-              eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
-            </div>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <div className="ns-horizontal-section__item__inner">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui
-              ligula, commodo quis quam in, accumsan finibus dolor. Nunc ac
-              finibus purus. Vivamus ac risus euismod, pellentesque nunc id,
-              auctor urna. Duis eu imperdiet arcu. Suspendisse eu nibh felis. Sed
-              eros nibh, lobortis eget turpis eget, iaculis condimentum lacus.
-            </div>
-          </div>
-        </HorizontalSection>
         <section
           style={{
             height: "100vh",
@@ -453,75 +415,7 @@ const App: React.FC = () => {
         >
           <h1>Hello World!!</h1>
         </section>
-        <HorizontalSection toRight={false} addAnimation={addParallaxAnimation}>
-          <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-               height: "100hv",
-                width: "100wv",
-                minWidth: "400px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.2)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="./3floor/1.jpg"
-  
-              />
-            </figure>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-                height: "100hv",
-                width: "100wv",
-                minWidth: "400px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.2)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="./3floor/2.jpg"
-              />
-            </figure>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-                height: "100hv",
-                width: "100wv",
-                minWidth: "400px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.5)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="./3floor/3.jpg"
-              />
-            </figure>
-          </div>
-        </HorizontalSection>
+       <Floor3/>
         <section
           style={{
             height: "100vh",
@@ -532,8 +426,6 @@ const App: React.FC = () => {
         >
           <h1>Hello World!!!</h1>
         </section>
-
-
 
       </ScrollContainer>
     </div>
