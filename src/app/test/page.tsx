@@ -39,6 +39,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <div>1Floor</div>
       <HorizontalSection >
         <div className="horizontal-section">
           {images.map((image, index) => (

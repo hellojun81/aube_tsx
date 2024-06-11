@@ -4,9 +4,10 @@ import {
     parallaxAnimation,
     useGlobalState
 } from "react-nice-scroll";
+import Modal from './modal';
 
 const App: React.FC = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
     const [currentImage, setCurrentImage] = useState<string | null>(null);
 
     const settings = {
@@ -20,13 +21,14 @@ const App: React.FC = () => {
     };
     const handleImageClick = (imageSrc: string) => {
         console.log('double Click')
-        setCurrentImage(imageSrc);
-        setIsModalOpen(true);
+        setModalOpen(true);
+        // setCurrentImage(imageSrc);
+        // setIsModalOpen(true);
     };
 
     const closeModal = () => {
-        setIsModalOpen(false);
-        setCurrentImage(null);
+        // setIsModalOpen(false);
+        // setCurrentImage(null);
     };
     const imageLinks = [
         { path: "./1floor/1.jpg", },
@@ -54,8 +56,8 @@ const App: React.FC = () => {
                         "right left",
                         "left right",
                         "x",
-                        -30,
-                        30,
+                        -50,
+                        50,
                         containerAnimation
                     );
                 }
@@ -71,7 +73,13 @@ const App: React.FC = () => {
     }, []);
 
     return (
-        <HorizontalSection toRight={false} addAnimation={addParallaxAnimation}>
+        <>
+          <div>1floor width:8.5M Height:4.5M </div>
+        <HorizontalSection 
+        toRight={false} 
+        start='top'
+        addAnimation={addParallaxAnimation}>
+          
             {imageLinks.map((link, index) => (
                 <div className="ns-horizontal-section__item" key={index}>
                     <figure
@@ -103,7 +111,12 @@ const App: React.FC = () => {
                     </div>
                 </div>
             )}
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <h1>Modal Title</h1>
+                <p>This is a modal content.</p>
+            </Modal>
         </HorizontalSection>
+        </>
     )
 };
 
