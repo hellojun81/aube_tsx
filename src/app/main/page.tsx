@@ -207,6 +207,150 @@ const App: React.FC = () => {
         >
           {/* <h1 className="title">1floor</h1> */}
         </section>
+
+        <HorizontalSection toRight={false} addAnimation={addParallaxAnimation}>
+        <div className="ns-horizontal-section__item">
+            <figure
+              style={{
+               height: "100hv",
+                width: "100wv",
+                minWidth: "400px",
+                overflow: "hidden",
+                margin: "0"
+              }}
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.2)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="./1floor/1.jpg"
+  
+              />
+            </figure>
+          </div>
+          <div className="ns-horizontal-section__item">
+            <figure
+              style={{
+               height: "100hv",
+                width: "100wv",
+                minWidth: "400px",
+                overflow: "hidden",
+                margin: "0"
+              }}
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.2)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="./1floor/2.jpg"
+  
+              />
+            </figure>
+          </div>
+          <div className="ns-horizontal-section__item">
+            <figure
+              style={{
+               height: "100hv",
+                width: "100wv",
+                minWidth: "400px",
+                overflow: "hidden",
+                margin: "0"
+              }}
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.2)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="./1floor/3.jpg"
+  
+              />
+            </figure>
+          </div>
+          <div className="ns-horizontal-section__item">
+            <figure
+              style={{
+                height: "100hv",
+                width: "100wv",
+                minWidth: "400px",
+                overflow: "hidden",
+                margin: "0"
+              }}
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.2)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="./1floor/4.jpg"
+              />
+            </figure>
+          </div>
+          <div className="ns-horizontal-section__item">
+            <figure
+              style={{
+                height: "100hv",
+                width: "100wv",
+                minWidth: "400px",
+                overflow: "hidden",
+                margin: "0"
+              }}
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.2)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="./1floor/5.jpg"
+              />
+            </figure>
+          </div>
+          <div className="ns-horizontal-section__item">
+            <figure
+              style={{
+               height: "100hv",
+                width: "100wv",
+                minWidth: "400px",
+                overflow: "hidden",
+                margin: "0"
+              }}
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.2)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="./1floor/6.jpg"
+  
+              />
+            </figure>
+          </div>
+        </HorizontalSection>
+
+
+
+
+
         <section className="floor2"
           style={{
             height: "100vh",
@@ -215,7 +359,13 @@ const App: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          <h1 className="title">2floor</h1>
+<HorizontalSection addAnimation={addGellyAnimation}>
+          <div className="ns-horizontal-section__item">
+            <div className="ns-horizontal-section__item__inner">
+            <h1 className="title">we stay in sungsu 6, Achasan-ro 11ga-gil, Seongdong-gu, Seoul, Republic of Korea</h1>
+            </div>
+          </div>
+          </HorizontalSection>
         </section>
         {/* <SlicksSlide /> */}
         {/* <Slideshow /> */}
@@ -253,6 +403,17 @@ const App: React.FC = () => {
         >
           <h1>Hello World!</h1>
         </section>
+
+
+
+
+
+
+
+
+
+
+
         <HorizontalSection addAnimation={addGellyAnimation}>
           <div className="ns-horizontal-section__item">
             <div className="ns-horizontal-section__item__inner">
@@ -296,9 +457,9 @@ const App: React.FC = () => {
           <div className="ns-horizontal-section__item">
             <figure
               style={{
-                height: "400px",
-                width: "300px",
-                minWidth: "300px",
+               height: "100hv",
+                width: "100wv",
+                minWidth: "400px",
                 overflow: "hidden",
                 margin: "0"
               }}
@@ -311,31 +472,8 @@ const App: React.FC = () => {
                   height: "100%",
                   objectFit: "cover"
                 }}
-                src="https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687"
-                alt="react nice scroll"
-              />
-            </figure>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-                height: "400px",
-                width: "300px",
-                minWidth: "300px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.2)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="https://images.unsplash.com/photo-1487260211189-670c54da558d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687"
-                alt="react nice scroll"
+                src="./3floor/1.jpg"
+  
               />
             </figure>
           </div>
@@ -344,7 +482,29 @@ const App: React.FC = () => {
               style={{
                 height: "100hv",
                 width: "100wv",
-                minWidth: "300px",
+                minWidth: "400px",
+                overflow: "hidden",
+                margin: "0"
+              }}
+              className="ns-horizontal-section__item__fig"
+            >
+              <img
+                style={{
+                  transform: "scale(1.2)",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                src="./3floor/2.jpg"
+              />
+            </figure>
+          </div>
+          <div className="ns-horizontal-section__item">
+            <figure
+              style={{
+                height: "100hv",
+                width: "100wv",
+                minWidth: "400px",
                 overflow: "hidden",
                 margin: "0"
               }}
@@ -357,8 +517,7 @@ const App: React.FC = () => {
                   height: "100%",
                   objectFit: "cover"
                 }}
-                src="https://cafe24.poxo.com/ec01/plusjun1/65uN764GExGfUPmYExKJksnE57SYcD6gUng6vqfRwxzQDRaqGvIZ3YLkdcZKPNIx5qhHZTZyTJVHVkE+M7vZpQ==/_/images/layer%2011/layer20/0724_3%E1%84%8E%E1%85%B3%E1%86%BC4.jpg"
-                alt="react nice scroll"
+                src="./3floor/3.jpg"
               />
             </figure>
           </div>
