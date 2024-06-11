@@ -6,10 +6,7 @@ import styles from "./page.module.css";
 import {
   ScrollContainer,
   SequenceSection,
-  HorizontalSection,
   gellyAnimation,
-  parallaxAnimation,
-  useGlobalState
 } from "react-nice-scroll";
 import "react-nice-scroll/dist/styles.css";
 import SlicksSlide from "./slickslide"
@@ -209,147 +206,10 @@ const App: React.FC = () => {
         >
           {/* <h1 className="title">1floor</h1> */}
         </section>
+    
+          <Floor1 />
 
-        {/* <HorizontalSection toRight={false} addAnimation={addParallaxAnimation}>
-        <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-               height: "100hv",
-                width: "100wv",
-                minWidth: "400px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.2)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="./1floor/1.jpg"
-  
-              />
-            </figure>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-               height: "100hv",
-                width: "100wv",
-                minWidth: "400px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.2)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="./1floor/2.jpg"
-  
-              />
-            </figure>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-               height: "100hv",
-                width: "100wv",
-                minWidth: "400px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.2)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="./1floor/3.jpg"
-  
-              />
-            </figure>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-                height: "100hv",
-                width: "100wv",
-                minWidth: "400px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.2)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="./1floor/4.jpg"
-              />
-            </figure>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-                height: "100hv",
-                width: "100wv",
-                minWidth: "400px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.2)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="./1floor/5.jpg"
-              />
-            </figure>
-          </div>
-          <div className="ns-horizontal-section__item">
-            <figure
-              style={{
-               height: "100hv",
-                width: "100wv",
-                minWidth: "400px",
-                overflow: "hidden",
-                margin: "0"
-              }}
-              className="ns-horizontal-section__item__fig"
-            >
-              <img
-                style={{
-                  transform: "scale(1.2)",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-                src="./1floor/6.jpg"
-  
-              />
-            </figure>
-          </div>
-        </HorizontalSection> */}
 
-<Floor1/>
 
 
 
@@ -361,13 +221,13 @@ const App: React.FC = () => {
             justifyContent: "center",
           }}
         >
-<HorizontalSection addAnimation={addGellyAnimation}>
+          {/* <HorizontalSection addAnimation={addGellyAnimation}>
           <div className="ns-horizontal-section__item">
             <div className="ns-horizontal-section__item__inner">
             <h1 className="title">we stay in sungsu 6, Achasan-ro 11ga-gil, Seongdong-gu, Seoul, Republic of Korea</h1>
             </div>
           </div>
-          </HorizontalSection>
+          </HorizontalSection> */}
         </section>
         <SlicksSlide />
         {/* <Slideshow /> */}
@@ -415,7 +275,7 @@ const App: React.FC = () => {
         >
           <h1>Hello World!!</h1>
         </section>
-       <Floor3/>
+        <Floor3 />
         <section
           style={{
             height: "100vh",
