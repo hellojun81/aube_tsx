@@ -9,9 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Script from 'next/script';
-// import * from './script/intro'
-// import * from './script/intromove'
-// 클라이언트 사이드에서만 렌더링하도록 설정
+import { useRouter } from 'next/router';
 <html lang="ko"></html>
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,25 +20,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children, }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) 
 
+{
   return (
     <html lang="en">
-
-      <Head>
-
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-      </Head>
-      <body className={inter.className}>
-      <div className="c-intro"></div>
-        <Menu />
-        <App />
-      </body>
-
-      <Script src='./script/intromove.js?ver=1.1.0momou' id='tys-home-js'></Script>
-      <Script src='./script/intro.js?ver=1.1.0momou' id='tys-js'></Script>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
