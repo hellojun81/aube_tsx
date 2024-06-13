@@ -78,15 +78,15 @@ const App: React.FC = () => {
             <div>
                 <section className=""
                     style={{
-                        height: "500vh",
+                        height: "100vh",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                     }}
                 >
-                    {/* <section>
+                   <div>
                     <div className="floor_title">1floor width:8.5M Height:4.5M </div>
-                    </section> */}
+                    </div> 
 
                     <HorizontalSection
                         toRight={false}
@@ -107,7 +107,7 @@ const App: React.FC = () => {
                                     <div onDoubleClick={() => handleImageClick(link.path)}>
                                         <img
                                             style={{
-                                                transform: "scale(1.2)",
+                                                // transform: "scale(1.2)",
                                                 width: "100%",
                                                 height: "100%",
                                                 objectFit: "cover"

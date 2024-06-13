@@ -14,6 +14,7 @@ import { ScrollRotate } from 'react-scroll-rotate';
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Floor1 from "../components/1floor";
 import Floor3 from "../components/3floor";
+import Test from "../test/test"
 
 const studioName = 'Aube';
 const studioNameTitle=[1,2,3,4,5]
@@ -184,7 +185,7 @@ const App: React.FC = () => {
           <Floor1 />
 
 
-
+{/* <Test /> */}
 
 
         <section className="floor2"
@@ -249,7 +250,7 @@ const App: React.FC = () => {
         >
           <h1>Hello World!!</h1>
         </section>
-        <Floor3 />
+        {/* <Floor3 /> */}
         <section
           style={{
             height: "100vh",
