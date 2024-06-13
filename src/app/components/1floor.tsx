@@ -69,8 +69,6 @@ const App: React.FC = () => {
     useEffect(() => {
         // 컴포넌트가 마운트될 때 스크롤 숨기기
         document.body.style.overflow = 'hidden';
-
-
     }, []);
 
     return (
@@ -78,7 +76,7 @@ const App: React.FC = () => {
             <div>
                 <section className=""
                     style={{
-                        height: "100vh",
+                        height: "600vh",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -90,7 +88,7 @@ const App: React.FC = () => {
 
                     <HorizontalSection
                         toRight={false}
-                        start='top top'
+                        start='top'
                         addAnimation={addParallaxAnimation}>
                         
                         {imageLinks.map((link, index) => (
@@ -99,7 +97,7 @@ const App: React.FC = () => {
                                     style={{
                                         height: "100hv",
                                         width: "100wv",
-                                        minWidth: "300px",
+                                        minWidth: "100%",
                                         overflow: "hidden",
                                         margin: "0"
                                     }}

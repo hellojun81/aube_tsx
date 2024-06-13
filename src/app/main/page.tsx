@@ -25,39 +25,7 @@ const App: React.FC = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
   const rotateto = [-360, 360, -500, 500];
   const rotatefrom = [-45, 45, 45, -45];
-  const addGellyAnimation = useCallback(
-    (containerAnimation: gsap.core.Tween) => {
-      const items = document.querySelectorAll(
-        ".ns-horizontal-section__item__inner"
-      ) as NodeListOf<HTMLDivElement>;
-
-      items.forEach((item) => {
-        ScrollTrigger.create({
-          trigger: item,
-          containerAnimation,
-          start: "left right",
-          end: "right left",
-          scrub: 0.5,
-          immediateRender: false,
-          onUpdate: () => {
-            const velocity = containerAnimation.scrollTrigger?.getVelocity();
-            if (velocity && item)
-              gellyAnimation(
-                item,
-                velocity,
-                "skewX",
-                150,
-                -20,
-                20,
-                0.8,
-                "power3"
-              );
-          }
-        });
-      });
-    },
-    []
-  );
+ 
 
   useEffect(() => {
     const div = divRef.current;
@@ -182,8 +150,7 @@ const App: React.FC = () => {
        
         </section>
     
-          <Floor1 />
-
+          {/* <Floor1 /> */}
 
 {/* <Test /> */}
 
