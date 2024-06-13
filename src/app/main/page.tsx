@@ -16,7 +16,7 @@ import Floor1 from "../components/1floor";
 import Floor3 from "../components/3floor";
 
 const studioName = 'Aube';
-
+const studioNameTitle=[1,2,3,4,5]
 
 const App: React.FC = () => {
   // const [scroller] = useGlobalState("container");
@@ -57,32 +57,6 @@ const App: React.FC = () => {
     },
     []
   );
-
-  // const addParallaxAnimation = useCallback(
-  //   (containerAnimation: gsap.core.Tween) => {
-  //     const items = document.querySelectorAll(
-  //       ".ns-horizontal-section__item__fig"
-  //     ) as NodeListOf<HTMLDivElement>;
-
-  //     items.forEach((trigger) => {
-  //       const el = trigger.querySelector("img");
-  //       if (el && scroller) {
-  //         parallaxAnimation(
-  //           el,
-  //           trigger,
-  //           scroller,
-  //           "right left",
-  //           "left right",
-  //           "x",
-  //           -30,
-  //           30,
-  //           containerAnimation
-  //         );
-  //       }
-  //     });
-  //   },
-  //   [scroller]
-  // );
 
   useEffect(() => {
     const div = divRef.current;
@@ -139,11 +113,10 @@ const App: React.FC = () => {
   return (
     <div>
       {/* <div className="c-intro"></div> */}
-
       <ScrollContainer>
         <section
           style={{
-            height: "100vh",
+            height: "200vh",
             width: "100vw",
             display: "flex",
             alignItems: "center",
@@ -188,15 +161,16 @@ const App: React.FC = () => {
               </div>
             </div>
             <SequenceSection
-              end="100%"
+              end="80%"
               imagesPath="/images"
               imagesCount={24}
-              imagesType="png"
+              imagesType="jpg"
             >
             </SequenceSection>
           </div>
         </section>
-        <section className="floor1"
+
+     <section className="floor1"
           style={{
             height: "100vh",
             display: "flex",
@@ -204,7 +178,7 @@ const App: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          {/* <h1 className="title">1floor</h1> */}
+       
         </section>
     
           <Floor1 />

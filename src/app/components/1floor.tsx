@@ -5,6 +5,7 @@ import {
     useGlobalState
 } from "react-nice-scroll";
 import Modal from './modal';
+import './floor.css';
 
 const App: React.FC = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -56,8 +57,8 @@ const App: React.FC = () => {
                         "right left",
                         "left right",
                         "x",
-                        -50,
-                        50,
+                        0,
+                        0,
                         containerAnimation
                     );
                 }
@@ -74,49 +75,53 @@ const App: React.FC = () => {
 
     return (
         <>
-          <div>1floor width:8.5M Height:4.5M </div>
-        <HorizontalSection 
-        toRight={false} 
-        start='top'
-        addAnimation={addParallaxAnimation}>
-          
-            {imageLinks.map((link, index) => (
-                <div className="ns-horizontal-section__item" key={index}>
-                    <figure
-                        style={{
-                            height: "100hv",
-                            width: "100wv",
-                            minWidth: "300px",
-                            overflow: "hidden",
-                            margin: "0"
-                        }}
-                        className="ns-horizontal-section__item__fig" >
-                        <div onDoubleClick={() => handleImageClick(link.path)}>
-                            <img
-                                style={{
-                                    transform: "scale(1.2)",
-                                    width: "100%",
-                                    height: "100%",
-                                    objectFit: "cover"
-                                }}
-                                src={link.path}
-                            /></div>
-                    </figure>
-                </div>
-            ))}
-            {isModalOpen && currentImage && (
-                <div className="modal" onClick={closeModal}>
-                    <div className="modal-content">
-                        <img src={currentImage} alt="Zoomed" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-                    </div>
-                </div>
-            )}
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <h1>Modal Title</h1>
-                <p>This is a modal content.</p>
-            </Modal>
-        </HorizontalSection>
+            <div>
+                <section className=""
+                    style={{
+                        height: "500vh",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
+                    {/* <section>
+                    <div className="floor_title">1floor width:8.5M Height:4.5M </div>
+                    </section> */}
+
+                    <HorizontalSection
+                        toRight={false}
+                        start='top top'
+                        addAnimation={addParallaxAnimation}>
+                        
+                        {imageLinks.map((link, index) => (
+                            <div className="ns-horizontal-section__item" key={index}>
+                                <figure
+                                    style={{
+                                        height: "100hv",
+                                        width: "100wv",
+                                        minWidth: "300px",
+                                        overflow: "hidden",
+                                        margin: "0"
+                                    }}
+                                    className="ns-horizontal-section__item__fig" >
+                                    <div onDoubleClick={() => handleImageClick(link.path)}>
+                                        <img
+                                            style={{
+                                                transform: "scale(1.2)",
+                                                width: "100%",
+                                                height: "100%",
+                                                objectFit: "cover"
+                                            }}
+                                            src={link.path}
+                                        /></div>
+                                </figure>
+                            </div>
+                        ))}
+                    </HorizontalSection>
+                </section>
+            </div>
         </>
+
     )
 };
 

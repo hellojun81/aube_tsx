@@ -39,16 +39,16 @@ const App: React.FC = () => {
     >
       <div style={{ width: '100%', height: '100%' }}>
         <Slider {...settings}>
-          <div onClick={() => handleImageClick('./1floor/1.jpg')}>
+          <div onDoubleClick={() => handleImageClick('./1floor/1.jpg')}>
             <img src="./1floor/1.jpg" alt="Slide 1" style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'pointer' }} />
           </div>
-          <div onClick={() => handleImageClick('./1floor/2.jpg')}>
+          <div onDoubleClick={() => handleImageClick('./1floor/2.jpg')}>
             <img src="./1floor/2.jpg" alt="Slide 2" style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'pointer' }} />
           </div>
-          <div onClick={() => handleImageClick('./1floor/3.jpg')}>
+          <div onDoubleClick={() => handleImageClick('./1floor/3.jpg')}>
             <img src="./1floor/3.jpg" alt="Slide 3" style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'pointer' }} />
           </div>
-          <div onClick={() => handleImageClick('./1floor/4.jpg')}>
+          <div onDoubleClick={() => handleImageClick('./1floor/4.jpg')}>
             <img src="./1floor/4.jpg" alt="Slide 4" style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'pointer' }} />
           </div>
         </Slider>
