@@ -3,14 +3,18 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import App from "./page";
-import { StrictMode } from "react";
 import Menu from '@/app/components/menu'
-import { useEffect, useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
-import Head from 'next/head';
+import Footer from '@/app/components/footer'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Script from 'next/script';
-import { useRouter } from 'next/router';
-<html lang="ko"></html>
+// import { StrictMode,useEffect, useRef, useState } from 'react';
+// import dynamic from 'next/dynamic';
+// import Head from 'next/head';
+// import Script from 'next/script';
+// import { useRouter } from 'next/router';
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,12 +24,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children, }: Readonly<{
   children: React.ReactNode;
-}>) 
-
-{
+}>) {
   return (
+    <>    
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+     
+      <body className={inter.className}>{children}
+      <Menu />
+      {/* <Footer/> */}
+      </body>
+      {/* <Script src='/script/intromove.js' id='tys-home-js' strategy="afterInteractive" />
+      <Script src='/script/intro.js' id='tys-js' strategy="afterInteractive" /> */}
+   
     </html>
+    </>
+
   );
 }

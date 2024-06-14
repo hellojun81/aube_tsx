@@ -1,60 +1,49 @@
-html {
-  overflow-y: scroll;
-  height: 100%;
-  -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
-}
-body {
-  overflow-y: visible;
-  position: relative;
-  overflow-x: hidden;
-}
-html,
-body {
-  margin: 0;
+*{
+  margin:0;
+  padding:0;
+  font-family:'Segoe UI',sans-serif;
+  /* font-size:1.5em; */
+  white-space:nowrap;
+  color:white;
 }
 
-.container {
-  width: 600vw;
-  height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-}
-.floor{
-  z-index: 999;
-}
-
-.firstContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: yellow;
+.parallax-view{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  width:100vw;
+  background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+  background-attachment:fixed;
+  background-size:cover;
 }
 
-.lastContainer {
-  display: flex;
-  height: 100vh;
-  background: yellow;
+.solid-view{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  width:100vw;
+  background-color:black;
 }
 
-.panel {
-  width: 100vw;
-  height: 100vh;
-}
-.red {
-  background: blue;
-}
-.red {
-  background: red;
-}
-.orange {
-  background: orange;
-}
-.purple {
-  background: purple;
-}
-.blue {
-  background-color: blue;
+/* .down{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left:50%;
+  animation: indicateScroll 1.5s infinite;
+} */
+
+/* @keyframes indicateScroll{
+  0%{top:70%;}
+  50%{top:40%;}
+  100%{top:70%;}
+} */
+
+.arrow{
+  transform:rotate(90deg);
 }

@@ -10,7 +10,11 @@ import './floor.css';
 const App: React.FC = () => {
     const [isModalOpen, setModalOpen] = useState(false);
     const [currentImage, setCurrentImage] = useState<string | null>(null);
-
+    const [windowSize, setWindowSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+    console.log('setWindowSize',windowSize)
     const settings = {
         dots: true,
         infinite: true,
@@ -20,6 +24,7 @@ const App: React.FC = () => {
         autoplay: true,
         autoplaySpeed: 3000
     };
+    
     const handleImageClick = (imageSrc: string) => {
         console.log('double Click')
         setModalOpen(true);
@@ -31,13 +36,21 @@ const App: React.FC = () => {
         // setIsModalOpen(false);
         // setCurrentImage(null);
     };
-    const imageLinks = [
-        { path: "./1floor/1.jpg", },
-        { path: "./1floor/2.jpg", },
-        { path: "./1floor/3.jpg", },
-        { path: "./1floor/4.jpg", },
-        { path: "./1floor/5.jpg", },
-        { path: "./1floor/6.jpg", },
+    const imageLinksHeight = [
+        { path: "./1floor/height/1.jpg", },
+        { path: "./1floor/height/2.jpg", },
+        { path: "./1floor/height/3.jpg", },
+        { path: "./1floor/height/4.jpg", },
+        { path: "./1floor/height/5.jpg", },
+        { path: "./1floor/height/6.jpg", },
+    ];
+    const imageLinksWidth = [
+        { path: "./1floor/width/1.jpg", },
+        { path: "./1floor/width/2.jpg", },
+        { path: "./1floor/width/3.jpg", },
+        { path: "./1floor/width/4.jpg", },
+        { path: "./1floor/width/5.jpg", },
+        { path: "./1floor/width/6.jpg", },
     ];
 
     const [scroller] = useGlobalState("container");
@@ -67,9 +80,23 @@ const App: React.FC = () => {
         [scroller]
     );
     useEffect(() => {
-        // 컴포넌트가 마운트될 때 스크롤 숨기기
-        document.body.style.overflow = 'hidden';
-    }, []);
+        // 창 크기 변경 이벤트 핸들러
+        const handleResize = () => {
+          setWindowSize({
+            width: window.innerWidth,
+            height: window.innerHeight
+          });
+        };
+    
+        // 이벤트 리스너 추가
+        window.addEventListener('resize', handleResize);
+    
+        // 컴포넌트 언마운트 시 이벤트 리스너 제거
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+       
+      }, []);
 
     return (
         <>
@@ -82,23 +109,23 @@ const App: React.FC = () => {
                         justifyContent: "center",
                     }}
                 >
-                   <div>
-                    <div className="floor_title">1floor width:8.5M Height:4.5M </div>
-                    </div> 
+                    <div>
+                        <div className="floor_title">1floor width:8.5M Height:4.5M </div>
+                    </div>
 
                     <HorizontalSection
                         toRight={false}
                         start='top'
                         addAnimation={addParallaxAnimation}>
-                        
-                        {imageLinks.map((link, index) => (
+
+                        {imageLinksHeight.map((link, index) => (
                             <div className="ns-horizontal-section__item" key={index}>
                                 <figure
                                     style={{
                                         height: "100hv",
                                         width: "100wv",
                                         minWidth: "100%",
-                                        overflow: "hidden",
+                                        // overflow: "hidden",
                                         margin: "0"
                                     }}
                                     className="ns-horizontal-section__item__fig" >

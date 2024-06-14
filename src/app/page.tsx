@@ -2,22 +2,23 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Script from 'next/script';
-
 export default function Home() {
   const router = useRouter();
+
   useEffect(() => {
+
     const timer = setTimeout(() => {
       router.push('/main'); // 이동할 페이지 경로를 지정합니다.
-    }, 2000); // 5000ms = 5초
+    }, 3000); // 3000ms = 3초
 
     return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머를 정리합니다.
   }, [router]);
 
   return (
     <>
-      <div className='c-intro'></div>
-      <Script src='./script/intromove.js?ver=1.1.0momou' id='tys-home-js' />
-      <Script src='./script/intro.js?ver=1.1.0momou' id='tys-js' />
+    <div className='c-intro'></div>
+    <Script src='/script/intromove.js' id='tys-home-js' strategy="afterInteractive" />
+    <Script src='/script/intro.js' id='tys-js' strategy="afterInteractive" />
     </>
   );
 }

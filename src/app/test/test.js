@@ -29,28 +29,19 @@ export default function Scene() {
   });
 
   return (
-    <div className="App" ref={component}>
-      <div className="firstContainer">
-        <h1>Testing horizontal scrolling w/ three sections</h1>
-        <h2>First Container</h2>
-      </div>
-      <div ref={slider} className="container">
-        <div className="floor">1floor</div>
-        <div className="description panel blue">
-          <div>
-            SCROLL DOWN
-            <div className="scroll-down">
-              <div className="arrow"></div>
-            </div>
-          </div>
-        </div>
-        <div className="panel red">
-            <img src='http://jcooly.cafe24.com/j2w/img/aube/1.jpg' style={{width:'100%'}}/>
-        </div>
-        <div className="panel orange">TWO</div>
-        <div className="panel purple">THREE</div>
-      </div>
-      <div className="lastContainer">Last Container</div>
-    </div>
+    <>
+    <div className="solid-view">
+  <div className='down'>
+    <h1>Scroll Down</h1>
+    <h1 className='arrow'>-</h1>
+  </div>
+</div>
+<div className="parallax-view">
+  <h1>Easy Parallax Scrolling</h1>
+</div>
+<div className="solid-view">
+  <h1>Enjoy!</h1>
+</div>
+</>
   );
 }

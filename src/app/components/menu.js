@@ -7,16 +7,17 @@ import "./menu.css"
 
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
-
+// import { useNavigate } from 'react-router-dom';
 
 
 
 const menuLinks = [
-    { path: "/", label: "home" },
-    { path: "/work", label: "1floor" },
-    { path: "/about", label: "2floor" },
-    { path: "/contact", label: "3floor" },
-    { path: "/lab", label: "outSideTest" },
+    { path: "/main", label: "home" },
+    { path: "/main", label: "1floor" },
+    { path: "/main", label: "2floor" },
+    { path: "/main", label: "3floor" },
+    { path: "/main", label: "outSide" },
+    { path: "/main", label: "contact" },
 ];
 
 
@@ -24,7 +25,7 @@ const Menu = () => {
     const container = useRef();
     const [isMenuOpen, setIsMenuopen] = useState(false);
     const tl = useRef();
-
+    // const navigate = useNavigate();
     const toggleMenu = () => {
         setIsMenuopen(!isMenuOpen);
     };
@@ -47,6 +48,13 @@ const Menu = () => {
 
     }, { scope: container });
 
+    const scrollToSection = (id) => {
+        // setIsMenuopen(!isMenuOpen);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
 
     useEffect(() => {
         if (isMenuOpen) {
@@ -72,15 +80,15 @@ const Menu = () => {
                     <div className='menu-close-icon'>
                         <p onClick={toggleMenu}> &#x2715; </p>
                     </div>
-
+              
                     <div className='menu-copy'>
                         <div className='menu-links'>
                             {menuLinks.map((link, index) => (
                                 <div className='menu-link-item' key={index}>
                                     <div className='menu-link-item-holder' onClick={toggleMenu}>
-                                        <Link href={link.path} className='menu-link'>
+                                        <div className='menu-link' onClick={() => scrollToSection(link.label)}>
                                             {link.label} 
-                                        </Link>
+                                        </div>
                                     </div>
                                 </div>
                             ))}

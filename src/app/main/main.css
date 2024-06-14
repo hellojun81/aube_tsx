@@ -1,0 +1,20 @@
+.ns-parallax-image{width:100vw;}
+.ns-parallax-image__inner{
+    object-fit: contain!important;
+}
+.slick-arrow{
+    display: none!important;
+}
+.slidecontainer{
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    /* display: inline; */
+
+}
+.slick-slider {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+width:100%
+}

@@ -2,22 +2,31 @@
 // npm run dev or npm run start
 
 import React, { useRef, useEffect, useState, RefCallback, useCallback } from "react";
-import styles from "./page.module.css";
+import "./main.css";
 import {
   ScrollContainer,
   SequenceSection,
   gellyAnimation,
+  ParallaxImage
 } from "react-nice-scroll";
 import "react-nice-scroll/dist/styles.css";
 import SlicksSlide from "./slickslide"
 import { ScrollRotate } from 'react-scroll-rotate';
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import Floor1 from "../components/1floor";
-import Floor3 from "../components/3floor";
-import Test from "../test/test"
+import Script from 'next/script';
+// import ScrollTrigger from "gsap/dist/ScrollTrigger";
+// import Floor1 from "../components/1floor";
+// import Floor3 from "../components/3floor";
+// import Test from "../test/test"
+
+
 
 const studioName = 'Aube';
-const studioNameTitle=[1,2,3,4,5]
+const RoateClassName = [
+  { name: "title1Sub", divname: 'Hero_title1', key: 0 },
+  { name: "title2Sub", divname: 'Hero_title2', key: 1 },
+  { name: "title3Sub", divname: 'Hero_title3', key: 2 },
+  { name: "title4Sub", divname: 'Hero_title4', key: 3 },
+];
 
 const App: React.FC = () => {
   // const [scroller] = useGlobalState("container");
@@ -25,7 +34,10 @@ const App: React.FC = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
   const rotateto = [-360, 360, -500, 500];
   const rotatefrom = [-45, 45, 45, -45];
- 
+  let floorValue = 1;
+
+
+  // const [floor, setfloor] = useState('');
 
   useEffect(() => {
     const div = divRef.current;
@@ -33,20 +45,18 @@ const App: React.FC = () => {
       // 윈도우의 높이와 너비를 가져옵니다.
       const windowHeight = window.innerHeight;
       const windowWidth = window.innerWidth;
-
       // div 요소의 높이와 너비를 가져옵니다.
       const divHeight = div.offsetHeight;
       const divWidth = div.offsetWidth;
-
       // 중앙에 위치시키기 위한 계산을 합니다.
       const topPosition = (windowHeight / 2) - (divHeight / 2);
       const leftPosition = (windowWidth / 2) - (divWidth / 2);
-
       // div 요소의 스타일을 설정합니다.
       div.style.position = 'absolute';
       div.style.top = `${topPosition}px`;
       div.style.left = `${leftPosition}px`;
     }
+    
     let index = 0;
     titleRefs.current.forEach(ref => {
       index++;
@@ -60,9 +70,9 @@ const App: React.FC = () => {
 
           let checkindex = index % 2
           // console.log('checkindex', checkindex);
+
           ref.style.position = 'absolute';
           ref.style.top = `${(parentHeight - textHeight) / 2}px`;
-          // ref.style.left = `${(parentWidth - textWidth) / 2}px`;
           if (checkindex == 1) {
             ref.style.left = `10px`;
           } else {
@@ -78,84 +88,111 @@ const App: React.FC = () => {
       titleRefs.current[index] = el;
     };
   };
+  const htmlElement = document.documentElement;
+  htmlElement.style.overflow = '';
 
   return (
     <div>
-      {/* <div className="c-intro"></div> */}
       <ScrollContainer>
-        <section
+        <div
           style={{
-            height: "200vh",
-            width: "100vw",
-            display: "flex",
+            height: "120vh",
             alignItems: "center",
             justifyContent: "center",
             position: 'relative'
           }}
         >
           <div className="titleMain">
-            <div className="Hero_titleContainer Hero_title1" >
-              <div
-                className="title1Sub"
-                ref={setTitleRef(0)}
-                style={{ position: 'absolute' }}
-              > <ScrollRotate method={"perc"} from={rotatefrom[0]} to={rotateto[0]} loops={3}>{studioName}</ScrollRotate></div>
-            </div>
-            <div className="Hero_titleContainer Hero_title2">
-              <div
-                className="title2Sub"
-                ref={setTitleRef(1)}
-                style={{ position: 'absolute' }}
-              ><ScrollRotate method={"perc"} from={rotatefrom[1]} to={rotateto[1]} loops={3}>{studioName}</ScrollRotate></div>
-            </div>
+            {RoateClassName.map((link, index) => (
+              <div className={`Hero_titleContainer ${link.divname}`} key={index}>
+                <div
+                  className={link.name}
+                  ref={setTitleRef(link.key)}
+                  style={{ position: 'absolute' }}
+                >
+                  <ScrollRotate method={"perc"} from={rotatefrom[link.key]} to={rotateto[link.key]} loops={3}>
+                    {studioName}
+                  </ScrollRotate></div>
+              </div>
+            ))}
             <div ref={divRef} className="Hero_title_center Hero_titlecenter" >
               <div className="titleCSub">{studioName}</div>
             </div>
-            <div className="Hero_titleContainer Hero_title3">
-              <div
-                className="title3Sub"
-                ref={setTitleRef(2)}
-                style={{ position: 'absolute' }}
-              ><ScrollRotate method={"perc"} from={rotatefrom[2]} to={rotateto[2]} loops={3}>{studioName}</ScrollRotate></div>
-            </div>
-            <div className="Hero_titleContainer Hero_title4">
-              <div
-                className="title4Sub"
-                ref={setTitleRef(3)}
-                style={{ position: 'absolute' }}
-              >
-                <ScrollRotate method="perc" from={rotatefrom[3]} to={rotateto[3]} loops={3}>
-                  {studioName}
-                </ScrollRotate>
-              </div>
-            </div>
-            <SequenceSection
-              end="80%"
-              imagesPath="/images"
-              imagesCount={24}
-              imagesType="jpg"
-            >
-            </SequenceSection>
           </div>
-        </section>
 
-     <section className="floor1"
+          <SequenceSection
+            end="80%"
+            imagesPath="/images"
+            imagesCount={30}
+            imagesType="jpg"
+          >
+          </SequenceSection>
+        </div>
+        <section
           style={{
             height: "100vh",
-            display: "flex",
+            width: "100vw",
+            // display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            backgroundColor: '#333',
+            position: 'relative'
           }}
         >
-       
+          <div style={{
+            color: '#ffffff',
+            paddingTop: '30px',
+            paddingBottom: '30px',
+            paddingLeft: '30px',
+          }}>aube Studio는<br />
+            성수동에 위치한 대지면적 215평에<br />
+            3층규모의 건축물로써 실사용 면적 약 400평(마당포함)을<br />
+            단독으로 사용 가능한 공간 이에요.</div>
+            <SlicksSlide floor={0} />
         </section>
+
+        <section
+          style={{
+            height: "100vh",
+            width: "100vw",
+            backgroundColor: '#d3d3d3',
+            position: 'relative',
+            // display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+           {/* <div style={{ width: '100%', backgroundColor: 'lightblue' }}> */}
+    <SlicksSlide floor={1} />
+  {/* </div> */}
     
-          {/* <Floor1 /> */}
+        </section>
 
-{/* <Test /> */}
+        <section
+          style={{
+            height: "100vh",
+            width: "100vw",
+            backgroundColor: '#d3d3d3',
+            position: 'relative'
+          }}
+        >
+          <SlicksSlide floor={2} />
+        </section>
 
+        <section
+          style={{
+            height: "100vh",
+            width: "100vw",
+            backgroundColor: '#d3d3d3',
+            position: 'relative'
+          }}
+        >
+          <SlicksSlide floor={3} />
+        </section>
 
-        <section className="floor2"
+        <section
+          id="contact"
+          className="outside"
           style={{
             height: "100vh",
             display: "flex",
@@ -163,73 +200,13 @@ const App: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          {/* <HorizontalSection addAnimation={addGellyAnimation}>
-          <div className="ns-horizontal-section__item">
-            <div className="ns-horizontal-section__item__inner">
-            <h1 className="title">we stay in sungsu 6, Achasan-ro 11ga-gil, Seongdong-gu, Seoul, Republic of Korea</h1>
-            </div>
-          </div>
-          </HorizontalSection> */}
-        </section>
-        <SlicksSlide />
-        {/* <Slideshow /> */}
-
-        <section className="floor3"
-          style={{
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <h1 className="title">3floor</h1>
+          <h1 className="title">contact</h1>
         </section>
 
-        <section className="outside"
-          style={{
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <h1 className="title">outside</h1>
-        </section>
 
-        {/* /////////////////////////////////// */}
-        <section
-          style={{
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
-          <h1>Hello World!</h1>
-        </section>
-        <section
-          style={{
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
-          <h1>Hello World!!</h1>
-        </section>
-        {/* <Floor3 /> */}
-        <section
-          style={{
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
-          <h1>Hello World!!!</h1>
-        </section>
 
       </ScrollContainer>
+    
     </div>
 
   );

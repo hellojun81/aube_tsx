@@ -1,23 +1,13 @@
 /*! TYS Theme v1.1.0momou */
 !function() {
-    console.log('introjs start')
+    // console.log('introjs start')
     const e = window
       , t = document;
     let n;
     n = t.documentElement;
     const r = "resize"
       , i = "click"
-      , s = "animationend";
-    // function ne(e="") {
-    //     return `.${e.trim().replace(/([\.:!\/])/g, "\\$1").replace(/ /g, ".")}`
-    // }
-    // function re(e, t) {
-    //     const n = x(t);
-    //     return n !== t && (n.style.backfaceVisibility = "hidden",
-    //     n.style["-webkit-backface-visibility"] = "hidden"),
-    //     n
-    // }
-    
+      , s = "animationend";    
     const ae = new Map
       , le = Symbol("riot-component")
       , ce = new Set
