@@ -77,21 +77,22 @@ const App: React.FC<AppProps> = ({ floor }) => {
 
   return (
     <>
-    {floor !== 0 ? (
+    {/* {floor !== 0 ? (
       <div style={{padding:'20px'}}>
         
         <h1>{floor}floor</h1>
         {renderFloorInfo()}
         </div>
-      ) : null}
+      ) : null} */}
 
-      <div className='slidecontainer' style={{ 
+      {/* <div className='slidecontainer' style={{ 
         height: '80vh', 
         display: 'flex', 
         justifyContent: 'center', 
-        alignItems: 'flex-start' ,
+        alignItems: 'center' ,
+        width:'100%'
         // align-items: flex-start
-        }}>
+        }}> */}
         <Slider {...settings}>
           {imageLinks.map((link, index) => (
                <div
@@ -110,7 +111,7 @@ const App: React.FC<AppProps> = ({ floor }) => {
           ))}
         </Slider>
 
-      </div>
+      {/* </div> */}
  </>
 );
    

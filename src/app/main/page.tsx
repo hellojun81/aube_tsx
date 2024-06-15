@@ -17,6 +17,7 @@ import Script from 'next/script';
 // import Floor1 from "../components/1floor";
 // import Floor3 from "../components/3floor";
 // import Test from "../test/test"
+import EmblaCarousel from '../carousel/CarouselWrapper'
 
 
 
@@ -56,7 +57,7 @@ const App: React.FC = () => {
       div.style.top = `${topPosition}px`;
       div.style.left = `${leftPosition}px`;
     }
-    
+
     let index = 0;
     titleRefs.current.forEach(ref => {
       index++;
@@ -130,64 +131,47 @@ const App: React.FC = () => {
         </div>
         <section
           style={{
-            height: "100vh",
-            width: "100vw",
-            // display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: '#333',
+            // height: "100vh",
+            // width: "100vw",
+            backgroundColor: '#a3d9d6',
             position: 'relative'
           }}
         >
-          <div style={{
-            color: '#ffffff',
-            paddingTop: '30px',
-            paddingBottom: '30px',
-            paddingLeft: '30px',
-          }}>aube Studio는<br />
-            성수동에 위치한 대지면적 215평에<br />
-            3층규모의 건축물로써 실사용 면적 약 400평(마당포함)을<br />
-            단독으로 사용 가능한 공간 이에요.</div>
-            <SlicksSlide floor={0} />
+          <EmblaCarousel floor={0} />
         </section>
-
+  
         <section
           style={{
-            height: "100vh",
-            width: "100vw",
-            backgroundColor: '#d3d3d3',
-            position: 'relative',
-            // display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-           {/* <div style={{ width: '100%', backgroundColor: 'lightblue' }}> */}
-    <SlicksSlide floor={1} />
-  {/* </div> */}
-    
-        </section>
-
-        <section
-          style={{
-            height: "100vh",
-            width: "100vw",
+            // height: "100vh",
+            // width: "100vw",
             backgroundColor: '#d3d3d3',
             position: 'relative'
           }}
         >
-          <SlicksSlide floor={2} />
+
+          <EmblaCarousel floor={1} />
+
+
         </section>
 
         <section
           style={{
-            height: "100vh",
-            width: "100vw",
+            backgroundColor: '#a3d9d6',
+
+          }}
+        >
+          <EmblaCarousel floor={2} />
+        </section>
+
+        <section
+          style={{
+            // height: "100vh",
+            // width: "100vw",
             backgroundColor: '#d3d3d3',
             position: 'relative'
           }}
         >
-          <SlicksSlide floor={3} />
+          <EmblaCarousel floor={3} />
         </section>
 
         <section
@@ -206,7 +190,7 @@ const App: React.FC = () => {
 
 
       </ScrollContainer>
-    
+
     </div>
 
   );
