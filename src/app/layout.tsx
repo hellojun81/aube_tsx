@@ -9,6 +9,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Script from 'next/script';
+import ScrollToTopButton from './components/scrollToTopButton';
 // import { StrictMode,useEffect, useRef, useState } from 'react';
 // import dynamic from 'next/dynamic';
 // import Head from 'next/head';
@@ -35,7 +36,7 @@ export default function RootLayout({ children, }: Readonly<{
       </body>
       {/* <Script src='/script/intromove.js' id='tys-home-js' strategy="afterInteractive" />
       <Script src='/script/intro.js' id='tys-js' strategy="afterInteractive" /> */}
-   
+   <ScrollToTopButton />
     </html>
     </>
 

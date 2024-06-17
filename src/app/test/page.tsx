@@ -1,26 +1,14 @@
 'use client'
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { useLayoutEffect, useRef } from "react";
-import "./style.css";
-import EmblaCarousel from '../carousel/CarouselWrapper'
-import { EmblaOptionsType } from 'embla-carousel'
-gsap.registerPlugin(ScrollTrigger);
+import React from 'react';
+import EmailForm from '../components/EmailForm';
 
-export default function Scene() {
-  // const component = useRef();
-  // const slider = useRef();
-
-  // const OPTIONS: EmblaOptionsType = {}
-  // const SLIDE_COUNT = 5
-  // const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
-
+const Home: React.FC = () => {
   return (
-    <>
     <div>
-  
-     <EmblaCarousel floor={2} />
-     </div>
-    </>
+      <h1>Send an Email</h1>
+      <EmailForm />
+    </div>
   );
-}
+};
+
+export default Home;

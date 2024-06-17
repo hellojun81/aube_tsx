@@ -18,7 +18,7 @@
 .menu-close p{
     color:#000;
     cursor:pointer;
-    font-size: 3em;
+    font-size: 1em;
 }
 .menu-overlay{
     position: fixed;
@@ -53,9 +53,15 @@ align-items: flex-end;
 }
 
 .menu-close-icon p{
-    font-size:100px;
+    font-size:80px;
     -webkit-text-stoke:5px #c5fb45;
     line-height:1%;
+}
+.menu-link{
+    font-size: 2em;
+    font-weight: 500;
+    cursor:pointer;
+    
 }
 .menu-link-item{
     width: max-content;
@@ -92,6 +98,6 @@ align-items: flex-end;
         padding-top:8em;
     } */
     .menu-link-item-holder a{
-        font-size:2em;
+        font-size:1em;
     }
 }

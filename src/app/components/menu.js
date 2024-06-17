@@ -13,11 +13,13 @@ import { useGSAP } from '@gsap/react';
 
 const menuLinks = [
     { path: "/main", label: "home" },
-    { path: "/main", label: "1floor" },
-    { path: "/main", label: "2floor" },
-    { path: "/main", label: "3floor" },
-    { path: "/main", label: "outSide" },
-    { path: "/main", label: "contact" },
+    { path: "/1floor", label: "1floor" },
+    { path: "/2floor", label: "2floor" },
+    { path: "/3floor", label: "3floor" },
+    { path: "/Other", label: "Other" },
+    { path: "/Stairs", label: "Stairs" },
+    { path: "/Outside", label: "Outside" },
+    { path: "/Contact", label: "Contact" },
 ];
 
 

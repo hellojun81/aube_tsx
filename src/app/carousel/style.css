@@ -1,11 +1,11 @@
 .embla {
-    max-width: 48rem;
+    /* max-width: 48rem;*/
     margin: auto;
-    --slide-height: 1rem;
+    --slide-height: 1rem; 
     --slide-spacing: 1rem;
     --slide-size: 100%;
-    /* background-color: black; */
-    padding-top:100px;
+    /* background-color: black;  */
+    /* padding-top:100px; */
   }
   .embla__viewport {
     overflow: hidden;
@@ -117,5 +117,6 @@
   .embla__container {
     align-items: flex-start;
   }
+  .embla__selected-snap-display{text-align: right;}
 
   
