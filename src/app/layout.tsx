@@ -26,10 +26,11 @@ export default function RootLayout({ children, }: Readonly<{
       <body className={inter.className}>{children}
       <Menu />
       {/* <Footer/> */}
+      <ScrollToTopButton />
       </body>
       {/* <Script src='/script/intromove.js' id='tys-home-js' strategy="afterInteractive" />
       <Script src='/script/intro.js' id='tys-js' strategy="afterInteractive" /> */}
-   <ScrollToTopButton />
+
     </html>
     </>
 

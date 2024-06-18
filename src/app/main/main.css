@@ -24,7 +24,7 @@ padding-top:30px
     /* 이미지 크기를 원본 크기로 유지 */
 }
 
-
+body{margin:0!important}
 .slidecontainer {
     display: flex;
     justify-content: center;

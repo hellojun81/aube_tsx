@@ -1,56 +1,50 @@
-"use client";
-// npm run dev or npm run start
-//Sticky Footer <--하단 소스 로 좋을듯
-//Smooth Parallax Scroll<-- 가구 많이 들어오면 좋을듯
-//Image slide project gallery<-- 가구 많이 들어오면 좋을듯
-//Text Clip Mask On Scroll-- 가구 많이 들어오면 좋을듯
-//Text Gradient Scroll Opacity v2<--텍스트 에니효과
-//Text Mask Animation<--텍스트 에니효과
-//Curved Menu<-메뉴
+'use client'
 import React, { useRef, useEffect, useState, RefCallback, useCallback } from "react";
-import "./main.css";
+import { motion, useAnimation, useViewportScroll } from 'framer-motion';
 import {
   ScrollContainer,
   SequenceSection,
-  gellyAnimation,
-  ParallaxImage,
-  parallaxAnimation,
-  HorizontalSection,
-  useGlobalState
 } from "react-nice-scroll";
-import "react-nice-scroll/dist/styles.css";
+// import {
+//   ScrollContainer,
+//   SequenceSection,
+//   gellyAnimation,
+//   ParallaxImage,
+//   parallaxAnimation,
+//   HorizontalSection,
+//   useGlobalState
+// } from "react-nice-scroll";
+import '../main/main.css'
+// import "react-nice-scroll/dist/styles.css";
 import EmblaCarousel from '../carousel/CarouselWrapper'
-// import RoateAube from '../components/BuildAube'
-// import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-// import { motion, useAnimation } from 'framer-motion';
-
-const studioName = 'Aube';
-const RoateClassName = [
-  { name: "title1Sub", divname: 'Hero_title1', key: 0 },
-  { name: "title2Sub", divname: 'Hero_title2', key: 1 },
-  { name: "title3Sub", divname: 'Hero_title3', key: 2 },
-  { name: "title4Sub", divname: 'Hero_title4', key: 3 },
-];
 
 const App: React.FC = () => {
-  // const controls = useAnimation();
+  const scrolloptions = {
+    // 여기에 원하는 옵션을 추가할 수 있습니다.
+    speed: 0.5, // 스크롤 속도를 조절하는 옵션 (기본값: 1)
+  };
+  const [isClient, setIsClient] = useState(false);
+  const controls1 = useAnimation();
+  const controls2 = useAnimation();
+  const controls3 = useAnimation();
+  const controls4 = useAnimation();
+  const { scrollY } = useViewportScroll();
   const titleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const divRef = useRef<HTMLDivElement | null>(null);
-  const rotateto = [-360, 360, -500, 500];
-  const rotatefrom = [-45, 45, 45, -45];
-  let floorValue = 1;
+
   const [screenMode, setscreenMode] = useState('mainsection')     //층별안내padding사이즈
   const [imagesPath, setimagesPath] = useState('/images/jpg_bk')  //메인aubebuild이미지
   const [firstpage, setfirstpage] = useState('firstpage')
-  const [scroller] = useGlobalState('container');
+
 
   useEffect(() => {
+    setIsClient(true); // 클라이언트 측에서만 true로 설정
 
     const div = divRef.current as HTMLDivElement;
- 
-    // const items = document.querySelectorAll('.ns-horizontal-section__item__inner') as NodeListOf<HTMLDivElement>;
-    // const htmlElement = document.documentElement;
-    // htmlElement.style.overflow = '';
+    const elements = document.querySelectorAll('.ns-container');
+    elements.forEach(element => {
+      (element as HTMLElement).style.overflow = '';
+    });
 
     if (div) {
       const windowHeight = window.innerHeight;        // 윈도우의 높이와 너비를 가져옵니다.
@@ -88,9 +82,7 @@ const App: React.FC = () => {
           let leftposition
           if (divRef.current) {
             leftposition = (parentWidth - divRef.current.offsetWidth) / 2
-            console.log('leftposition', leftposition);
           }
-
           ref.style.position = 'absolute';
           ref.style.top = `${(parentHeight - textHeight) / 2}px`;
           if (checkindex == 1) {
@@ -101,251 +93,180 @@ const App: React.FC = () => {
         }
       }
     });
-    const handleScroll = () => {
-      const rotateValue = window.scrollY * 0.1;
-      // controls.start({ rotate: rotateValue });
+    const updateRotation = () => {
+      controls1.start({ rotate: scrollY.get() * 0.5 });
+      controls2.start({ rotate: scrollY.get() * -0.5 });
+      controls3.start({ rotate: scrollY.get() * 0.5 });
+      controls4.start({ rotate: scrollY.get() * -0.5 });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    if (isClient) {
+      const unsubscribeScroll = scrollY.onChange(updateRotation);
+      return () => {
+        unsubscribeScroll();
+      };
+    }
+  }, [controls1, controls2, controls3, controls4, scrollY, isClient]);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  if (!isClient) {
+    // 서버 측에서는 아무것도 렌더링하지 않음
+    return null;
+  }
 
-  const setTitleRef = (index: number): RefCallback<HTMLDivElement> => {
-    return (el) => {
-      titleRefs.current[index] = el;
-    };
-  };
-
-
-
-  // const addParallaxAnimation = useCallback(
-  //   (containerAnimation: gsap.core.Tween) => {
-  //     const items = document.querySelectorAll('.ns-horizontal-section__item__fig') as NodeListOf<HTMLDivElement>;
-
-  //     items.forEach((trigger) => {
-  //       const el = trigger.querySelector('img');
-  //       if (el && scroller) {
-  //         parallaxAnimation(el, trigger, scroller, 'right left', 'left right', 'x', -30, 30, containerAnimation);
-  //       }
-  //     });
-  //   },
-  //   [scroller]
-  // );
   return (
-    <div>
-      <ScrollContainer>
-        <div
-          id='home'
-          className={firstpage}
+    <ScrollContainer >
+      <section
+        style={{ height:'150vh'}}
+      >
+
+    <div className="titleMain"
+    >
+      <motion.div
+      className={`Hero_titleContainer Hero_title1`}
+        style={{ fontSize: '2rem', margin: '20px' }}
+        animate={controls1}
+        initial={{ rotate: -45 }}
+      >
+       AUBE
+      </motion.div>
+      <motion.div
+         className={`Hero_titleContainer Hero_title2`}
+        style={{ fontSize: '2rem', margin: '20px' }}
+        animate={controls2}
+        initial={{ rotate: 45 }}
+      >
+        AUBE
+      </motion.div>
+      <motion.div
+         className={`Hero_titleContainer Hero_title3`}
+        style={{ fontSize: '2rem', margin: '20px' }}
+        animate={controls3}
+        initial={{ rotate: 45 }}
+      >
+        AUBE
+      </motion.div>
+      <motion.div
+         className={`Hero_titleContainer Hero_title4`}
+        style={{ fontSize: '2rem', margin: '20px' }}
+        animate={controls4}
+        initial={{ rotate: -45 }}
+      >
+       AUBE
+      </motion.div>
+      </div>
+          <SequenceSection 
+              end="80%"
+              imagesPath="/images/jpg_width"
+              imagesCount={30}
+              imagesType="jpg"
+              
+            >
+            </SequenceSection>
+
+    </section>
+
+    <section
+          id='floor0'
+          className={screenMode}
           style={{
-            alignItems: "center",
-            justifyContent: "center",
-            position: 'relative',
-            backgroundColor: '#171717',
-            // padding:'50px'
-            // width:'80%',
-            // textAlign:'center'
+            height: "100vh",
+            position: 'relative'
           }}
         >
-          <div className="titleMain">
-            {RoateClassName.map((link, index) => (
-              <div className={`Hero_titleContainer ${link.divname}`} key={index}>
-                <div
-                  className={link.name}
-                  ref={setTitleRef(link.key)}
-                  style={{ position: 'absolute' }}
-                >
-                  {/* <ScrollRotate method={"perc"} from={rotatefrom[link.key]} to={rotateto[link.key]} loops={3}>
-                    {studioName}
-                  </ScrollRotate> */}
-                  {/* <motion.div animate={controls} style={{
-                    transform: `rotate(${rotatefrom[link.key]}deg)`,
-                    display: 'inline-block'
-                  }}>
-                    {studioName}
-                  </motion.div> */}
-                </div>
-              </div>
-            ))}
-            <div ref={divRef} className="Hero_title_center Hero_titlecenter" >
-              <div className="titleCSub">{studioName}</div>
-            </div>
-          </div>
-
-         <SequenceSection
-            end="80%"
-            imagesPath="/images/jpg_width"
-            imagesCount={30}
-            imagesType="jpg"
-          >
-          </SequenceSection> 
-        </div>
-    
 
 
-      <section
-        id='floor0'
-        className={screenMode}
-        style={{
-          // height: "100vh",
-          // width: "100vw",
-          // backgroundColor: '#a3d9d6',
-          position: 'relative'
-        }}
-      >
+          <p>
+            aube Studio 건축물은 1974년 공장으로 시작되어졌습니다.
+            이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층,
+            2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다.
+            산업화를 상징하는 붉은벽돌위에 근대건축의 거장 르꼬르뷔제를 오마주하는
+            창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며,
+            710㎡의 대지위에 3층으로 지어진 두개의 건물과 마당은
+            거의 모든 것을 하기에 특별한 공간으로 제공 됩니다.<br /><br /><br />
 
+            Aube Studio began as a factory in 1974.
+            This interesting building, each in a different style,
+            was expanded with a second floor in 1986 and a third floor in 2013,
+            inviting visitors to explore the corridors of time.
+            Windows and doors that pay homage to the master of modern architecture,
+            Le Corbusier, on red bricks symbolizing industrialization
+            present a functionalistic yet organic formative beauty,
+            and the two three-story buildings and yard built on a 710㎡ site
+            provide almost everything. Therefore, it is provided as a special space.
 
-        <p>
-          aube Studio 건축물은 1974년 공장으로 시작되어졌습니다.
-          이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층,
-          2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다.
-          산업화를 상징하는 붉은벽돌위에 근대건축의 거장 르꼬르뷔제를 오마주하는
-          창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며,
-          710㎡의 대지위에 3층으로 지어진 두개의 건물과 마당은
-          거의 모든 것을 하기에 특별한 공간으로 제공 됩니다.<br /><br /><br />
+          </p>
 
-          Aube Studio began as a factory in 1974.
-          This interesting building, each in a different style,
-          was expanded with a second floor in 1986 and a third floor in 2013,
-          inviting visitors to explore the corridors of time.
-          Windows and doors that pay homage to the master of modern architecture,
-          Le Corbusier, on red bricks symbolizing industrialization
-          present a functionalistic yet organic formative beauty,
-          and the two three-story buildings and yard built on a 710㎡ site
-          provide almost everything. Therefore, it is provided as a special space.
+        </section>
 
-        </p>
-
-      </section>
-
-      <section
-        id='1floor'
-        className={screenMode}
-        style={{
-          // height: "100vh",
-          // width: "100vw",
-          backgroundColor: '#e8e8e8',
-          position: 'relative'
-        }}
-      >
-
+        <section
+           style={{
+            height: "100vh",
+            position: 'relative'
+          }}
+         className={screenMode}
+        >
         <EmblaCarousel floor={1} loop={6} />
-
-
-      </section>
-
-
-      {/* <HorizontalSection addAnimation={addGellyAnimation}>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-            <img src='./1floor/height/1.jpg' style={{width:'100%'}}/>
-
-          </div>
-        </div>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-          <img src='./1floor/height/2.jpg' style={{width:'100%'}}/>
-          </div>
-        </div>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-          <img src='./1floor/height/3.jpg' style={{width:'100%'}}/>
-          </div>
-        </div>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-          <img src='./1floor/height/4.jpg' style={{width:'100%'}}/>
-          </div>
-        </div>
-
-      </HorizontalSection> */}
-
-
-
-      <section
-        id='2floor'
-        className={screenMode}
-        style={{
-        }}
-      >
+        </section>
+        <section
+           style={{
+            height: "100vh",
+            position: 'relative'
+          }}
+         className={screenMode}
+        >
         <EmblaCarousel floor={2} loop={6} />
-      </section>
-
-      <section
-        id='3floor'
-        className={screenMode}
-        style={{
-          backgroundColor: '#e8e8e8',
-          position: 'relative'
-        }}
-      >
+        </section>
+        <section
+           style={{
+            height: "100vh",
+            position: 'relative'
+          }}
+         className={screenMode}
+        >
         <EmblaCarousel floor={3} loop={6} />
-      </section>
-
-      <section
-        id='3floor'
-        className={screenMode}
-        style={{
-          backgroundColor: '#e8e8e8',
-          position: 'relative'
-        }}
-      >
-        <div style={{ fontSize: '15em' }}> AUBE </div>
-
-      </section>
-      <section
-        id='Other'
-        className={screenMode}
-        style={{
-          position: 'relative'
-        }}
-      >
+        </section>
+        <section
+           style={{
+            height: "100vh",
+            position: 'relative'
+          }}
+         className={screenMode}
+        >
         <EmblaCarousel floor={4} loop={3} />
-      </section>
-
-      <section
-        id='Stairs'
-        className={screenMode}
-        style={{
-          position: 'relative'
-        }}
-      >
-        <EmblaCarousel floor={5} loop={5} />
-      </section>
-
-      <section
-        id='Outside'
-        className={screenMode}
-        style={{
-          backgroundColor: '#e8e8e8',
-          position: 'relative'
-        }}
-      >
+        </section>
+        <section
+           style={{
+            height: "100vh",
+            position: 'relative'
+          }}
+         className={screenMode}
+        >
+        <EmblaCarousel floor={5} loop={3} />
+        </section>
+        <section
+           style={{
+      
+            position: 'relative'
+          }}
+         className={screenMode}
+        >
         <EmblaCarousel floor={6} loop={3} />
-      </section>
-      <section
-        id="Contact"
-        className={screenMode}
-        style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {/* <h1 className="title">contact</h1> */}
-      </section>
+        </section>
+        <section
+           style={{
+      
+            position: 'relative'
+          }}
+         className={screenMode}
+        >
+      contact
+        </section>
 
 
 
-      </ScrollContainer>
-
-    </div>
-
+    </ScrollContainer>
   );
+
 }
 
 
