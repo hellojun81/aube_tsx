@@ -48,6 +48,29 @@ const App: React.FC = () => {
   useEffect(() => {
     // const div = divRef.current;
     const div = divRef.current as HTMLDivElement;
+    const htmlElement = document.documentElement;
+    const items = document.querySelectorAll('.ns-horizontal-section__item__inner') as NodeListOf<HTMLDivElement>;
+    htmlElement.style.overflow = '';
+    // const addGellyAnimation = useCallback((containerAnimation: gsap.core.Tween) => {
+      
+    //   items.forEach((item) => {
+    //     ScrollTrigger.create({
+    //       trigger: item,
+    //       containerAnimation,
+    //       start: 'left right',
+    //       end: 'right left',
+    //       scrub: 0.5,
+    //       immediateRender: false,
+    //       onUpdate: () => {
+    //         const velocity = containerAnimation.scrollTrigger?.getVelocity();
+    //         if (velocity && item) gellyAnimation(item, velocity, 'skewX', 150, -20, 20, 0.8, 'power3');
+    //       },
+    //     });
+    //   });
+    // }, []);
+
+
+
 
     if (div) {
       // 윈도우의 높이와 너비를 가져옵니다.
@@ -112,26 +135,8 @@ const App: React.FC = () => {
       titleRefs.current[index] = el;
     };
   };
-  const htmlElement = document.documentElement;
-  htmlElement.style.overflow = '';
-  const addGellyAnimation = useCallback((containerAnimation: gsap.core.Tween) => {
-    const items = document.querySelectorAll('.ns-horizontal-section__item__inner') as NodeListOf<HTMLDivElement>;
+ 
 
-    items.forEach((item) => {
-      ScrollTrigger.create({
-        trigger: item,
-        containerAnimation,
-        start: 'left right',
-        end: 'right left',
-        scrub: 0.5,
-        immediateRender: false,
-        onUpdate: () => {
-          const velocity = containerAnimation.scrollTrigger?.getVelocity();
-          if (velocity && item) gellyAnimation(item, velocity, 'skewX', 150, -20, 20, 0.8, 'power3');
-        },
-      });
-    });
-  }, []);
 
   const addParallaxAnimation = useCallback(
     (containerAnimation: gsap.core.Tween) => {
