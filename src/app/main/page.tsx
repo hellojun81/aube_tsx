@@ -19,7 +19,7 @@ import {
   useGlobalState
 } from "react-nice-scroll";
 import "react-nice-scroll/dist/styles.css";
-import { ScrollRotate } from 'react-scroll-rotate';
+// import { ScrollRotate } from 'react-scroll-rotate';
 import EmblaCarousel from '../carousel/CarouselWrapper'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
@@ -170,9 +170,10 @@ const App: React.FC = () => {
                   ref={setTitleRef(link.key)}
                   style={{ position: 'absolute' }}
                 >
-                  <ScrollRotate method={"perc"} from={rotatefrom[link.key]} to={rotateto[link.key]} loops={3}>
+                  {/* <ScrollRotate method={"perc"} from={rotatefrom[link.key]} to={rotateto[link.key]} loops={3}>
                     {studioName}
-                  </ScrollRotate></div>
+                  </ScrollRotate> */}
+                  </div>
               </div>
             ))}
             <div ref={divRef} className="Hero_title_center Hero_titlecenter" >
