@@ -40,6 +40,7 @@ const App: React.FC = () => {
   const rotatefrom = [-45, 45, 45, -45];
   let floorValue = 1;
   const [screenMode, setscreenMode] = useState('mainsection')
+  const [imagesPath, setimagesPath] = useState('/images/jpg_bk')
   const [firstpage, setfirstpage] = useState('firstpage')
   const [scroller] = useGlobalState('container');
   // const [floor, setfloor] = useState('');
@@ -69,6 +70,7 @@ const App: React.FC = () => {
         console.log('windowWidth', windowWidth)
         setscreenMode('mainsection2')
         setfirstpage('firstpage2')
+        setimagesPath('/images/jpg_width')
       }
     }
 
@@ -180,7 +182,7 @@ const App: React.FC = () => {
 
           <SequenceSection
             end="80%"
-            imagesPath="/images/jpg_bk"
+            imagesPath="/images/jpg_width"
             imagesCount={30}
             imagesType="jpg"
           >
