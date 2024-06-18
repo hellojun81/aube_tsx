@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import AutoHeight from 'embla-carousel-auto-height'
@@ -33,20 +33,18 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
   const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [AutoHeight()])
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi)
-  let screenMode= 'width'
+  let screenMode = 'width'
 
-//   useEffect(() => {
-//   const [windowSize, setWindowSize] = useState({
-//     width: window.innerWidth,
-//     height: window.innerHeight
-//   });
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
 
-//   if (windowSize.width < windowSize.height) {
-//     screenMode = 'height'
-//   } else {
-//     screenMode = 'width'
-//   }
-// }, []);
+  if (windowSize.width < windowSize.height) {
+    screenMode = 'height'
+  } else {
+    screenMode = 'width'
+  }
 
   let newLinks: ImageLink[] = [];
 
@@ -55,12 +53,11 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     newLinks.push({ path: `./${floor}floor/${screenMode}/${i}.jpg` });
   }
 
-  // console.log('imageLinks', newLinks);
 
   const renderFloorInfo = () => {
     switch (floor) {
       case 10:
-        return 
+        return
       case 1:
         return <p><h1>{floor}Floor</h1>
           차량 진입이 가능한 4.5미터의 층고를 자랑하는 1층은 370㎡의 넓은 공간에
@@ -70,22 +67,22 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       case 2:
         return <p> <h1>{floor}Floor</h1>
           2층은 다크 그레이 톤의 바닥과 인더스트리얼한 느낌을 주는 노출 천장으로 구성되어 있습니다.
-          이 공간의 가장 큰 특징은 빌라 라호슈의 창문과 고급 향수병에서 영감을 받아 제작된 대형 창문입니다. 
+          이 공간의 가장 큰 특징은 빌라 라호슈의 창문과 고급 향수병에서 영감을 받아 제작된 대형 창문입니다.
           이러한 창문은 단순한 채광 이상의 역할을 하며, 공간에 입체감을 더해주고, 세련된 분위기를 연출합니다.
           창문을 통해 들어오는 빛은 마치 예술 작품처럼 공간에 머물며, 하루 종일 변화하는 자연광을 통해 다양한
-          감성을 느낄 수 있습니다. 이러한 디자인 요소는 2층을 단순한 공간이 아닌, 
+          감성을 느낄 수 있습니다. 이러한 디자인 요소는 2층을 단순한 공간이 아닌,
           감각적이고 독창적인 경험을 선사하는 장소로 만들어 줍니다
         </p>;
       case 3:
         return <p> <h1>{floor}Floor</h1>
-          3층은 12미터 길이의 천창을 통해 풍부한 자연광이 들어오며, 
+          3층은 12미터 길이의 천창을 통해 풍부한 자연광이 들어오며,
           높고 긴 가로 형태에 창이 배치되어 있어 넉넉하면서도 절제된 공간을 연출합니다.
-          특히, 층고가 최대 3.9미터에 달해 더욱 웅장한 느낌을 줍니다. 
+          특히, 층고가 최대 3.9미터에 달해 더욱 웅장한 느낌을 줍니다.
           기본 골조가 철골로 만들어져  철골 골조 만에 현대적이고 산업적인 느낌을 동시에 갖추고 있습니다.
         </p>;
       case 4:
         return <p> <h1>Other Space</h1>
-          폴딩도어로 전면 개방이 가능한 이 별채는 도로와 접해 있어 접근성이 뛰어납니다. 
+          폴딩도어로 전면 개방이 가능한 이 별채는 도로와 접해 있어 접근성이 뛰어납니다.
           스페인산 빈티지 타일과 노출 천장이 어우러져 차분하면서도 고풍스러운 분위기를 자아내며,
           외부 행인들의 호기심을 자극합니다.
 
@@ -99,8 +96,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         </p>;
       case 6:
         return <p> <h1>OutSide</h1>
-          시간에 흐름이 온전히 느껴지는 회전계단이 있는 마당은 최대 10대의 
-          차량을 수용할 수 있는 넓은 공간을 자랑합니다. 이 마당에는 12개의 세련된 
+          시간에 흐름이 온전히 느껴지는 회전계단이 있는 마당은 최대 10대의
+          차량을 수용할 수 있는 넓은 공간을 자랑합니다. 이 마당에는 12개의 세련된
           외부 조명과 6개의 3미터 길이의 깃발을 설치할 수 있는 여건이 마련되어 있어,
           다양한 행사를 품격 있게 연출할 수 있습니다.
         </p>;
@@ -122,7 +119,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           <>
             {/* <div><img src='./images/swipe.gif'/></div> */}
             <SelectedSnapDisplay
-            
+
               selectedSnap={selectedSnap}
               snapCount={snapCount}
             />

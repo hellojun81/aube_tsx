@@ -19,12 +19,10 @@ import {
   useGlobalState
 } from "react-nice-scroll";
 import "react-nice-scroll/dist/styles.css";
-// import { ScrollRotate } from 'react-scroll-rotate';
-// import ScrollAnimation from 'react-animate-on-scroll';
-// import "animate.css/animate.min.css";
 import EmblaCarousel from '../carousel/CarouselWrapper'
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import { motion, useAnimation } from 'framer-motion';
+// import RoateAube from '../components/BuildAube'
+// import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+// import { motion, useAnimation } from 'framer-motion';
 
 const studioName = 'Aube';
 const RoateClassName = [
@@ -35,50 +33,28 @@ const RoateClassName = [
 ];
 
 const App: React.FC = () => {
-  const controls = useAnimation();
+  // const controls = useAnimation();
   const titleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const divRef = useRef<HTMLDivElement | null>(null);
   const rotateto = [-360, 360, -500, 500];
   const rotatefrom = [-45, 45, 45, -45];
   let floorValue = 1;
-  const [screenMode, setscreenMode] = useState('mainsection')
-  const [imagesPath, setimagesPath] = useState('/images/jpg_bk')
+  const [screenMode, setscreenMode] = useState('mainsection')     //층별안내padding사이즈
+  const [imagesPath, setimagesPath] = useState('/images/jpg_bk')  //메인aubebuild이미지
   const [firstpage, setfirstpage] = useState('firstpage')
   const [scroller] = useGlobalState('container');
-  // const [floor, setfloor] = useState('');
 
   useEffect(() => {
-    // const div = divRef.current;
+
     const div = divRef.current as HTMLDivElement;
-    const htmlElement = document.documentElement;
-    const items = document.querySelectorAll('.ns-horizontal-section__item__inner') as NodeListOf<HTMLDivElement>;
-    htmlElement.style.overflow = '';
-    // const addGellyAnimation = useCallback((containerAnimation: gsap.core.Tween) => {
-
-    //   items.forEach((item) => {
-    //     ScrollTrigger.create({
-    //       trigger: item,
-    //       containerAnimation,
-    //       start: 'left right',
-    //       end: 'right left',
-    //       scrub: 0.5,
-    //       immediateRender: false,
-    //       onUpdate: () => {
-    //         const velocity = containerAnimation.scrollTrigger?.getVelocity();
-    //         if (velocity && item) gellyAnimation(item, velocity, 'skewX', 150, -20, 20, 0.8, 'power3');
-    //       },
-    //     });
-    //   });
-    // }, []);
-
-
-
+ 
+    // const items = document.querySelectorAll('.ns-horizontal-section__item__inner') as NodeListOf<HTMLDivElement>;
+    // const htmlElement = document.documentElement;
+    // htmlElement.style.overflow = '';
 
     if (div) {
-      // 윈도우의 높이와 너비를 가져옵니다.
-      const windowHeight = window.innerHeight;
-      const windowWidth = window.innerWidth;
-      // div 요소의 높이와 너비를 가져옵니다.
+      const windowHeight = window.innerHeight;        // 윈도우의 높이와 너비를 가져옵니다.
+      const windowWidth = window.innerWidth;          // div 요소의 높이와 너비를 가져옵니다.
       const divHeight = div.offsetHeight;
       const divWidth = div.offsetWidth;
       // 중앙에 위치시키기 위한 계산을 합니다.
@@ -90,9 +66,7 @@ const App: React.FC = () => {
       div.style.left = `${leftPosition}px`;
 
       if (windowWidth < windowHeight) {
-        // console.log('windowHeight', windowHeight)
       } else {
-        // console.log('windowWidth', windowWidth)
         setscreenMode('mainsection2')
         setfirstpage('firstpage2')
         setimagesPath('/images/jpg_width')
@@ -117,7 +91,6 @@ const App: React.FC = () => {
             console.log('leftposition', leftposition);
           }
 
-
           ref.style.position = 'absolute';
           ref.style.top = `${(parentHeight - textHeight) / 2}px`;
           if (checkindex == 1) {
@@ -130,7 +103,7 @@ const App: React.FC = () => {
     });
     const handleScroll = () => {
       const rotateValue = window.scrollY * 0.1;
-      controls.start({ rotate: rotateValue });
+      // controls.start({ rotate: rotateValue });
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -148,19 +121,19 @@ const App: React.FC = () => {
 
 
 
-  const addParallaxAnimation = useCallback(
-    (containerAnimation: gsap.core.Tween) => {
-      const items = document.querySelectorAll('.ns-horizontal-section__item__fig') as NodeListOf<HTMLDivElement>;
+  // const addParallaxAnimation = useCallback(
+  //   (containerAnimation: gsap.core.Tween) => {
+  //     const items = document.querySelectorAll('.ns-horizontal-section__item__fig') as NodeListOf<HTMLDivElement>;
 
-      items.forEach((trigger) => {
-        const el = trigger.querySelector('img');
-        if (el && scroller) {
-          parallaxAnimation(el, trigger, scroller, 'right left', 'left right', 'x', -30, 30, containerAnimation);
-        }
-      });
-    },
-    [scroller]
-  );
+  //     items.forEach((trigger) => {
+  //       const el = trigger.querySelector('img');
+  //       if (el && scroller) {
+  //         parallaxAnimation(el, trigger, scroller, 'right left', 'left right', 'x', -30, 30, containerAnimation);
+  //       }
+  //     });
+  //   },
+  //   [scroller]
+  // );
   return (
     <div>
       <ScrollContainer>
@@ -188,9 +161,12 @@ const App: React.FC = () => {
                   {/* <ScrollRotate method={"perc"} from={rotatefrom[link.key]} to={rotateto[link.key]} loops={3}>
                     {studioName}
                   </ScrollRotate> */}
-                  <motion.div animate={controls} style={{ display: 'inline-block' }}>
-                    <h1>Scroll to Rotate</h1>
-                  </motion.div>
+                  {/* <motion.div animate={controls} style={{
+                    transform: `rotate(${rotatefrom[link.key]}deg)`,
+                    display: 'inline-block'
+                  }}>
+                    {studioName}
+                  </motion.div> */}
                 </div>
               </div>
             ))}
@@ -199,17 +175,15 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <SequenceSection
+         <SequenceSection
             end="80%"
             imagesPath="/images/jpg_width"
             imagesCount={30}
             imagesType="jpg"
           >
-          </SequenceSection>
+          </SequenceSection> 
         </div>
-      </ScrollContainer>
-
-
+    
 
 
       <section
@@ -362,12 +336,12 @@ const App: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <h1 className="title">contact</h1>
+        {/* <h1 className="title">contact</h1> */}
       </section>
 
 
 
-      {/* </ScrollContainer> */}
+      </ScrollContainer>
 
     </div>
 
