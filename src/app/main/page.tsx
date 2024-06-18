@@ -65,9 +65,9 @@ const App: React.FC = () => {
       div.style.left = `${leftPosition}px`;
 
       if (windowWidth < windowHeight) {
-        console.log('windowHeight', windowHeight)
+        // console.log('windowHeight', windowHeight)
       } else {
-        console.log('windowWidth', windowWidth)
+        // console.log('windowWidth', windowWidth)
         setscreenMode('mainsection2')
         setfirstpage('firstpage2')
         setimagesPath('/images/jpg_width')

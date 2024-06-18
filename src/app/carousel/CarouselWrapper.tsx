@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import AutoHeight from 'embla-carousel-auto-height'
@@ -33,30 +33,20 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
   const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [AutoHeight()])
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi)
+  let screenMode= 'width'
 
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight
-  });
-  let screenMode
-  if (windowSize.width < windowSize.height) {
-    screenMode = 'height'
-  } else {
-    screenMode = 'width'
-  }
-  // const { selectedIndex, scrollSnaps, onDotButtonClick } =
-  //   useDotButton(emblaApi)
+//   useEffect(() => {
+//   const [windowSize, setWindowSize] = useState({
+//     width: window.innerWidth,
+//     height: window.innerHeight
+//   });
 
-  // const {
-  //   prevBtnDisabled,
-  //   nextBtnDisabled,
-  //   onPrevButtonClick,
-  //   onNextButtonClick
-  // } = usePrevNextButtons(emblaApi)
-  // console.log(floor, loop)
-
-
-
+//   if (windowSize.width < windowSize.height) {
+//     screenMode = 'height'
+//   } else {
+//     screenMode = 'width'
+//   }
+// }, []);
 
   let newLinks: ImageLink[] = [];
 
