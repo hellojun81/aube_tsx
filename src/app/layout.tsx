@@ -6,15 +6,8 @@ import App from "./page";
 import Menu from '@/app/components/menu'
 import Footer from '@/app/components/footer'
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Script from 'next/script';
 import ScrollToTopButton from './components/ScrollToTopButton';
-// import { StrictMode,useEffect, useRef, useState } from 'react';
-// import dynamic from 'next/dynamic';
-// import Head from 'next/head';
-// import Script from 'next/script';
-// import { useRouter } from 'next/router';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
