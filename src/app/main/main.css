@@ -170,6 +170,7 @@ div.ns-horizontal-section__item {
     rotate: none;
     scale: none;
     /* transform: rotate(-45deg); */
+    text-align: center;
 }
 
 .title2Sub {
@@ -177,6 +178,7 @@ div.ns-horizontal-section__item {
     rotate: none;
     scale: none;
     /* transform: rotate(45deg); */
+    text-align: center;
 }
 
 .titleCSub {
@@ -192,12 +194,14 @@ div.ns-horizontal-section__item {
     scale: none;
     /* transform: rotate(45deg); */
     bottom: 40%;
+    text-align: center;
 }
 
 .title4Sub {
     translate: none;
     rotate: none;
     scale: none;
+    text-align: center;
     /* transform: rotate(-45deg); */
 }
 

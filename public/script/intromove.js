@@ -22,7 +22,7 @@
             onBeforeMount(e, a) {
                 const s = this;
                 if (!sessionStorage.getItem("tys_a")) {
-                    t.style.overflow = "hidden",
+                    t.style.overflow = "",
                     s.handler = ()=>{
                         s.update({
                             r: p()
