@@ -1,94 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-
-const Form = styled.form`
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  background-color: #ffffff;
-`;
-
-const FormGroup = styled.div`
-  position: relative;
-  // margin-bottom: 1.5rem;
-`;
-
-const Label = styled.label`
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0.75rem;
-  font-size: 0.875rem;
-  color: #333333;
-  pointer-events: none;
-  transition: 0.2s ease all;
-  opacity: 0.6;
-`;
-
-const Input = styled.input`
-  width: 100%;
-   padding-top: 1rem;
-  border:0px;
-  border-bottom: 1px solid #333333;
-  font-size: 1rem;
-  color: #333333;
-  &:focus {
-    outline: none;
-    border-color: #000000;
-  }
-  &:focus + ${Label},
-  &:not(:placeholder-shown) + ${Label} {
-    top: -1.5rem;
-    left: 0;
-    font-size: 0.75rem;
-    opacity: 1;
-  }
-`;
-
-const Textarea = styled.textarea`
-  width: 100%;
-  padding-top: 1rem;
-  border:0px;
-  border-bottom: 1px solid #333333;
-  font-size: 1rem;
-  color: #333333;
-  &:focus {
-    outline: none;
-    border-color: #000000;
-  }
-  &:focus + ${Label},
-  &:not(:placeholder-shown) + ${Label} {
-    top: -1.5rem;
-    left: 0;
-    font-size: 0.75rem;
-    opacity: 1;
-  }
-`;
-
-const Button = styled.button`
-  width: 100%;
-  padding: 0.75rem;
-  border: none;
-  background-color: #333333;
-  color: white;
-  font-size: 1rem;
-  margin-top:1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: #000000;
-  }
-`;
-
-interface MessageProps {
-  error: boolean;
-}
-
-const Message = styled.p<MessageProps>`
-  margin-top: 1rem;
-  color: ${(props) => (props.error ? 'red' : 'green')};
-  font-size: 0.875rem;
-`;
+import './EmailForm.css';
 
 const EmailForm: React.FC = () => {
   const [to, setTo] = useState('');
@@ -132,20 +43,22 @@ const EmailForm: React.FC = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <FormGroup>
-        <Input
+    <form className="form" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <input
+          className="input"
           type="email"
-          id="Your email"
+          id="to"
           value={to}
           onChange={(e) => setTo(e.target.value)}
           placeholder=" "
           required
         />
-        <Label htmlFor="to">To:</Label>
-      </FormGroup>
-      <FormGroup>
-        <Input
+        <label className="label" htmlFor="to">To:</label>
+      </div>
+      <div className="form-group">
+        <input
+          className="input"
           type="text"
           id="subject"
           value={subject}
@@ -153,29 +66,35 @@ const EmailForm: React.FC = () => {
           placeholder=" "
           required
         />
-        <Label htmlFor="subject">Subject:</Label>
-      </FormGroup>
-      <FormGroup>
-        <Textarea
+        <label className="label" htmlFor="subject">Subject:</label>
+      </div>
+      <div className="form-group">
+        <textarea
+          className="textarea"
           id="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder=" "
           required
         />
-        <Label htmlFor="text">Text:</Label>
-      </FormGroup>
-      <FormGroup>
-        <Input
+        <label className="label" htmlFor="text">Text:</label>
+      </div>
+      <div className="form-group">
+        <input
+          className="input"
           type="file"
           id="files"
           multiple
           onChange={handleFileChange}
         />
-      </FormGroup>
-      <Button type="submit">Send Email</Button>
-      {message && <Message error={message.error}>{message.text}</Message>}
-    </Form>
+      </div>
+      <button className="button" type="submit">Send Email</button>
+      {message && (
+        <p className={`message ${message.error ? 'error' : 'success'}`}>
+          {message.text}
+        </p>
+      )}
+    </form>
   );
 };
 
