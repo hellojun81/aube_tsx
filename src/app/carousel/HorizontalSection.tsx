@@ -11,7 +11,8 @@ type PropType = {
     floor: number,
     loop: number,
     screenMode: string,
-    classname: string
+    classname: string,
+    id:string
 }
 interface ImageLink {
     path: string;
@@ -97,7 +98,7 @@ const HorizontalGallery: React.FC<PropType> = (props) => {
                 </div> */}
 
                 <>
-
+<div id={props.id}>
                     <HorizontalSection>
                         <div className="ns-horizontal-section__item"
                             style={{
@@ -141,7 +142,7 @@ const HorizontalGallery: React.FC<PropType> = (props) => {
 
 
                     </HorizontalSection>
-
+                    </div>
                 </>
 
             {/* </div> */}

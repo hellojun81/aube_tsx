@@ -14,3 +14,9 @@
 body {
   font-family: 'YDGothic520', sans-serif;
 }
+
+.ns-container {
+  height: 100vh;
+  margin: 0 !important;
+  overflow: auto !important;
+}

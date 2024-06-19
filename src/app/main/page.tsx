@@ -56,7 +56,7 @@ const App: React.FC = () => {
     const div = divRef.current as HTMLDivElement;
     const elements = document.querySelectorAll('.ns-container');
     elements.forEach(element => {
-      (element as HTMLElement).style.overflow = '';
+      (element as HTMLElement).style.overflow = 'inital';
     });
     console.log('div', div)
 
@@ -164,9 +164,7 @@ const App: React.FC = () => {
             justifyContent: "center",
             position: 'relative',
             backgroundColor: '#171717',
-            // padding:'50px'
-            // width:'80%',
-            // textAlign:'center'
+    
           }}
         >
           <div className="titleMain" >

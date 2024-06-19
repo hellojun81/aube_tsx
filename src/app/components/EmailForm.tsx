@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './EmailForm.css';
 
+
+
+
+
 const EmailForm: React.FC = () => {
   const [to, setTo] = useState('');
   const [subject, setSubject] = useState('');
@@ -17,9 +21,10 @@ const EmailForm: React.FC = () => {
     formData.append('subject', subject);
     formData.append('text', text);
     files.forEach((file) => formData.append('files', file));
-
+// const emailHost='http://localhost:8002/sendmail'
+const emailHost='http://jbuilding.cafe24app.com/sendmail'
     try {
-      const response = await fetch('http://localhost:8002/sendmail', {
+      const response = await fetch(emailHost, {
         method: 'POST',
         body: formData,
       });
@@ -54,7 +59,7 @@ const EmailForm: React.FC = () => {
           placeholder=" "
           required
         />
-        <label className="label" htmlFor="to">To:</label>
+        <label className="label" htmlFor="to">Your mail:</label>
       </div>
       <div className="form-group">
         <input
