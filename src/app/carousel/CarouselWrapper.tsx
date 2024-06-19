@@ -7,19 +7,21 @@ import {
   useSelectedSnapDisplay
 } from './EmblaCarouselSelectedSnapDisplay'
 
+import {
+  PrevButton,
+  NextButton,
+  usePrevNextButtons
+} from './EmblaCarouselArrowButtons'
+
 import './wrapper.css'
-// import styles from './EmblaCarousel.module.css';
-// import {
-//   NextButton,
-//   PrevButton,
-//   usePrevNextButtons
-// } from './EmblaCarouselArrowButtons'
-// import { DotButton, useDotButton } from './EmblaCarouselDotButton'
+
 
 type PropType = {
   floor: number,
   loop: number,
-  screenMode:string
+  screenMode:string,
+  classname:string,
+  id:string
 }
 interface ImageLink {
   path: string;
@@ -37,9 +39,19 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [AutoHeight()])
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi)
 
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick
+  } = usePrevNextButtons(emblaApi)
+
+
+
 
   let newLinks: ImageLink[] = [];
   // 루프를 사용하여 데이터 추가
+  // console.log('screenMode',screenMode)
   for (let i = 1; i <= loop; i++) {
     newLinks.push({ path: `./${floor}floor/${screenMode}/${i}.jpg` });
   }
@@ -99,7 +111,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   return (
     <>
 
-      <div className="embla">
+      {/* <div className="embla"> */}
+      <div className={`embla ${props.classname}`} id={props.id}>
         <div>
 
           {renderFloorInfo()}
@@ -112,6 +125,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               selectedSnap={selectedSnap}
               snapCount={snapCount}
             />
+             <div className="embla__buttons">
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+        </div>
             <div className="embla__viewport" ref={emblaRef} >
 
               <div className="new_embla__container">

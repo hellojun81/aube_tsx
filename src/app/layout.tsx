@@ -1,15 +1,16 @@
 
+
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {  Head } from 'next/document';
+
 import "./globals.css";
 import App from "./page";
 import Menu from '@/app/components/menu'
-import Footer from '@/app/components/footer'
+
 import React from 'react';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,15 +23,12 @@ export default function RootLayout({ children, }: Readonly<{
   return (
     <>    
     <html lang="en">
-     
-      <body className={inter.className}>{children}
+
+      <body>{children}
       <Menu />
       {/* <Footer/> */}
       <ScrollToTopButton />
       </body>
-      {/* <Script src='/script/intromove.js' id='tys-home-js' strategy="afterInteractive" />
-      <Script src='/script/intro.js' id='tys-js' strategy="afterInteractive" /> */}
-
     </html>
     </>
 

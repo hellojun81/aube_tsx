@@ -1,352 +1,115 @@
-"use client";
-// npm run dev or npm run start
-//Sticky Footer <--하단 소스 로 좋을듯
-//Smooth Parallax Scroll<-- 가구 많이 들어오면 좋을듯
-//Image slide project gallery<-- 가구 많이 들어오면 좋을듯
-//Text Clip Mask On Scroll-- 가구 많이 들어오면 좋을듯
-//Text Gradient Scroll Opacity v2<--텍스트 에니효과
-//Text Mask Animation<--텍스트 에니효과
-//Curved Menu<-메뉴
-import React, { useRef, useEffect, useState, RefCallback, useCallback } from "react";
-import "../main/main.css";
-import {
-  ScrollContainer,
-  SequenceSection,
-  gellyAnimation,
-  ParallaxImage,
-  parallaxAnimation,
-  HorizontalSection,
-  useGlobalState
-} from "react-nice-scroll";
-import "react-nice-scroll/dist/styles.css";
-import EmblaCarousel from '../carousel/CarouselWrapper'
-// import RoateAube from '../components/BuildAube'
-// import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-// import { motion, useAnimation } from 'framer-motion';
+'use client'
+import { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import Head from 'next/head';
+import { useInView } from 'react-intersection-observer';
+import { useRouter } from 'next/router';
 
-const studioName = 'Aube';
-const RoateClassName = [
-  { name: "title1Sub", divname: 'Hero_title1', key: 0 },
-  { name: "title2Sub", divname: 'Hero_title2', key: 1 },
-  { name: "title3Sub", divname: 'Hero_title3', key: 2 },
-  { name: "title4Sub", divname: 'Hero_title4', key: 3 },
-];
-
-const App: React.FC = () => {
-  // const controls = useAnimation();
-  const titleRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const divRef = useRef<HTMLDivElement | null>(null);
-  const rotateto = [-360, 360, -500, 500];
-  const rotatefrom = [-45, 45, 45, -45];
-  let floorValue = 1;
-  const [screenMode, setscreenMode] = useState('mainsection')     //층별안내padding사이즈
-  const [imagesPath, setimagesPath] = useState('/images/jpg_bk')  //메인aubebuild이미지
-  const [firstpage, setfirstpage] = useState('firstpage')
-  const [scroller] = useGlobalState('container');
+const Home = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.25,
+  });
 
   useEffect(() => {
-
-    const div = divRef.current as HTMLDivElement;
- 
-    // const items = document.querySelectorAll('.ns-horizontal-section__item__inner') as NodeListOf<HTMLDivElement>;
-    // const htmlElement = document.documentElement;
-    // htmlElement.style.overflow = '';
-
-    if (div) {
-      const windowHeight = window.innerHeight;        // 윈도우의 높이와 너비를 가져옵니다.
-      const windowWidth = window.innerWidth;          // div 요소의 높이와 너비를 가져옵니다.
-      const divHeight = div.offsetHeight;
-      const divWidth = div.offsetWidth;
-      // 중앙에 위치시키기 위한 계산을 합니다.
-      const topPosition = (windowHeight / 2) - (divHeight / 2);
-      const leftPosition = (windowWidth / 2) - (divWidth / 2);
-      // div 요소의 스타일을 설정합니다.
-      div.style.position = 'absolute';
-      div.style.top = `${topPosition}px`;
-      div.style.left = `${leftPosition}px`;
-
-      if (windowWidth < windowHeight) {
-      } else {
-        setscreenMode('mainsection2')
-        setfirstpage('firstpage2')
-        setimagesPath('/images/jpg_width')
-      }
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1, ease: 'easeOut' },
+      });
+    } else {
+      controls.start({
+        opacity: 0,
+        y: 50,
+        transition: { duration: 1, ease: 'easeOut' },
+      });
     }
+  }, [controls, inView]);
 
-    let index = 0;
-    titleRefs.current.forEach(ref => {
-      index++;
-      if (ref) {
-        const parent = ref.parentElement as HTMLElement | null;
-        if (parent) {
-          const parentHeight = parent.clientHeight;
-          const parentWidth = parent.clientWidth;
-          const textHeight = ref.clientHeight;
-          const textWidth = ref.clientWidth;
-
-          let checkindex = index % 2
-          let leftposition
-          if (divRef.current) {
-            leftposition = (parentWidth - divRef.current.offsetWidth) / 2
-            console.log('leftposition', leftposition);
-          }
-          console.log('divRef',divRef)
-          ref.style.position = 'absolute';
-          ref.style.top = `${(parentHeight - textHeight) / 2}px`;
-          if (checkindex == 1) {
-            ref.style.left = `${leftposition}px`;
-          } else {
-            ref.style.right = `${leftposition}px`;
-          }
-        }
-      }
-    });
-    const handleScroll = () => {
-      const rotateValue = window.scrollY * 0.1;
-      // controls.start({ rotate: rotateValue });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const setTitleRef = (index: number): RefCallback<HTMLDivElement> => {
-    return (el) => {
-      titleRefs.current[index] = el;
-    };
-  };
-
-
-
-  // const addParallaxAnimation = useCallback(
-  //   (containerAnimation: gsap.core.Tween) => {
-  //     const items = document.querySelectorAll('.ns-horizontal-section__item__fig') as NodeListOf<HTMLDivElement>;
-
-  //     items.forEach((trigger) => {
-  //       const el = trigger.querySelector('img');
-  //       if (el && scroller) {
-  //         parallaxAnimation(el, trigger, scroller, 'right left', 'left right', 'x', -30, 30, containerAnimation);
-  //       }
-  //     });
-  //   },
-  //   [scroller]
-  // );
   return (
     <div>
-      <ScrollContainer>
-        <div
-          id='home'
-          className={firstpage}
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            position: 'relative',
-            backgroundColor: '#171717',
-            // padding:'50px'
-            // width:'80%',
-            // textAlign:'center'
-          }}
-        >
-          <div className="titleMain">
-            {RoateClassName.map((link, index) => (
-              <div className={`Hero_titleContainer ${link.divname}`} key={index}>
-                <div
-                  className={link.name}
-                  ref={setTitleRef(link.key)}
-                  style={{ position: 'absolute' }}
-                >
-                  {/* <ScrollRotate method={"perc"} from={rotatefrom[link.key]} to={rotateto[link.key]} loops={3}>
-                    {studioName}
-                  </ScrollRotate> */}
-                  {/* <motion.div animate={controls} style={{
-                    transform: `rotate(${rotatefrom[link.key]}deg)`,
-                    display: 'inline-block'
-                  }}>
-                    {studioName}
-                  </motion.div> */}
-                </div>
-              </div>
-            ))}
-            <div ref={divRef} className="Hero_title_center Hero_titlecenter" >
-              <div className="titleCSub">{studioName}</div>
-            </div>
-          </div>
+      <Head>
+        <title>Framer Motion Animated Footer</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <style jsx global>{`
+        * {
+          box-sizing: border-box;
+        }
 
-          {/* <SequenceSection
-            end="80%"
-            imagesPath="/images/jpg_width"
-            imagesCount={30}
-            imagesType="jpg"
-          >
-          </SequenceSection> */}
+        body {
+          font-family: "Roboto", sans-serif;
+          color: white;
+          background-color: #1b1b1b;
+          padding: 0;
+          margin: 0;
+        }
+
+        .section {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .hero {
+          background: salmon;
+        }
+
+        .content {
+          background: CadetBlue;
+        }
+
+        .spacer {
+          background: none;
+        }
+
+        .c-footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          z-index: -1;
+          background-color: grey;
+        }
+
+        h1, .c-footer_text {
+          max-width: 70vw;
+          font-size: 3vw;
+          font-weight: normal;
+          text-transform: uppercase;
+        }
+
+        .indicator {
+          position: fixed;
+          top: 25%;
+          width: 100%;
+          height: 1px;
+          background: teal;
+        }
+      `}</style>
+      <div className="wrapper">
+        <div className="section hero">
+          <h1>This is hero section</h1>
         </div>
-    
-
-
-      <section
-        id='floor0'
-        className={screenMode}
-        style={{
-          // height: "100vh",
-          // width: "100vw",
-          // backgroundColor: '#a3d9d6',
-          position: 'relative'
-        }}
-      >
-
-
-        <p>
-          aube Studio 건축물은 1974년 공장으로 시작되어졌습니다.
-          이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층,
-          2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다.
-          산업화를 상징하는 붉은벽돌위에 근대건축의 거장 르꼬르뷔제를 오마주하는
-          창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며,
-          710㎡의 대지위에 3층으로 지어진 두개의 건물과 마당은
-          거의 모든 것을 하기에 특별한 공간으로 제공 됩니다.<br /><br /><br />
-
-          Aube Studio began as a factory in 1974.
-          This interesting building, each in a different style,
-          was expanded with a second floor in 1986 and a third floor in 2013,
-          inviting visitors to explore the corridors of time.
-          Windows and doors that pay homage to the master of modern architecture,
-          Le Corbusier, on red bricks symbolizing industrialization
-          present a functionalistic yet organic formative beauty,
-          and the two three-story buildings and yard built on a 710㎡ site
-          provide almost everything. Therefore, it is provided as a special space.
-
-        </p>
-
-      </section>
-
-      <section
-        id='1floor'
-        className={screenMode}
-        style={{
-          // height: "100vh",
-          // width: "100vw",
-          backgroundColor: '#e8e8e8',
-          position: 'relative'
-        }}
-      >
-
-        <EmblaCarousel floor={1} loop={6} />
-
-
-      </section>
-
-
-      {/* <HorizontalSection addAnimation={addGellyAnimation}>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-            <img src='./1floor/height/1.jpg' style={{width:'100%'}}/>
-
-          </div>
+        <div className="section content">
+          <h1>This is content section</h1>
         </div>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-          <img src='./1floor/height/2.jpg' style={{width:'100%'}}/>
-          </div>
-        </div>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-          <img src='./1floor/height/3.jpg' style={{width:'100%'}}/>
-          </div>
-        </div>
-        <div className="ns-horizontal-section__item">
-          <div className="ns-horizontal-section__item__inner">
-          <img src='./1floor/height/4.jpg' style={{width:'100%'}}/>
-          </div>
-        </div>
-
-      </HorizontalSection> */}
-
-
-
-      <section
-        id='2floor'
-        className={screenMode}
-        style={{
-        }}
+      </div>
+      <div className="section spacer" ref={ref}></div>
+      <motion.div
+        className="section c-footer"
+        initial={{ opacity: 0, y: 50 }}
+        animate={controls}
       >
-        <EmblaCarousel floor={2} loop={6} />
-      </section>
-
-      <section
-        id='3floor'
-        className={screenMode}
-        style={{
-          backgroundColor: '#e8e8e8',
-          position: 'relative'
-        }}
-      >
-        <EmblaCarousel floor={3} loop={6} />
-      </section>
-
-      <section
-        id='3floor'
-        className={screenMode}
-        style={{
-          backgroundColor: '#e8e8e8',
-          position: 'relative'
-        }}
-      >
-        <div style={{ fontSize: '15em' }}> AUBE </div>
-
-      </section>
-      <section
-        id='Other'
-        className={screenMode}
-        style={{
-          position: 'relative'
-        }}
-      >
-        <EmblaCarousel floor={4} loop={3} />
-      </section>
-
-      <section
-        id='Stairs'
-        className={screenMode}
-        style={{
-          position: 'relative'
-        }}
-      >
-        <EmblaCarousel floor={5} loop={5} />
-      </section>
-
-      <section
-        id='Outside'
-        className={screenMode}
-        style={{
-          backgroundColor: '#e8e8e8',
-          position: 'relative'
-        }}
-      >
-        <EmblaCarousel floor={6} loop={3} />
-      </section>
-      <section
-        id="Contact"
-        className={screenMode}
-        style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {/* <h1 className="title">contact</h1> */}
-      </section>
-
-
-
-      </ScrollContainer>
-
+        <h1 className="c-footer_text">
+          This is an animated footer that appears on scroll.
+        </h1>
+      </motion.div>
+      <div className="indicator"></div>
     </div>
-
   );
-}
+};
 
-
-export default App;
+export default Home;

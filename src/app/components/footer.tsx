@@ -1,39 +1,51 @@
-import React from 'react';
+'use client';
+import { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import './footer.css';
 
-const Footer: React.FC = () => {
+const Home = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.25,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1, ease: 'easeOut' },
+      });
+    } else {
+      controls.start({
+        opacity: 0,
+        y: 50,
+        transition: { duration: 1, ease: 'easeOut' },
+      });
+    }
+  }, [controls, inView]);
+
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-section about">
-          <h2>aube studio</h2>
-          <p>
-            We are a fictional company providing exceptional service and products to our customers. Our mission is to deliver quality and satisfaction.
-          </p>
-        </div>
-        <div className="footer-section links">
-          <h2>Quick Links</h2>
-          <ul>
-            <li><a >About Us</a></li>
-            <li><a >Services</a></li>
-            <li><a >Contact</a></li>
-            <li><a >Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div className="footer-section social">
-          <h2>Follow Us</h2>
-          <div className="social-links">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <div>
+      <div className="footersection spacer" ref={ref}></div>
+      <motion.footer
+        className="footersection c-footer"
+        initial={{ opacity: 0, y: 10 }}
+        animate={controls}
+      >
+        <div className="footer-content">
+          <div className="footer-info">
+            <p>Taul Company</p>
+            <p>owner:hong jae wook / kim wan jun</p>
+            <p>bussiness license:149-88-02941</p>
+            <p>6, Achasan-ro 11ga-gil, Seongdong-gu, Seoul, Republic of Korea</p>
+            <p>TEL:(010) 3101-9551 | <a href="mailto:taulcontact@gmail.com">taulcontact@gmail.com</a></p>
           </div>
         </div>
-      </div>
-      <div className="footer-bottom">
-        {/* &copy; {new Date().getFullYear()} Company Name. All rights reserved. */}
-      </div>
-    </footer>
+      </motion.footer>
+    </div>
   );
-}
+};
 
-export default Footer;
+export default Home;

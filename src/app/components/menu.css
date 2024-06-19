@@ -1,3 +1,4 @@
+
 .menu-bar,
 .menu-overlay{
     position:fixed;
@@ -12,11 +13,12 @@
 }
 .menu-bar a,
 .menu-open p{
-    color:#000;
+    color:#171717;
     cursor:pointer;
+    font-size: 1.3rem;
 }
 .menu-close p{
-    color:#000;
+    color:#171717;
     cursor:pointer;
     font-size: 1em;
 }
