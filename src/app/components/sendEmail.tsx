@@ -78,7 +78,7 @@ const ApiEmailPage = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-group"  style={{marginBottom:'10px',width:'100%'}}>
        
           <TextField
             id="message"
