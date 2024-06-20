@@ -12,6 +12,7 @@ import EmblaCarousel from '../carousel/CarouselWrapper'
 import HorizontalGallery from '../carousel/HorizontalSection'
 import Email from '../components/sendEmail'
 import Footer from '../components/footer'
+import Head from 'next/head';
 
 const App: React.FC = () => {
   const scrolloptions = {
@@ -41,12 +42,12 @@ const App: React.FC = () => {
     { name: "Hero_title_center", name2: 'titleCSub', name1: 'Hero_titlecenter', animate: 'controlsCenter', rotate: '0', key: 4 },
   ];
   const Carousel = [
-    { floor: 1, loop: 7, classname: floorpadding ,id:'1floor'},
-    { floor: 2, loop: 7, classname: floorpadding ,id:'2floor'},
-    { floor: 3, loop: 7, classname: floorpadding ,id:'3floor'},
-    { floor: 4, loop: 3, classname: floorpadding ,id:'Other'},
-    { floor: 5, loop: 3, classname: floorpadding ,id:'Stairs'},
-    { floor: 6, loop: 3, classname: floorpadding ,id:'Outside'},
+    { floor: 1, loop: 7, classname: floorpadding, id: '1floor' },
+    { floor: 2, loop: 7, classname: floorpadding, id: '2floor' },
+    { floor: 3, loop: 7, classname: floorpadding, id: '3floor' },
+    { floor: 4, loop: 3, classname: floorpadding, id: 'Other' },
+    { floor: 5, loop: 3, classname: floorpadding, id: 'Stairs' },
+    { floor: 6, loop: 3, classname: floorpadding, id: 'Outside' },
   ]
 
 
@@ -71,7 +72,7 @@ const App: React.FC = () => {
       setfirstpage('firstpage2')
       setimagesPath('/images/jpg_width')
     }
-   
+
 
     let index = 0;
     titleRefs.current.forEach(ref => {
@@ -153,89 +154,95 @@ const App: React.FC = () => {
     };
   };
   return (
-    <div>
-      <ScrollContainer >
+    <>
+      <Head>
+        <title>aubestudio</title>
+        <meta name="description" content="Anything is possible here." />
+      </Head>
+      <div>
+        <ScrollContainer >
 
-        <section
-          id='home'
-          className={firstpage}
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            position: 'relative',
-            backgroundColor: '#171717',
-    
-          }}
-        >
-          <div className="titleMain" >
-            {motionInfo.map((link, index) => (
-              <div className={`${link.name} ${link.name1}`} key={index}>
-                <motion.div
-                  className={link.name2}
-                  style={{ fontSize: '2.5rem' }}
-                  animate={link.animate}
-                  initial={{ rotate: (link.rotate) }}
-                  ref={setTitleRef(link.key)}
-                >
-                  AUBE
-                </motion.div>
-              </div>
-            ))}
-          </div>
-          <SequenceSection
-            end="80%"
-            imagesPath="/images/jpg_width"
-            imagesCount={30}
-            imagesType="jpg" />
-        </section>
+          <section
+            id='home'
+            className={firstpage}
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              position: 'relative',
+              backgroundColor: '#171717',
 
-        <section
-          id='floor0'
-          className={floorpadding}
-          style={{
-            height: "80vh",
-            position: 'relative'
-          }}
-        >
-          <p>
-            Aube Studio 건축물은 1974년 공장으로 시작되어졌습니다. 이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층, 2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다. 산업화를 상징하는 붉은벽돌위에 근대건축의 거장 르꼬르뷔제를 오마주하는 창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며, 710㎡의 대지위에 3층으로 지어진 두개의 건물과 마당은 거의 모든 것을 하기에 특별한 공간으로 제공 됩니다.<br /><br /> Aube Studio began as a factory in 1974. This interesting building, each in a different style, was expanded with a second floor in 1986 and a third floor in 2013, inviting visitors to explore the corridors of time. Windows and doors that pay homage to the master of modern architecture, Le Corbusier, on red bricks symbolizing industrialization present a functionalistic yet organic formative beauty, and the two three-story buildings and yard built on a 710㎡ site provide almost everything. Therefore, it is provided as a special space.
-          </p>
+            }}
+          >
+            <div className="titleMain" >
+              {motionInfo.map((link, index) => (
+                <div className={`${link.name} ${link.name1}`} key={index}>
+                  <motion.div
+                    className={link.name2}
+                    style={{ fontSize: '2.5rem' }}
+                    animate={link.animate}
+                    initial={{ rotate: (link.rotate) }}
+                    ref={setTitleRef(link.key)}
+                  >
+                    AUBE
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+            <SequenceSection
+              end="80%"
+              imagesPath="/images/jpg_width"
+              imagesCount={30}
+              imagesType="jpg" />
+          </section>
 
-        </section>
-     
-        {Carousel.map((link, index) => (
+          <section
+            id='floor0'
+            className={floorpadding}
+            style={{
+              height: "80vh",
+              position: 'relative'
+            }}
+          >
+            <p>
+              Aube Studio 건축물은 1974년 공장으로 시작되어졌습니다. 이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층, 2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다. 산업화를 상징하는 붉은벽돌위에 근대건축의 거장 르꼬르뷔제를 오마주하는 창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며, 710㎡의 대지위에 3층으로 지어진 두개의 건물과 마당은 거의 모든 것을 하기에 특별한 공간으로 제공 됩니다.<br /><br /> Aube Studio began as a factory in 1974. This interesting building, each in a different style, was expanded with a second floor in 1986 and a third floor in 2013, inviting visitors to explore the corridors of time. Windows and doors that pay homage to the master of modern architecture, Le Corbusier, on red bricks symbolizing industrialization present a functionalistic yet organic formative beauty, and the two three-story buildings and yard built on a 710㎡ site provide almost everything. Therefore, it is provided as a special space.
+            </p>
 
-          <EmblaCarousel
-            classname={floorpadding}
-            floor={link.floor} 
-            loop={link.loop} 
-            screenMode={screenMode}
-            id={link.id}
+          </section>
+
+          {Carousel.map((link, index) => (
+
+            <EmblaCarousel
+              classname={floorpadding}
+              floor={link.floor}
+              loop={link.loop}
+              screenMode={screenMode}
+              id={link.id}
             />
 
-        ))}
-  
-        <section
-        id='Contact'
-          style={{
-            height: "20vh",
+          ))}
 
-          }}
-          className={floorpadding}
-        >
-          <div><h1>Contact US</h1></div>
-        <Email/>
-        </section>
+          <section
+            id='Contact'
+            style={{
+              height: "20vh",
 
-        <section
-          style={{
-            height: "100vh",
-          }}
-        >
-        <Footer />
-        </section>
-      </ScrollContainer>
-    </div>
+            }}
+            className={floorpadding}
+          >
+            <div><h1>Contact US</h1></div>
+            <Email />
+          </section>
+
+          <section
+            style={{
+              height: "100vh",
+            }}
+          >
+            <Footer />
+          </section>
+        </ScrollContainer>
+      </div>
+    </>
   );
 }
 export default App;

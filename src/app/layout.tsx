@@ -23,7 +23,10 @@ export default function RootLayout({ children, }: Readonly<{
   return (
     <>
       <html lang="en">
-
+      <Head>
+        <title>aubestudio</title>
+        <meta name="description" content="Anything is possible here." />
+      </Head>
 
         <Headmeta>
 
