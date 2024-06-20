@@ -155,10 +155,6 @@ const App: React.FC = () => {
   };
   return (
     <>
-      <Head>
-        <title>aubestudio</title>
-        <meta name="description" content="Anything is possible here." />
-      </Head>
       <div>
         <ScrollContainer >
 
