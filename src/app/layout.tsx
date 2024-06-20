@@ -1,10 +1,16 @@
+
+
 import type { Metadata } from "next";
-import { Head } from 'next/document';
+import {  Head } from 'next/document';
+
 import "./globals.css";
 import App from "./page";
 import Menu from '@/app/components/menu'
+
 import React from 'react';
 import ScrollToTopButton from './components/ScrollToTopButton';
+
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,22 +21,15 @@ export default function RootLayout({ children, }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <html lang="en">
-        <Head>
-          <meta property="og:title" content="aubestudio" />
-          <meta property="og:description" content="Anything is possible here." />
-          <meta property="og:image" content="/preview.jpg" />
-          <meta property="og:url" content="https://aubestudio.com" />
-          <title>aubestudio</title>
-        </Head>
+    <>    
+    <html lang="en">
 
-        <body>{children}
-          <Menu />
-          <ScrollToTopButton />
-        </body>
-
-      </html>
+      <body>{children}
+      <Menu />
+      {/* <Footer/> */}
+      <ScrollToTopButton />
+      </body>
+    </html>
     </>
 
   );

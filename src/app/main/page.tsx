@@ -4,15 +4,14 @@ import { motion, useAnimation, useViewportScroll } from 'framer-motion';
 import {
   ScrollContainer,
   SequenceSection,
-  HorizontalSection
 } from "react-nice-scroll";
 import '../main/main.css'
 import "react-nice-scroll/dist/styles.css";
 import EmblaCarousel from '../carousel/CarouselWrapper'
-import HorizontalGallery from '../carousel/HorizontalSection'
+// import HorizontalGallery from '../carousel/HorizontalSection'
 import Email from '../components/sendEmail'
 import Footer from '../components/footer'
-import Head from 'next/head';
+
 
 const App: React.FC = () => {
   const scrolloptions = {
