@@ -73,10 +73,7 @@
   .embla__button:disabled {
     color: var(--detail-high-contrast);
   }
-  .embla__button__svg {
-    width: 10px;
-    /* height: 35%; */
-  }
+
   /* .embla__dots {
     display: flex;
     flex-wrap: wrap;

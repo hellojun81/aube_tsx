@@ -12,7 +12,7 @@ import {
   NextButton,
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
-
+import './EmblaCarousel.css'
 import './wrapper.css'
 
 

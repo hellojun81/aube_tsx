@@ -1,0 +1,82 @@
+
+#sendEmail{
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+#sendEmail h1 {
+  text-align: center;
+  color: #333;
+}
+
+#sendEmail form {
+  display: flex;
+  flex-direction: column;
+}
+
+#sendEmail .form-group {
+  position: relative;
+  /* margin-bottom: 20px; */
+}
+/* #sendEmail #message{line-height:10px;} */
+
+/* #sendEmail label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  color: #555;
+  transition: 0.2s;
+  pointer-events: none;
+} */
+/* 
+#sendEmail input[type="text"],
+#sendEmail input[type="email"],
+#sendEmail textarea {
+  width: 100%;
+  padding: 0px 10px 10px 0px;
+  border:0;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+#sendEmail input[type="file"] {
+  margin-bottom: 20px;
+} */
+
+/* #sendEmail input:focus + label,
+#sendEmail input:not(:placeholder-shown) + label,
+#sendEmail textarea:focus + label,
+#sendEmail textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: #333333;
+} */
+
+#sendEmail button {
+  padding: 10px;
+  background-color: #333333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#sendEmail button:hover {
+  background-color: #000000;
+}
+
+#sendEmail p {
+  text-align: center;
+  color: #88aacc;
+  font-weight: bold;
+}
+
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+  width:100%;
+}

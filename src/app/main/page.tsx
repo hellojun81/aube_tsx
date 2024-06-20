@@ -10,7 +10,7 @@ import '../main/main.css'
 import "react-nice-scroll/dist/styles.css";
 import EmblaCarousel from '../carousel/CarouselWrapper'
 import HorizontalGallery from '../carousel/HorizontalSection'
-import Email from '../components/EmailForm'
+import Email from '../components/sendEmail'
 import Footer from '../components/footer'
 
 const App: React.FC = () => {
