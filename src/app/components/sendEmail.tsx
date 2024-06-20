@@ -78,7 +78,7 @@ const ApiEmailPage = () => {
             required
           />
         </div>
-        <div className="form-group"  style={{marginBottom:'10px',width:'100%'}}>
+        <div className="form-group"  style={{marginBottom:'10px'}}>
        
           <TextField
             id="message"
@@ -86,6 +86,7 @@ const ApiEmailPage = () => {
             value={message}
             multiline
             rows={3}
+            fullWidth
             defaultValue="message"
             variant="standard"
             onChange={(e) => setMessage(e.target.value)}

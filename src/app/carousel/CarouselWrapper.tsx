@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { EmblaOptionsType } from 'embla-carousel'
+// import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import AutoHeight from 'embla-carousel-auto-height'
 import {
@@ -111,7 +111,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   return (
     <>
 
-      {/* <div className="embla"> */}
+   
       <div className={`embla ${props.classname}`} id={props.id}>
         <div>
 
@@ -125,10 +125,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               selectedSnap={selectedSnap}
               snapCount={snapCount}
             />
-             <div className="embla__buttons">
+             {/* <div className="embla__buttons">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </div>
+        </div> */}
             <div className="embla__viewport" ref={emblaRef} >
 
               <div className="new_embla__container">

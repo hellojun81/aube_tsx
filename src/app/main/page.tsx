@@ -41,9 +41,9 @@ const App: React.FC = () => {
     { name: "Hero_title_center", name2: 'titleCSub', name1: 'Hero_titlecenter', animate: 'controlsCenter', rotate: '0', key: 4 },
   ];
   const Carousel = [
-    { floor: 1, loop: 6, classname: floorpadding ,id:'1floor'},
-    { floor: 2, loop: 6, classname: floorpadding ,id:'2floor'},
-    { floor: 3, loop: 6, classname: floorpadding ,id:'3floor'},
+    { floor: 1, loop: 7, classname: floorpadding ,id:'1floor'},
+    { floor: 2, loop: 7, classname: floorpadding ,id:'2floor'},
+    { floor: 3, loop: 7, classname: floorpadding ,id:'3floor'},
     { floor: 4, loop: 3, classname: floorpadding ,id:'Other'},
     { floor: 5, loop: 3, classname: floorpadding ,id:'Stairs'},
     { floor: 6, loop: 3, classname: floorpadding ,id:'Outside'},
