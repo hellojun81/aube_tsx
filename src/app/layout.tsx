@@ -1,7 +1,7 @@
 
 
 import type { Metadata } from "next";
-import {  Head } from 'next/document';
+import { Head } from 'next/document';
 
 import "./globals.css";
 import App from "./page";
@@ -9,7 +9,7 @@ import Menu from '@/app/components/menu'
 
 import React from 'react';
 import ScrollToTopButton from './components/ScrollToTopButton';
-
+import Headmeta from './components/head';
 
 
 export const metadata: Metadata = {
@@ -21,16 +21,19 @@ export default function RootLayout({ children, }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <>    
-    <html lang="en">
+    <>
+      <html lang="en">
 
-      <body>{children}
-      <Menu />
-      {/* <Footer/> */}
-      <ScrollToTopButton />
-      </body>
-    </html>
+
+        <Headmeta>
+
+          <body>{children}
+            <Menu />
+            <ScrollToTopButton />
+          </body>
+          </Headmeta >
+      </html>
     </>
-
-  );
+          
+                );
 }
