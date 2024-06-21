@@ -126,8 +126,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               snapCount={snapCount}
             />
              <div className="embla__buttons">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+          {/* <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} /> */}
         </div>
             <div className="embla__viewport" ref={emblaRef} >
 
