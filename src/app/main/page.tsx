@@ -185,7 +185,7 @@ const App: React.FC = () => {
             </div>
             <SequenceSection
               end="80%"
-              imagesPath="/images/jpg_width"
+              imagesPath="/images/jpg_bk"
               imagesCount={30}
               imagesType="jpg" />
           </section>
