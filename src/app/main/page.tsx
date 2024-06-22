@@ -130,12 +130,12 @@ const App: React.FC = () => {
       }
     };
 
-    // if (isClient) {
-    //   const unsubscribeScroll = scrollY.onChange(updateRotation);
-    //   return () => {
-    //     unsubscribeScroll();
-    //   };
-    // }
+    if (isClient) {
+      const unsubscribeScroll = scrollY.onChange(updateRotation);
+      return () => {
+        unsubscribeScroll();
+      };
+    }
   }, [controls1, controls2, controls3, controls4, scrollY, isClient]);
 
   if (!isClient) {
@@ -184,7 +184,7 @@ const App: React.FC = () => {
             </div>
             <SequenceSection
               end="80%"
-              imagesPath="/images/jpg_bk"
+              imagesPath={imagesPath}
               imagesCount={30}
               imagesType="jpg" />
           </section>

@@ -22,7 +22,7 @@
     cursor:pointer;
     font-size: 1em;
 }
-.menu-overlay{
+ .menu-overlay{
     position: fixed;
     top:0;
     left:0;
@@ -33,7 +33,7 @@
     z-index: 20;
     display: flex;
     clip-path:polygon(0% 0%,100% 0%, 100% 0% ,0% 0%)
-}
+} 
 .menu-close-icon{
     flex:2;
     display:flex;
@@ -94,11 +94,9 @@ align-items: flex-end;
 
 @media(max-width:900px){
     .menu-close-icon{
-        /* display: none; */
+ 
     }
-    /* .menu-copy{
-        padding-top:8em;
-    } */
+ 
     .menu-link-item-holder a{
         font-size:1em;
     }
