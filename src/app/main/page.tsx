@@ -1,17 +1,18 @@
 'use client'
 import React, { useRef, useEffect, useState, RefCallback, useCallback } from "react";
+import dynamic from 'next/dynamic';
 import { motion, useAnimation, useViewportScroll } from 'framer-motion';
-import {
-  ScrollContainer,
-  SequenceSection,
-} from "react-nice-scroll";
+
 import '../main/main.css'
 import "react-nice-scroll/dist/styles.css";
 import EmblaCarousel from '../carousel/CarouselWrapper'
 // import HorizontalGallery from '../carousel/HorizontalSection'
 import Email from '../components/sendEmail'
 import Footer from '../components/footer'
+import Menu from '../components/menu'
 
+const ScrollContainer = dynamic(() => import('react-nice-scroll').then(mod => mod.ScrollContainer), { ssr: false });
+const SequenceSection = dynamic(() => import('react-nice-scroll').then(mod => mod.SequenceSection), { ssr: false });
 
 const App: React.FC = () => {
   const scrolloptions = {
@@ -26,12 +27,11 @@ const App: React.FC = () => {
   const { scrollY } = useViewportScroll();
   const titleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const divRef = useRef<HTMLDivElement | null>(null);
-
   const [screenMode, setscreenMode] = useState('height')     //층별안내padding사이즈
   const [floorpadding, setfloorpadding] = useState('mainsection')     //층별안내padding사이즈
-
   const [imagesPath, setimagesPath] = useState('/images/jpg_bk')  //메인aubebuild이미지
   const [firstpage, setfirstpage] = useState('firstpage')
+
 
   const motionInfo = [
     { name: "Hero_titleContainer", name2: 'title1Sub', name1: 'Hero_title1', animate: controls1, rotate: -45, key: 0 },
@@ -49,8 +49,6 @@ const App: React.FC = () => {
     { floor: 6, loop: 3, classname: floorpadding, id: 'Outside' },
   ]
 
-
-
   useEffect(() => {
     setIsClient(true); // 클라이언트 측에서만 true로 설정
     const div = divRef.current as HTMLDivElement;
@@ -58,14 +56,10 @@ const App: React.FC = () => {
     elements.forEach(element => {
       (element as HTMLElement).style.overflow = 'inital';
     });
-    console.log('div', div)
-
     const windowHeight = window.innerHeight;        // 윈도우의 높이와 너비를 가져옵니다.
     const windowWidth = window.innerWidth;          // div 요소의 높이와 너비를 가져옵니다.
-    console.log({ 'windowWidth': windowWidth, 'windowHeight': windowHeight })
-    if (windowWidth < windowHeight) {
 
-    } else {
+    if (windowHeight < windowWidth) {
       setscreenMode('width')
       setfloorpadding('mainsection2')
       setfirstpage('firstpage2')
@@ -82,17 +76,13 @@ const App: React.FC = () => {
           const parentHeight = parent.clientHeight;
           const parentWidth = parent.clientWidth;
           const textHeight = ref.clientHeight;
-
-
           let checkindex = index % 2
           let leftposition
           ref.style.position = 'absolute';
           ref.style.top = `${(parentHeight - textHeight) / 2}px`;
           ref.style.left = `${leftposition}px`;
-
           let childWidth = titleRefs.current[0]?.clientWidth
           if (childWidth) {
-            // console.log('index', index)
             leftposition = (parentWidth - childWidth) / 2
             if (index !== 5) {
               if (checkindex == 1) {
@@ -108,7 +98,6 @@ const App: React.FC = () => {
     });
     const updateRotation = () => {
       const scrollValue = scrollY.get();
-      // console.log('scrollValue',scrollValue)
       if (scrollValue === 0) {
         // 스크롤이 원점으로 돌아왔을 때 초기 상태로 되돌리기
         controls1.start({ rotate: -45, transition: { duration: 0.5 } });
@@ -135,12 +124,12 @@ const App: React.FC = () => {
       }
     };
 
-    if (isClient) {
-      const unsubscribeScroll = scrollY.onChange(updateRotation);
-      return () => {
-        unsubscribeScroll();
-      };
-    }
+    // if (isClient) {
+    //   const unsubscribeScroll = scrollY.onChange(updateRotation);
+    //   return () => {
+    //     unsubscribeScroll();
+    //   };
+    // }
   }, [controls1, controls2, controls3, controls4, scrollY, isClient]);
 
   if (!isClient) {
@@ -152,11 +141,15 @@ const App: React.FC = () => {
       titleRefs.current[index] = el;
     };
   };
+
+
+
+
   return (
     <>
       <div>
         <ScrollContainer >
-
+<></>
           <section
             id='home'
             className={firstpage}
@@ -185,12 +178,11 @@ const App: React.FC = () => {
             </div>
             <SequenceSection
               end="80%"
-              imagesPath="/images/jpg_width"
+              imagesPath="/images/jpg_bk"
               imagesCount={30}
               imagesType="jpg" />
           </section>
-
-          <section
+           <section
             id='floor0'
             className={floorpadding}
             style={{
@@ -212,6 +204,7 @@ const App: React.FC = () => {
               loop={link.loop}
               screenMode={screenMode}
               id={link.id}
+              key={index}
             />
 
           ))}
@@ -234,7 +227,7 @@ const App: React.FC = () => {
             }}
           >
             <Footer />
-          </section>
+          </section> 
         </ScrollContainer>
       </div>
     </>

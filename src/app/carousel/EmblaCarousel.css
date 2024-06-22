@@ -1,3 +1,38 @@
+
+.button_container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.button_left, .button_center, .button_right {
+  width: 30%;
+  padding: 20px;
+ 
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button_left {
+
+  text-align: left;
+}
+
+.button_center {
+
+  text-align: center;
+  align-items: center
+}
+
+.button_right {
+
+  text-align: right;
+}
+
+
+
+
 .embla {
   /* max-width: 48rem;*/
   margin: auto;
@@ -40,6 +75,8 @@
   height: var(--slide-height);
 }
 
+
+
 .embla__controls {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -53,7 +90,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 0.6rem;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
   z-index: 33;
   width:100vw;
 }

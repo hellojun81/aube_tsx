@@ -4,12 +4,12 @@
 .style_paragraph__1jtpu{
   font-size: 20px!important;
 }
-@font-face {
+/* @font-face {
   font-family: 'YDGothic520';
-  src: url('/fonts/YDGothic520.woff2') format('woff2');
+  src: url('/font/web/YDGothic520.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-}
+} */
 
 body {
   font-family: 'YDGothic520', sans-serif;
@@ -20,3 +20,4 @@ body {
   margin: 0 !important;
   overflow: auto !important;
 }
+/* .menu-container{display: none;} */
