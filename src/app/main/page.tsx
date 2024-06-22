@@ -9,14 +9,12 @@ import EmblaCarousel from '../carousel/CarouselWrapper'
 // import HorizontalGallery from '../carousel/HorizontalSection'
 import Email from '../components/sendEmail'
 import Footer from '../components/footer'
-import Menu from '../components/menu'
-
-const ScrollContainer = dynamic(() => import('react-nice-scroll').then(mod => mod.ScrollContainer), { ssr: false });
+import {ScrollContainer} from "react-nice-scroll"
+// const ScrollContainer = dynamic(() => import('react-nice-scroll').then(mod => mod.ScrollContainer), { ssr: false });
 const SequenceSection = dynamic(() => import('react-nice-scroll').then(mod => mod.SequenceSection), { ssr: false });
 
 const App: React.FC = () => {
   const scrolloptions = {
-    // 여기에 원하는 옵션을 추가할 수 있습니다.
     speed: 0.5, // 스크롤 속도를 조절하는 옵션 (기본값: 1)
   };
   const [isClient, setIsClient] = useState(false);
@@ -50,9 +48,11 @@ const App: React.FC = () => {
   ]
 
   useEffect(() => {
+   
     setIsClient(true); // 클라이언트 측에서만 true로 설정
     const div = divRef.current as HTMLDivElement;
     const elements = document.querySelectorAll('.ns-container');
+ 
     elements.forEach(element => {
       (element as HTMLElement).style.overflow = 'inital';
     });
@@ -66,10 +66,15 @@ const App: React.FC = () => {
       setimagesPath('/images/jpg_width')
     }
 
-
+    console.log({titleRefs: titleRefs.current})
     let index = 0;
+
+
+    
     titleRefs.current.forEach(ref => {
+      console.log('titleRefs123')
       index++;
+      
       if (ref) {
         const parent = ref.parentElement as HTMLElement | null;
         if (parent) {
@@ -82,6 +87,7 @@ const App: React.FC = () => {
           ref.style.top = `${(parentHeight - textHeight) / 2}px`;
           ref.style.left = `${leftposition}px`;
           let childWidth = titleRefs.current[0]?.clientWidth
+          console.log('parent',parent)
           if (childWidth) {
             leftposition = (parentWidth - childWidth) / 2
             if (index !== 5) {
@@ -234,4 +240,5 @@ const App: React.FC = () => {
   );
 }
 export default App;
+
 
