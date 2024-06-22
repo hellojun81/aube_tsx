@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   description: "everything is possible.",
   viewport:"width=device-width, initial-scale=1.0, user-scalable=no",
   
+
   // og:image:"/preview.jpg",
 };
 
@@ -27,9 +28,9 @@ export default function RootLayout({ children, }: Readonly<{
     <>    
     <html lang="en">
     <Head>
-    <title>aubestudio</title>
-        <meta property="og:image" content="/preview.jpg" />
-        <meta property="og:url" content="https://aubestudio.com" />  
+        <meta property="og:title" content="aubestudio" />
+  
+
       </Head>
       <body>
       <Menu />
