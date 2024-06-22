@@ -87,7 +87,6 @@ const ApiEmailPage = () => {
             multiline
             rows={3}
             fullWidth
-            defaultValue="message"
             variant="standard"
             onChange={(e) => setMessage(e.target.value)}
             required

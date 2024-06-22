@@ -19,9 +19,9 @@ import './wrapper.css'
 type PropType = {
   floor: number,
   loop: number,
-  screenMode:string,
-  classname:string,
-  id:string
+  screenMode: string,
+  classname: string,
+  id: string
 }
 interface ImageLink {
   path: string;
@@ -30,7 +30,7 @@ interface ImageLink {
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const floor = props.floor;
   const loop = props.loop;
-  const screenMode=props.screenMode;
+  const screenMode = props.screenMode;
   const divRef = useRef<HTMLDivElement | null>(null);
   const [imageLinks, setImageLinks] = useState<ImageLink[]>([
     { path: 'test' }
@@ -119,16 +119,15 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         </div>
         {floor !== 0 ? (
           <>
-            {/* <div><img src='./images/swipe.gif'/></div> */}
-            <SelectedSnapDisplay
 
-              selectedSnap={selectedSnap}
-              snapCount={snapCount}
-            />
-             <div className="embla__buttons">
-          {/* <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} /> */}
-        </div>
+<div className="button_container">
+<div className="button_left"> <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} /></div>
+<div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount}/></div>
+<div className="button_right"> <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} /></div>
+</div>
+
+
+
             <div className="embla__viewport" ref={emblaRef} >
 
               <div className="new_embla__container">
