@@ -32,8 +32,8 @@
 
         .burgerMenuContainer {
             content: "";
-            width: 55px;
-            height: 25px;
+            width: 35px;
+            height: 20px;
             position: relative;
             right: 0;
             cursor: pointer;
@@ -41,8 +41,8 @@
 
             .burgerMenuTrigger {
                 content: "";
-                width: 45px;
-                height: 25px;
+                width: 35px;
+                height: 20px;
                 position: relative;
                 right: 0;
                 cursor: pointer;
@@ -53,8 +53,8 @@
                 content: "";
                 background: #171717;
                 position: absolute;
-                width: 45px;
-                height: 4px;
+                width: 35px;
+                height: 3px;
                 z-index: 0;
                 top: calc(25px / 2 - 1.5px);
                 transition: 0.25s width ease-in-out,
@@ -65,8 +65,8 @@
                 content: "";
                 background-color: #171717;
                 position: absolute;
-                width: 45px;
-                height: 4px;
+                width: 35px;
+                height: 3px;
                 transform: translateY(10px);
                 z-index: 0;
                 transition: 0.25s transform ease-in-out,
@@ -77,8 +77,8 @@
                 content: "";
                 background-color: #171717;
                 position: absolute;
-                width: 45px;
-                height: 4px;
+                width: 35px;
+                height: 3px;
                 transform: translateY(-10px);
                 z-index: 0;
                 transition: 0.25s transform ease-in-out,
