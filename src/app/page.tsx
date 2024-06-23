@@ -18,13 +18,13 @@ export default function Home() {
       imagesPath+'/1.jpg',
       imagesPath+'/2.jpg',
       imagesPath+'/3.jpg',
-      imagesPath+'/4.jpg',
-      imagesPath+'/5.jpg',
-      imagesPath+'/6.jpg',
-      imagesPath+'/7.jpg',
-      imagesPath+'/8.jpg',
-      imagesPath+'/9.jpg',
-      imagesPath+'/10.jpg',
+      // imagesPath+'/4.jpg',
+      // imagesPath+'/5.jpg',
+      // imagesPath+'/6.jpg',
+      // imagesPath+'/7.jpg',
+      // imagesPath+'/8.jpg',
+      // imagesPath+'/9.jpg',
+      // imagesPath+'/10.jpg',
     ];
     images.forEach((src) => {
       const img = new Image();
@@ -32,7 +32,7 @@ export default function Home() {
     });
     const timer = setTimeout(() => {
       router.push('/main'); // 이동할 페이지 경로를 지정합니다.
-    }, 2000); // 2000ms = 2초
+    }, 1200); // 2000ms = 2초
     return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머를 정리합니다.
   }, [router]);
 
