@@ -4,7 +4,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import fs from 'fs';
 import path from 'path';
 import AutoHeight from 'embla-carousel-auto-height';
-import './style.css';
+
 
 type Props = {
   fileCount: number,
