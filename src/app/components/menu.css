@@ -32,7 +32,7 @@
     background:#c5fb45;
     z-index: 20;
     display: flex;
-    clip-path:polygon(0% 0%,100% 0%, 100% 0% ,0% 0%)
+    clip-path:polygon(100% 0%,100% 0%, 100% 0% ,0% 0%)
 } 
 .menu-close-icon{
     flex:2;
@@ -93,9 +93,7 @@ align-items: flex-end;
 }
 
 @media(max-width:900px){
-    .menu-close-icon{
- 
-    }
+
  
     .menu-link-item-holder a{
         font-size:1em;

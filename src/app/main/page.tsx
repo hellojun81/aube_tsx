@@ -9,6 +9,7 @@ import EmblaCarousel from '../carousel/CarouselWrapper'
 // import HorizontalGallery from '../carousel/HorizontalSection'
 import Email from '../components/sendEmail'
 import Footer from '../components/footer'
+import Naverbar from '../components/Navbar'
 import {ScrollContainer} from "react-nice-scroll"
 // const ScrollContainer = dynamic(() => import('react-nice-scroll').then(mod => mod.ScrollContainer), { ssr: false });
 const SequenceSection = dynamic(() => import('react-nice-scroll').then(mod => mod.SequenceSection), { ssr: false });
@@ -154,6 +155,7 @@ const App: React.FC = () => {
   return (
     <>
       <div>
+        <Naverbar/>
         <ScrollContainer >
 <></>
           <section
@@ -164,7 +166,7 @@ const App: React.FC = () => {
               justifyContent: "center",
               position: 'relative',
               backgroundColor: '#171717',
-
+              zIndex:'99',
             }}
           >
             <div className="titleMain" >

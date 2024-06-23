@@ -6,6 +6,7 @@ import Head from 'next/head';
 import "./globals.css";
 // import App from "./page";
 import Menu from '@/app/components/menu'
+// import Naverbar from '@/app/components/Navbar'
 
 import React from 'react';
 import ScrollToTopButton from './components/ScrollToTopButton';
@@ -26,14 +27,14 @@ export default function RootLayout({ children, }: Readonly<{
 }>) {
   return (
     <>    
-    <html lang="en">
+    <html lang="ko">
     <Head>
         <meta property="og:title" content="aubestudio" />
   
 
       </Head>
       <body>
-      <Menu />
+      {/* <Naverbar /> */}
         {children}
    
 

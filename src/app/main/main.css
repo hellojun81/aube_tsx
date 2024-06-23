@@ -1,7 +1,6 @@
-/* h1 {
-    border-top: 2px solid #333;
-    padding-top: 30px
-} */
+h1 {
+ text-align: center;
+} 
 
 .ns-horizontal-section__item {
     padding:10px!important;

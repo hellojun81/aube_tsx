@@ -1,0 +1,162 @@
+.navbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    // padding: 0 10vw;
+    // background-color: #000;
+    height: 0;
+    position: fixed;
+    top: 0;
+    transition: 0.5s height;
+    z-index: 9;
+    // margin-left:30px;
+
+    .navigation {
+        position: absolute;
+        top: 0;
+        padding: 2rem 0 0 0;
+        width: calc(100% - 20vw);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .button {
+            background-color: transparent;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #171717;
+            transition: 0.5s color;
+        }
+
+        .burgerMenuContainer {
+            content: "";
+            width: 55px;
+            height: 25px;
+            position: relative;
+            right: 0;
+            cursor: pointer;
+            margin-left:10px;
+
+            .burgerMenuTrigger {
+                content: "";
+                width: 45px;
+                height: 25px;
+                position: relative;
+                right: 0;
+                cursor: pointer;
+                z-index: 100;
+            }
+
+            .burgerMenu {
+                content: "";
+                background: #171717;
+                position: absolute;
+                width: 45px;
+                height: 4px;
+                z-index: 0;
+                top: calc(25px / 2 - 1.5px);
+                transition: 0.25s width ease-in-out,
+                    0.5s background-color ease-in-out;
+            }
+
+            .burgerMenu::after {
+                content: "";
+                background-color: #171717;
+                position: absolute;
+                width: 45px;
+                height: 4px;
+                transform: translateY(10px);
+                z-index: 0;
+                transition: 0.25s transform ease-in-out,
+                    0.5s background-color ease-in-out;
+            }
+
+            .burgerMenu::before {
+                content: "";
+                background-color: #171717;
+                position: absolute;
+                width: 45px;
+                height: 4px;
+                transform: translateY(-10px);
+                z-index: 0;
+                transition: 0.25s transform ease-in-out,
+                    0.5s background-color ease-in-out;
+            }
+
+            .burgerMenuTrigger:hover ~ .burgerMenu {
+                width: 35px;
+            }
+        }
+    }
+
+    .content {
+        position: absolute;
+        top: 10vh;
+        display: none;
+
+        ul {
+            list-style: none;
+
+            li {
+                padding: 0.2rem 0;
+
+                a {
+                    font-size: 2rem;
+                    color: #fff;
+                    transition: 0.25s color;
+                    text-decoration:none;
+                    border-bottom: 1px solid #fff;
+                }
+
+                a:hover {
+                    color: rgb(232, 232, 232);
+                    transition: 0.25s color;
+                }
+            }
+        }
+    }
+}
+
+.navbar.active {
+    background-color: #171717;
+    transition: 0.75s height;
+    height: 100vh;
+
+    .navigation {
+        .button {
+            color: white;
+            transition: 0.5s color;
+        }
+        .burgerMenuContainer {
+            .burgerMenu {
+                width: 0;
+                background-color: white;
+                transition: 0.25s width ease-in-out,
+                    0.25s background-color ease-in-out;
+            }
+
+            .burgerMenu::after {
+                transform: translateY(0px) rotate(135deg);
+                background-color: white;
+                transition: 0.25s transform ease-in-out,
+                    0.25s background-color ease-in-out;
+            }
+
+            .burgerMenu::before {
+                transform: translateY(0px) rotate(-135deg);
+                background-color: white;
+                transition: 0.25s transform ease-in-out,
+                    0.25s background-color ease-in-out;
+            }
+
+            .burgerMenuTrigger:hover ~ .burgerMenu {
+                width: 0px;
+            }
+        }
+    }
+    .content {
+        display: initial;
+    }
+}
