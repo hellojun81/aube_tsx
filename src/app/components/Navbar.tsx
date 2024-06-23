@@ -80,9 +80,9 @@ const Navbar = () => {
                     variants={motionVariants}
                 >
                     {menuLinks.map((link, index) => (
-                        <motion.li variants={listItemVariants}>
+                        <motion.li variants={listItemVariants} key={index}>
                             <a href={link.path} onClick={() => setBurgerMenuActive(!burgerMenuActive)}
-                                key={index}>
+                                >
                                 {link.label}
                             </a>
                         </motion.li>

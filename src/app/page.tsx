@@ -14,6 +14,15 @@ export default function Home() {
     if (windowHeight < windowWidth) {
       setimagesPath('/images/jpg_width')
     }
+
+    const preloadImages = (srcs: string[]) => {
+      srcs.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+
+
     const images = [
       imagesPath+'/1.jpg',
       imagesPath+'/2.jpg',
@@ -26,10 +35,8 @@ export default function Home() {
       // imagesPath+'/9.jpg',
       // imagesPath+'/10.jpg',
     ];
-    images.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
+    preloadImages(images);
+    
     const timer = setTimeout(() => {
       router.push('/main'); // 이동할 페이지 경로를 지정합니다.
     }, 1200); // 2000ms = 2초

@@ -5,12 +5,12 @@ import { motion, useAnimation, useViewportScroll } from 'framer-motion';
 
 import '../main/main.css'
 import "react-nice-scroll/dist/styles.css";
-import EmblaCarousel from '../carousel/CarouselWrapper'
+import EmblaCarousel from '../carousel/newCarouse'
 // import HorizontalGallery from '../carousel/HorizontalSection'
 import Email from '../components/sendEmail'
 import Footer from '../components/footer'
 import Naverbar from '../components/Navbar'
-import {ScrollContainer} from "react-nice-scroll"
+import { ScrollContainer } from "react-nice-scroll"
 // const ScrollContainer = dynamic(() => import('react-nice-scroll').then(mod => mod.ScrollContainer), { ssr: false });
 const SequenceSection = dynamic(() => import('react-nice-scroll').then(mod => mod.SequenceSection), { ssr: false });
 
@@ -49,11 +49,11 @@ const App: React.FC = () => {
   ]
 
   useEffect(() => {
-   
+
     setIsClient(true); // 클라이언트 측에서만 true로 설정
     const div = divRef.current as HTMLDivElement;
     const elements = document.querySelectorAll('.ns-container');
- 
+
     elements.forEach(element => {
       (element as HTMLElement).style.overflow = 'inital';
     });
@@ -67,15 +67,15 @@ const App: React.FC = () => {
       setimagesPath('/images/jpg_width')
     }
 
-    console.log({titleRefs: titleRefs.current})
+    console.log({ titleRefs: titleRefs.current })
     let index = 0;
 
 
-    
+
     titleRefs.current.forEach(ref => {
       console.log('titleRefs123')
       index++;
-      
+
       if (ref) {
         const parent = ref.parentElement as HTMLElement | null;
         if (parent) {
@@ -88,7 +88,7 @@ const App: React.FC = () => {
           ref.style.top = `${(parentHeight - textHeight) / 2}px`;
           ref.style.left = `${leftposition}px`;
           let childWidth = titleRefs.current[0]?.clientWidth
-          console.log('parent',parent)
+          console.log('parent', parent)
           if (childWidth) {
             leftposition = (parentWidth - childWidth) / 2
             if (index !== 5) {
@@ -114,19 +114,19 @@ const App: React.FC = () => {
       } else {
         controls1.start({
           rotate: 45,
-          transition: { duration: 1.5 }
+          transition: { duration: 2.5 }
         });
         controls2.start({
           rotate: -45,
-          transition: { duration: 1.5 }
+          transition: { duration: 2.5 }
         });
         controls3.start({
           rotate: -45,
-          transition: { duration: 1.5 }
+          transition: { duration: 2.5 }
         });
         controls4.start({
           rotate: 45,
-          transition: { duration: 1.5 }
+          transition: { duration: 2.5 }
         });
       }
     };
@@ -149,15 +149,12 @@ const App: React.FC = () => {
     };
   };
 
-
-
-
   return (
     <>
       <div>
-        <Naverbar/>
+        <Naverbar />
         <ScrollContainer >
-<></>
+          <></>
           <section
             id='home'
             className={firstpage}
@@ -166,8 +163,8 @@ const App: React.FC = () => {
               justifyContent: "center",
               position: 'relative',
               backgroundColor: '#171717',
-              zIndex:'99',
-              height:'200vh'
+              zIndex: '99',
+              height: '200vh'
             }}
           >
             <div className="titleMain" >
@@ -179,6 +176,7 @@ const App: React.FC = () => {
                     animate={link.animate}
                     initial={{ rotate: (link.rotate) }}
                     ref={setTitleRef(link.key)}
+                    key={index}
                   >
                     AUBE
                   </motion.div>
@@ -191,7 +189,7 @@ const App: React.FC = () => {
               imagesCount={30}
               imagesType="jpg" />
           </section>
-           <section
+          <section
             id='floor0'
             className={floorpadding}
             style={{
@@ -199,13 +197,14 @@ const App: React.FC = () => {
               position: 'relative'
             }}
           >
-            <div style={{fontSize:'7em',
-              fontWeight:'700',
-              textAlign:'center',
-              paddingTop:'10px'
+            <div style={{
+              fontSize: '7em',
+              fontWeight: '700',
+              textAlign: 'center',
+              paddingTop: '10px'
             }}>AUBE</div>
             <p>
-            Aube Studio 건축물은 1974년 공장으로 시작되었습니다. 이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층, 2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다. 산업화를 상징하는 붉은 벽돌 위에 근대 건축의 거장 르코르뷔제를 오마주 하는 창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며, 710㎡의 대지 위에 3층으로 지어진 두 개의 건물과 마당은 거의 모든 것을 하기에 특별한 공간으로 제공됩니다.<br /><br /> Aube Studio began as a factory in 1974. This interesting building, each in a different style, was expanded with a second floor in 1986 and a third floor in 2013, inviting visitors to explore the corridors of time. Windows and doors that pay homage to the master of modern architecture, Le Corbusier, on red bricks symbolizing industrialization present a functionalistic yet organic formative beauty, and the two three-story buildings and yard built on a 710㎡ site provide almost everything. Therefore, it is provided as a special space.
+              Aube Studio 건축물은 1974년 공장으로 시작되었습니다. 이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층, 2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다. 산업화를 상징하는 붉은 벽돌 위에 근대 건축의 거장 르코르뷔제를 오마주 하는 창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며, 710㎡의 대지 위에 3층으로 지어진 두 개의 건물과 마당은 거의 모든 것을 하기에 특별한 공간으로 제공됩니다.<br /><br /> Aube Studio began as a factory in 1974. This interesting building, each in a different style, was expanded with a second floor in 1986 and a third floor in 2013, inviting visitors to explore the corridors of time. Windows and doors that pay homage to the master of modern architecture, Le Corbusier, on red bricks symbolizing industrialization present a functionalistic yet organic formative beauty, and the two three-story buildings and yard built on a 710㎡ site provide almost everything. Therefore, it is provided as a special space.
             </p>
 
           </section>
@@ -213,6 +212,7 @@ const App: React.FC = () => {
           {Carousel.map((link, index) => (
 
             <EmblaCarousel
+              fileCount={link.loop}
               classname={floorpadding}
               floor={link.floor}
               loop={link.loop}
@@ -241,7 +241,7 @@ const App: React.FC = () => {
             }}
           >
             <Footer />
-          </section> 
+          </section>
         </ScrollContainer>
       </div>
     </>
