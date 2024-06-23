@@ -16,6 +16,9 @@
 # production
 /build
 
+/test.tsx
+/test2.tsx
+/tt/tsx
 # misc
 .DS_Store
 *.pem

@@ -1,21 +1,28 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Script from 'next/script';
+
 export default function Home() {
   const router = useRouter();
+  const [imagesPath, setimagesPath] = useState('/images/jpg_bk')  //메인aubebuild이미지
+
 
   useEffect(() => {
-
+    const windowHeight = window.innerHeight;        // 윈도우의 높이와 너비를 가져옵니다.
+    const windowWidth = window.innerWidth;          // div 요소의 높이와 너비를 가져옵니다.
+    if (windowHeight < windowWidth) {
+      setimagesPath('/images/jpg_width')
+    }
     const images = [
-      '/images/1.jpg',
-      '/images/2.jpg',
-      '/images/3.jpg',
-  ];
-  images.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-});
+      imagesPath+'/1.jpg',
+      imagesPath+'/2.jpg',
+      imagesPath+'/3.jpg',
+    ];
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
     const timer = setTimeout(() => {
       router.push('/main'); // 이동할 페이지 경로를 지정합니다.
     }, 2000); // 2000ms = 2초
@@ -24,9 +31,9 @@ export default function Home() {
 
   return (
     <>
-    <div className='c-intro'></div>
-    <Script src='/script/intromove.js' id='tys-home-js' strategy="afterInteractive" />
-    <Script src='/script/intro.js' id='tys-js' strategy="afterInteractive" />
+      <div className='c-intro'></div>
+      <Script src='/script/intromove.js' id='tys-home-js' strategy="afterInteractive" />
+      <Script src='/script/intro.js' id='tys-js' strategy="afterInteractive" />
     </>
   );
 }
