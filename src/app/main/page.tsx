@@ -209,13 +209,13 @@ const App: React.FC = () => {
               imagesType="jpg" />
           </section>
 
-
+          </ScrollContainer>
           <section
             id='floor0'
             className={floorpadding}
             style={{
               height: "80vh",
-              position: 'relative'
+              // position: 'relative'
             }}
           >
             <div style={{
@@ -235,8 +235,8 @@ const App: React.FC = () => {
               // id={link.id}
               // className={floorpadding}
               style={{
-                height: "100vh",
-                position: 'relative'
+                height: "100%",
+                // position: 'relative'
               }}
             >
               <EmblaCarousel
@@ -255,7 +255,7 @@ const App: React.FC = () => {
             id='Contact'
             style={{
               height: "20vh",
-
+              marginBottom:"100px"
             }}
             className={floorpadding}
           >
@@ -270,7 +270,7 @@ const App: React.FC = () => {
           >
             <Footer />
           </section>
-        </ScrollContainer>
+   
       </div>
     </>
   );
