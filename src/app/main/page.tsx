@@ -2,7 +2,6 @@
 import React, { useRef, useEffect, useState, RefCallback, useCallback } from "react";
 import dynamic from 'next/dynamic';
 import { motion, useAnimation, useViewportScroll } from 'framer-motion';
-
 import '../main/main.css'
 import "react-nice-scroll/dist/styles.css";
 import EmblaCarousel from '../carousel/newCarouse'
@@ -11,7 +10,7 @@ import Email from '../components/sendEmail'
 import Footer from '../components/footer'
 import Naverbar from '../components/Navbar'
 import { ScrollContainer } from "react-nice-scroll"
-// const ScrollContainer = dynamic(() => import('react-nice-scroll').then(mod => mod.ScrollContainer), { ssr: false });
+// import styles from './ScrollIcon.module.scss';
 const SequenceSection = dynamic(() => import('react-nice-scroll').then(mod => mod.SequenceSection), { ssr: false });
 
 const App: React.FC = () => {
@@ -37,7 +36,7 @@ const App: React.FC = () => {
     { name: "Hero_titleContainer", name2: 'title2Sub', name1: 'Hero_title2', animate: controls2, rotate: 45, key: 1 },
     { name: "Hero_titleContainer", name2: 'title3Sub', name1: 'Hero_title3', animate: controls3, rotate: 45, key: 2 },
     { name: "Hero_titleContainer", name2: 'title4Sub', name1: 'Hero_title4', animate: controls4, rotate: -45, key: 3 },
-    { name: "Hero_title_center", name2: 'titleCSub', name1: 'Hero_titlecenter', animate: 'controlsCenter', rotate: '0', key: 4 },
+    // { name: "Hero_title_center", name2: 'titleCSub', name1: 'Hero_titlecenter', animate: 'controlsCenter', rotate: '0', key: 4 },
   ];
   const Carousel = [
     { floor: 1, loop: 7, classname: floorpadding, id: '1floor' },
@@ -167,6 +166,8 @@ const App: React.FC = () => {
               height: '200vh'
             }}
           >
+
+
             <div className="titleMain" >
               {motionInfo.map((link, index) => (
                 <div className={`${link.name} ${link.name1}`} key={index}>
@@ -182,6 +183,24 @@ const App: React.FC = () => {
                   </motion.div>
                 </div>
               ))}
+              <div className='Hero_title_center Hero_titlecenter' key={4}>
+                <div
+                  className='titleCSub'
+                  style={{ fontSize: '1.5rem' }}
+
+                  // initial={0}
+                  ref={setTitleRef(4)}
+                  key={4}
+                >
+                  <div className="scroll-downs">
+                    <div className="mousey">
+                      <div className="scroller"></div>
+                    </div>
+                    <div>down</div>
+                  </div>
+
+                </div>
+              </div>
             </div>
             <SequenceSection
               end="80%"
@@ -189,6 +208,8 @@ const App: React.FC = () => {
               imagesCount={30}
               imagesType="jpg" />
           </section>
+
+
           <section
             id='floor0'
             className={floorpadding}
@@ -210,17 +231,24 @@ const App: React.FC = () => {
           </section>
 
           {Carousel.map((link, index) => (
-
-            <EmblaCarousel
-              fileCount={link.loop}
-              classname={floorpadding}
-              floor={link.floor}
-              loop={link.loop}
-              screenMode={screenMode}
-              id={link.id}
-              key={index}
-            />
-
+            <section
+              // id={link.id}
+              // className={floorpadding}
+              style={{
+                height: "100vh",
+                position: 'relative'
+              }}
+            >
+              <EmblaCarousel
+                fileCount={link.loop}
+                classname={floorpadding}
+                floor={link.floor}
+                loop={link.loop}
+                screenMode={screenMode}
+                id={link.id}
+                key={index}
+              />
+            </section>
           ))}
 
           <section
