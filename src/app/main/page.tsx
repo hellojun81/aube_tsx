@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState, RefCallback, useCallback } from "react";
 import dynamic from 'next/dynamic';
 import { motion, useAnimation, useViewportScroll } from 'framer-motion';
-import '../main/main.css'
+import '../main.css'
 import "react-nice-scroll/dist/styles.css";
 import EmblaCarousel from '../carousel/newCarouse'
 // import HorizontalGallery from '../carousel/HorizontalSection'
@@ -163,12 +163,12 @@ const App: React.FC = () => {
               position: 'relative',
               backgroundColor: '#171717',
               zIndex: '99',
-              height: '200vh'
+
             }}
           >
 
 
-            <div className="titleMain" >
+             <div className="titleMain" >
               {motionInfo.map((link, index) => (
                 <div className={`${link.name} ${link.name1}`} key={index}>
                   <motion.div
@@ -201,12 +201,12 @@ const App: React.FC = () => {
 
                 </div>
               </div>
-            </div>
-            <SequenceSection
+            </div> 
+             <SequenceSection
               end="80%"
               imagesPath={imagesPath}
               imagesCount={30}
-              imagesType="jpg" />
+              imagesType="jpg" /> 
           </section>
 
           </ScrollContainer>
@@ -214,7 +214,7 @@ const App: React.FC = () => {
             id='floor0'
             className={floorpadding}
             style={{
-              height: "80vh",
+            
               // position: 'relative'
             }}
           >
@@ -254,7 +254,7 @@ const App: React.FC = () => {
           <section
             id='Contact'
             style={{
-              height: "20vh",
+         
               marginBottom:"100px"
             }}
             className={floorpadding}
@@ -265,7 +265,7 @@ const App: React.FC = () => {
 
           <section
             style={{
-              height: "100vh",
+
             }}
           >
             <Footer />
