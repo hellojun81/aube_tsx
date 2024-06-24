@@ -12,7 +12,7 @@ import ScrollToTopButton from './components/ScrollToTopButton';
 export const metadata: Metadata = {
   title: "aubestudio",
   description: "everything is possible.",
-  viewport: "width=device-width, initial-scale=1.0, user-scalable=no",
+  // viewport: "width=device-width, initial-scale=1.0, user-scalable=no",
 };
 
 export default function RootLayout({ children, }: Readonly<{
