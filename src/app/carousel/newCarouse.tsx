@@ -158,7 +158,7 @@ const Home: React.FC<PropType> = (props) => {
         <>
            
 
-
+<img src='./1floor/height/1.jpg'/>
 
             <div className={`${props.classname}`} id={props.id}>
                 <div>
