@@ -46,7 +46,7 @@ const Home: React.FC<PropType> = (props) => {
 
     useEffect(() => {
         // API를 호출할 폴더 경로
-        const folderPath = `public/${floor}floor/${screenMode}/`; // 원하는 경로로 변경 가능
+        const folderPath = `./${floor}floor/${screenMode}/`; // 원하는 경로로 변경 가능
     
         fetch(`/api/countFiles?folder=${encodeURIComponent(folderPath)}`)
           .then(response => response.json())
@@ -158,7 +158,7 @@ const Home: React.FC<PropType> = (props) => {
         <>
            
 
-<img src='./1floor/height/1.jpg'/>
+{/* <img src='./1floor/height/1.jpg'/> */}
 
             <div className={`${props.classname}`} id={props.id}>
                 <div>
