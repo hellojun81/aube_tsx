@@ -66,13 +66,13 @@ const App: React.FC = () => {
       setimagesPath('/images/jpg_width')
     }
 
-    console.log({ titleRefs: titleRefs.current })
+    // console.log({ titleRefs: titleRefs.current })
     let index = 0;
 
 
 
     titleRefs.current.forEach(ref => {
-      console.log('titleRefs123')
+      // console.log('titleRefs123')
       index++;
 
       if (ref) {
@@ -87,7 +87,7 @@ const App: React.FC = () => {
           ref.style.top = `${(parentHeight - textHeight) / 2}px`;
           ref.style.left = `${leftposition}px`;
           let childWidth = titleRefs.current[0]?.clientWidth
-          console.log('parent', parent)
+          // console.log('parent', parent)
           if (childWidth) {
             leftposition = (parentWidth - childWidth) / 2
             if (index !== 5) {

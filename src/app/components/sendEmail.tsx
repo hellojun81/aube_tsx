@@ -29,6 +29,15 @@ const ApiEmailPage = () => {
       formData.append('attachment', attachment);
     }
 
+
+
+    const countFiles = fetch('/api/countFiles?folder=public/1floor/height', {
+      method: 'get',
+    });
+
+    console.log('countFiles',countFiles)
+
+
     const res = await fetch('/api/sendmail', {
       method: 'POST',
       body: formData,
