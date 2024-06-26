@@ -60,7 +60,7 @@ const Home: React.FC<PropType> = (props) => {
           .catch(err => {
             setError('Error fetching file count.');
           });
-      }, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 1회 호출
+      }, [floor, screenMode]); // 빈 배열을 전달하여 컴포넌트 마운트 시 1회 호출
     console.log('fileCount',fileCount)
 
     const scrollToNext = useCallback(() => {
