@@ -97,7 +97,7 @@ const Home: React.FC<PropType> = (props) => {
     let newLinks: ImageLink[] = [];
     // 루프를 사용하여 데이터 추가
     // console.log('screenMode',screenMode)
-    for (let i = 1; i <= fileCount+1; i++) {
+    for (let i = 1; i <= fileCount; i++) {
         newLinks.push({ path: `./${floor}floor/${screenMode}/${i}.jpg` });
     }
     const renderFloorInfo = () => {
