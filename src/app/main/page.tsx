@@ -163,12 +163,12 @@ const App: React.FC = () => {
               position: 'relative',
               backgroundColor: '#171717',
               zIndex: '99',
-
+              // height:'200vh'
             }}
           >
 
 
-             <div className="titleMain" >
+            <div className="titleMain" >
               {motionInfo.map((link, index) => (
                 <div className={`${link.name} ${link.name1}`} key={index}>
                   <motion.div
@@ -201,20 +201,23 @@ const App: React.FC = () => {
 
                 </div>
               </div>
-            </div> 
-             <SequenceSection
-              // end="80%"
-              imagesPath={imagesPath}
-              imagesCount={27}
-              imagesType="jpg" /> 
-          </section>
+            </div>
 
-          </ScrollContainer>
+
+
+          <SequenceSection
+            // end="80%"
+            imagesPath={imagesPath}
+            imagesCount={27}
+            imagesType="jpg" />
+          </section>
+        </ScrollContainer>
+
           <section
             id='floor0'
             className={floorpadding}
             style={{
-            
+
               // position: 'relative'
             }}
           >
@@ -254,8 +257,8 @@ const App: React.FC = () => {
           <section
             id='Contact'
             style={{
-         
-              marginBottom:"100px"
+
+              marginBottom: "100px"
             }}
             className={floorpadding}
           >
@@ -270,7 +273,8 @@ const App: React.FC = () => {
           >
             <Footer />
           </section>
-   
+  
+
       </div>
     </>
   );

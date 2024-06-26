@@ -171,7 +171,9 @@ const Home: React.FC<PropType> = (props) => {
                     <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
                     <div className="button_right"> <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} /></div>
                 </div>
-            ) : null}
+            ) : 
+            <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
+            }
 
 
 
