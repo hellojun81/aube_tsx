@@ -27,13 +27,6 @@ export default function Home() {
       imagesPath+'/1.jpg',
       imagesPath+'/2.jpg',
       imagesPath+'/3.jpg',
-      // imagesPath+'/4.jpg',
-      // imagesPath+'/5.jpg',
-      // imagesPath+'/6.jpg',
-      // imagesPath+'/7.jpg',
-      // imagesPath+'/8.jpg',
-      // imagesPath+'/9.jpg',
-      // imagesPath+'/10.jpg',
     ];
     preloadImages(images);
     

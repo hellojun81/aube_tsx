@@ -196,7 +196,7 @@ const App: React.FC = () => {
                     <div className="mousey">
                       <div className="scroller"></div>
                     </div>
-                    <div>down</div>
+                    <div>Scroll Down</div>
                   </div>
 
                 </div>
