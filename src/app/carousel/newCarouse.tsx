@@ -43,9 +43,8 @@ const Home: React.FC<PropType> = (props) => {
     const countFiles = ''
     // const [FileList, setFileList] = useState(0);
     const [FileList, setFileList] = useState<string[]>([
-        'public/images/photo1.jpg',
-        'public/images/photo2.jpg',
-        'public/images/photo3.jpg',
+        './images/1.jpg',
+        './images/2.jpg',
       ]);
     const [error, setError] = useState('');
     const link = `public/${floor}floor/${screenMode}`;
