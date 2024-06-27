@@ -40,28 +40,23 @@ const Home: React.FC<PropType> = (props) => {
     const scrollToPrevious = useCallback(() => {
         if (emblaApi) emblaApi.scrollPrev();
     }, [emblaApi]);
-    const countFiles=''
-    const [fileCount, setFileCount] = useState(0);
+    const countFiles = ''
+    // const [FileList, setFileList] = useState(0);
+    const [FileList, setFileList] = useState<string[]>([
+        'public/images/photo1.jpg',
+        'public/images/photo2.jpg',
+        'public/images/photo3.jpg',
+      ]);
     const [error, setError] = useState('');
-
+    const link = `public/${floor}floor/${screenMode}`;
     useEffect(() => {
-        // API를 호출할 폴더 경로
-        const folderPath = `./${floor}floor/${screenMode}/`; // 원하는 경로로 변경 가능
-    
-        fetch(`/api/countFiles?folder=${encodeURIComponent(folderPath)}`)
-          .then(response => response.json())
-          .then(data => {
-            if (data.error) {
-              setError(data.error);
-            } else {
-              setFileCount(data.fileCount);
-            }
-          })
-          .catch(err => {
-            setError('Error fetching file count.');
-          });
-      }, [floor, screenMode]); // 빈 배열을 전달하여 컴포넌트 마운트 시 1회 호출
-    console.log('fileCount',fileCount)
+        fetch('/fileList.json')
+            .then(response => response.json())
+            .then(data => setFileList(data[link]))
+            .catch(error => console.error('Error loading the file list:', error));
+    }, []);
+
+    // console.log('FileList', FileList[0])
 
     const scrollToNext = useCallback(() => {
         if (emblaApi) emblaApi.scrollNext();
@@ -71,7 +66,7 @@ const Home: React.FC<PropType> = (props) => {
         nextBtnDisabled,
         onPrevButtonClick,
         onNextButtonClick
-      } = usePrevNextButtons(emblaApi)
+    } = usePrevNextButtons(emblaApi)
     const handleMouseClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const containerWidth = event.currentTarget.offsetWidth;
         const mouseX = event.clientX - event.currentTarget.getBoundingClientRect().left;
@@ -95,12 +90,15 @@ const Home: React.FC<PropType> = (props) => {
         }
     };
     let newLinks: ImageLink[] = [];
-    // 루프를 사용하여 데이터 추가
-    // console.log('screenMode',screenMode)
-    
-    for (let i = 1; i <= loop; i++) {
-        newLinks.push({ path: `./${floor}floor/${screenMode}/${i}.jpg` });
-    }
+
+
+    // for (let i = 1; i <= loop; i++) {
+    //     newLinks.push({ path: `./${floor}floor/${screenMode}/${i}.jpg` });
+    // }
+    const replaceWord = (text: string, search: string, replacement: string): string => {
+        return text.replace(search, replacement);
+      };
+    console.log({newLink:newLinks,fileList:FileList})
     const renderFloorInfo = () => {
         switch (floor) {
             case 10:
@@ -152,13 +150,13 @@ const Home: React.FC<PropType> = (props) => {
         }
     };
 
-
+// newLinks=FileList
 
     return (
         <>
-           
 
-{/* <img src='./1floor/height/1.jpg'/> */}
+
+            {/* <img src='./1floor/height/1.jpg'/> */}
 
             <div className={`${props.classname}`} id={props.id}>
                 <div>
@@ -166,23 +164,23 @@ const Home: React.FC<PropType> = (props) => {
                     {renderFloorInfo()}
                 </div>
                 {screenMode == 'height' ? (
-                <div className="button_container">
-                    <div className="button_left"> <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} /></div>
+                    <div className="button_container">
+                        <div className="button_left"> <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} /></div>
+                        <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
+                        <div className="button_right"> <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} /></div>
+                    </div>
+                ) :
                     <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
-                    <div className="button_right"> <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} /></div>
-                </div>
-            ) : 
-            <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
-            }
+                }
 
 
 
                 <div className="embla" ref={emblaRef} onClick={handleMouseClick}>
                     <div className="embla__container">
-                        {newLinks.map((link, index) => (
+                        {FileList.map((link, index) => (
                             <div className="embla__slide" key={index}>
                                 <img
-                                    src={link.path}
+                                    src={replaceWord(link, 'public', '.')}
                                     className={`image-container ${cursorClass}`}
                                     onMouseMove={handleMouseMove}
                                     style={{
