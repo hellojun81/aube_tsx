@@ -1,6 +1,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import Image from 'next/image';
 import './newCarouse.css';
 import {
     SelectedSnapDisplay,
@@ -43,9 +44,9 @@ const Home: React.FC<PropType> = (props) => {
     const countFiles = ''
     // const [FileList, setFileList] = useState(0);
     const [FileList, setFileList] = useState<string[]>([
-        './images/1.jpg',
-        './images/2.jpg',
-      ]);
+        '/images/1.jpg',
+        '/images/2.jpg',
+    ]);
     const [error, setError] = useState('');
     const link = `public/${floor}floor/${screenMode}`;
     useEffect(() => {
@@ -96,8 +97,8 @@ const Home: React.FC<PropType> = (props) => {
     // }
     const replaceWord = (text: string, search: string, replacement: string): string => {
         return text.replace(search, replacement);
-      };
-    console.log({newLink:newLinks,fileList:FileList})
+    };
+   
     const renderFloorInfo = () => {
         switch (floor) {
             case 10:
@@ -149,7 +150,7 @@ const Home: React.FC<PropType> = (props) => {
         }
     };
 
-// newLinks=FileList
+    console.log({ newLink: newLinks, fileList: FileList })
 
     return (
         <>
@@ -178,8 +179,9 @@ const Home: React.FC<PropType> = (props) => {
                     <div className="embla__container">
                         {FileList.map((link, index) => (
                             <div className="embla__slide" key={index}>
-                                <img
-                                    src={replaceWord(link, 'public', '.')}
+                                <Image
+                                    alt="description"
+                                    src={replaceWord(link, 'public', '')}
                                     className={`image-container ${cursorClass}`}
                                     onMouseMove={handleMouseMove}
                                     style={{
@@ -187,6 +189,10 @@ const Home: React.FC<PropType> = (props) => {
                                         objectFit: 'contain',
                                         // cursor: 'pointer'
                                     }}
+                                    layout="responsive"
+                                    width={700}
+                                    height={475}
+                                    loading="lazy"
                                 />
                             </div>
                         ))}
