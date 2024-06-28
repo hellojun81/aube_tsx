@@ -1,4 +1,3 @@
-
 import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
@@ -6,13 +5,13 @@ import './newCarouse.css';
 import {
     SelectedSnapDisplay,
     useSelectedSnapDisplay
-} from './EmblaCarouselSelectedSnapDisplay'
+} from './EmblaCarouselSelectedSnapDisplay';
 
 import {
     PrevButton,
     NextButton,
     usePrevNextButtons
-} from './EmblaCarouselArrowButtons'
+} from './EmblaCarouselArrowButtons';
 
 type PropType = {
     fileCount: number,
@@ -27,46 +26,47 @@ interface ImageLink {
 }
 
 const Home: React.FC<PropType> = (props) => {
-    const [floor, setfloor] = useState(props.floor);
-    const [loop, setloop] = useState(props.loop);
-    const [screenMode, setfscreenMode] = useState(props.screenMode);
+    const [floor, setFloor] = useState(props.floor);
+    const [loop, setLoop] = useState(props.loop);
+    const [screenMode, setScreenMode] = useState(props.screenMode);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const emblaOptions = { loop: true };
     const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions);
     const [cursorClass, setCursorClass] = useState<string>('');
-    const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi)
-    const [imageLinks, setImageLinks] = useState<ImageLink[]>([
-        { path: `'/${floor}floor/${screenMode}/1.jpg'` }
-    ]);
+    const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
+    const [fileList, setFileList] = useState<string[]>([]);
+    const [error, setError] = useState('');
+
+    const fetchFileList = useCallback(() => {
+        const link = `public/${floor}floor/${screenMode}`;
+        fetch('/fileList.json')
+            .then(response => response.json())
+            .then(data => setFileList(data[link] || []))
+            .catch(error => {
+                console.error('Error loading the file list:', error);
+                setError('Error loading the file list');
+            });
+    }, [floor, screenMode]);
+
+    useEffect(() => {
+        fetchFileList();
+    }, [fetchFileList]);
+
     const scrollToPrevious = useCallback(() => {
         if (emblaApi) emblaApi.scrollPrev();
     }, [emblaApi]);
-    const countFiles = ''
-    // const [FileList, setFileList] = useState(0);
-    const [FileList, setFileList] = useState<string[]>([
-        '/images/1.jpg',
-        '/images/2.jpg',
-    ]);
-    const [error, setError] = useState('');
-    const link = `public/${floor}floor/${screenMode}`;
-    useEffect(() => {
-        fetch('/fileList.json')
-            .then(response => response.json())
-            .then(data => setFileList(data[link]))
-            .catch(error => console.error('Error loading the file list:', error));
-    }, []);
-
-    // console.log('FileList', FileList[0])
 
     const scrollToNext = useCallback(() => {
         if (emblaApi) emblaApi.scrollNext();
     }, [emblaApi]);
+
     const {
         prevBtnDisabled,
         nextBtnDisabled,
         onPrevButtonClick,
         onNextButtonClick
-    } = usePrevNextButtons(emblaApi)
+    } = usePrevNextButtons(emblaApi);
+
     const handleMouseClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const containerWidth = event.currentTarget.offsetWidth;
         const mouseX = event.clientX - event.currentTarget.getBoundingClientRect().left;
@@ -89,16 +89,11 @@ const Home: React.FC<PropType> = (props) => {
             setCursorClass('right-cursor');
         }
     };
-    let newLinks: ImageLink[] = [];
 
-
-    // for (let i = 1; i <= loop; i++) {
-    //     newLinks.push({ path: `./${floor}floor/${screenMode}/${i}.jpg` });
-    // }
     const replaceWord = (text: string, search: string, replacement: string): string => {
         return text.replace(search, replacement);
     };
-   
+
     const renderFloorInfo = () => {
         switch (floor) {
             case 10:
@@ -150,20 +145,13 @@ const Home: React.FC<PropType> = (props) => {
         }
     };
 
-    console.log({ newLink: newLinks, fileList: FileList })
-
     return (
         <>
-
-
-            {/* <img src='./1floor/height/1.jpg'/> */}
-
             <div className={`${props.classname}`} id={props.id}>
                 <div>
-
                     {renderFloorInfo()}
                 </div>
-                {screenMode == 'height' ? (
+                {screenMode === 'height' ? (
                     <div className="button_container">
                         <div className="button_left"> <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} /></div>
                         <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
@@ -172,12 +160,9 @@ const Home: React.FC<PropType> = (props) => {
                 ) :
                     <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
                 }
-
-
-
                 <div className="embla" ref={emblaRef} onClick={handleMouseClick}>
                     <div className="embla__container">
-                        {FileList.map((link, index) => (
+                        {fileList.map((link, index) => (
                             <div className="embla__slide" key={index}>
                                 <Image
                                     alt="description"
@@ -187,12 +172,13 @@ const Home: React.FC<PropType> = (props) => {
                                     style={{
                                         maxWidth: '100%',
                                         objectFit: 'contain',
-                                        // cursor: 'pointer'
                                     }}
                                     layout="responsive"
                                     width={700}
                                     height={475}
                                     loading="lazy"
+                                    placeholder="blur"
+                                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD/..." // base64 블러 이미지 데이터
                                 />
                             </div>
                         ))}
