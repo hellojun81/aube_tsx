@@ -179,9 +179,9 @@ const Home: React.FC<PropType> = (props) => {
                                     layout="responsive"
                                     width={700}
                                     height={475}
-                                    loading="lazy"
+                                    // loading="lazy"
                                     // placeholder="blur"
-                                    onLoad={() => setIsLoaded(true)}
+                                    // onLoad={() => setIsLoaded(true)}
                                 />
                             </div>
 
