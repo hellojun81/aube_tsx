@@ -175,10 +175,10 @@ const App: React.FC = () => {
               justifyContent: "center",
               position: 'relative',
               backgroundColor: '#171717',
-              zIndex: '-1',
+              zIndex: '99',
               // height:'200vh'
-              height: '300vh',
-              overflowY: 'auto'
+              // height: '300vh',
+              // overflowY: 'auto'
             }}
           >
 
