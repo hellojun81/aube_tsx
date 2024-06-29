@@ -36,6 +36,7 @@ const Home: React.FC<PropType> = (props) => {
     const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
     const [fileList, setFileList] = useState<string[]>([]);
     const [error, setError] = useState('');
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const fetchFileList = useCallback(() => {
         const link = `public/${floor}floor/${screenMode}`;
@@ -163,7 +164,9 @@ const Home: React.FC<PropType> = (props) => {
                 <div className="embla" ref={emblaRef} onClick={handleMouseClick}>
                     <div className="embla__container">
                         {fileList.map((link, index) => (
-                            <div className="embla__slide" key={index}>
+
+                            <div className={`embla__slide  ${isLoaded ? 'image-loaded' : ''}`} key={index}>
+
                                 <Image
                                     alt="description"
                                     src={replaceWord(link, 'public', '')}
@@ -178,9 +181,10 @@ const Home: React.FC<PropType> = (props) => {
                                     height={475}
                                     loading="lazy"
                                     // placeholder="blur"
-                                    blurDataURL="/image/loading.gif" // base64 블러 이미지 데이터
+                                    onLoad={() => setIsLoaded(true)}
                                 />
                             </div>
+
                         ))}
                     </div>
                 </div>

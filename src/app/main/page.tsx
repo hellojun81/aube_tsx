@@ -106,10 +106,10 @@ const App: React.FC = () => {
       const scrollValue = scrollY.get();
       if (scrollValue === 0) {
         // 스크롤이 원점으로 돌아왔을 때 초기 상태로 되돌리기
-        controls1.start({ rotate: -45, transition: { duration: 0.5 } });
-        controls2.start({ rotate: 45, transition: { duration: 0.5 } });
-        controls3.start({ rotate: 45, transition: { duration: 0.5 } });
-        controls4.start({ rotate: -45, transition: { duration: 0.5 } });
+        controls1.start({ rotate: -45, transition: { duration: 0.9 } });
+        controls2.start({ rotate: 45, transition: { duration: 0.9 } });
+        controls3.start({ rotate: 45, transition: { duration: 0.9 } });
+        controls4.start({ rotate: -45, transition: { duration: 0.9 } });
       } else {
         controls1.start({
           rotate: 45,
@@ -223,7 +223,7 @@ const App: React.FC = () => {
           >
             <div style={{
               fontSize: '7em',
-              fontWeight: '700',
+              fontWeight: '900',
               textAlign: 'center',
               paddingTop: '10px'
             }}>AUBE</div>
