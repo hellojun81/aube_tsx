@@ -175,8 +175,8 @@ const App: React.FC = () => {
               justifyContent: "center",
               position: 'relative',
               backgroundColor: '#171717',
-              zIndex: '-1',
-              height:'250vh'
+              zIndex: '99',
+              // height:'200vh'
             }}
           >
 
@@ -253,7 +253,6 @@ const App: React.FC = () => {
               style={{
                 height: "100%",
                 // position: 'relative'
-                backgroundColor:'#fff'
               }}
             >
               <EmblaCarousel
