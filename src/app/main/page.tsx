@@ -136,7 +136,20 @@ const App: React.FC = () => {
         unsubscribeScroll();
       };
     }
-  }, [controls1, controls2, controls3, controls4, scrollY, isClient]);
+
+    const preloadImages = () => {
+      const images = [];
+      for (let i = 1; i <= 30; i++) {
+        const img = new Image();
+        img.src = `${imagesPath}/${i}.jpg`; // 실제 이미지 경로에 맞게 수정
+        images.push(img);
+      }
+    };
+  
+    preloadImages();
+
+
+  }, [imagesPath,controls1, controls2, controls3, controls4, scrollY, isClient]);
 
   if (!isClient) {
     // 서버 측에서는 아무것도 렌더링하지 않음
