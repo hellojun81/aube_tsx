@@ -175,7 +175,7 @@ const App: React.FC = () => {
               justifyContent: "center",
               position: 'relative',
               backgroundColor: '#171717',
-              zIndex: '99',
+              zIndex: '-1',
               // height:'200vh'
               height: '300vh',
               overflowY: 'auto'
@@ -232,7 +232,7 @@ const App: React.FC = () => {
             id='floor0'
             className={floorpadding}
             style={{
-
+              backgroundColor:'#fff'
               // position: 'relative'
             }}
           >
@@ -254,6 +254,7 @@ const App: React.FC = () => {
               // className={floorpadding}
               style={{
                 height: "100%",
+                 backgroundColor:'#fff'
                 // position: 'relative'
               }}
             >
