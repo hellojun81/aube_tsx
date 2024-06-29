@@ -177,6 +177,8 @@ const App: React.FC = () => {
               backgroundColor: '#171717',
               zIndex: '99',
               // height:'200vh'
+              height: '300vh',
+              overflowY: 'auto'
             }}
           >
 
