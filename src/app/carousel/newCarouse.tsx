@@ -164,27 +164,26 @@ const Home: React.FC<PropType> = (props) => {
                 <div className="embla" ref={emblaRef} onClick={handleMouseClick}>
                     <div className="embla__container">
                         {fileList.map((link, index) => (
-
-                            <div className={`embla__slide  ${isLoaded ? 'image-loaded' : ''}`} key={index}>
-
-                                <Image
-                                    alt="description"
-                                    src={replaceWord(link, 'public', '')}
-                                    className={`image-container ${cursorClass}`}
-                                    onMouseMove={handleMouseMove}
-                                    style={{
-                                        maxWidth: '100%',
-                                        objectFit: 'contain',
-                                    }}
-                                    layout="responsive"
-                                    width={700}
-                                    height={475}
-                                    // loading="lazy"
-                                    // placeholder="blur"
-                                    // onLoad={() => setIsLoaded(true)}
-                                />
-                            </div>
-
+                           
+                                <div className="embla__slide" key={index}>
+                                    <img
+                                        alt="description"
+                                        src={replaceWord(link, 'public', '')}
+                                        className={`image-container ${cursorClass}`}
+                                        onMouseMove={handleMouseMove}
+                                        style={{
+                                            maxWidth: '100%',
+                                            objectFit: 'contain',
+                                        }}
+                                        // // layout="responsive"
+                                        // width={700}
+                                        // height={475}
+                                        // loading="lazy"
+                                        // placeholder="blur"
+                                        // onLoad={() => setIsLoaded(true)}
+                                    />
+                                </div>
+                           
                         ))}
                     </div>
                 </div>
