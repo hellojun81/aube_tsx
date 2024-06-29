@@ -177,8 +177,8 @@ const Home: React.FC<PropType> = (props) => {
                                     width={700}
                                     height={475}
                                     loading="lazy"
-                                    placeholder="blur"
-                                    // blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD/..." // base64 블러 이미지 데이터
+                                    // placeholder="blur"
+                                    blurDataURL="/image/loading.gif" // base64 블러 이미지 데이터
                                 />
                             </div>
                         ))}
