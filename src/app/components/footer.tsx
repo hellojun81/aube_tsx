@@ -28,30 +28,30 @@ const Home = () => {
 
   return (
     <>
-        <div>
-      <div className="footersection spacer" ref={ref}></div>
-      <motion.footer
-        className="footersection c-footer"
-        initial={{ opacity: 0, y: 10 }}
-        animate={controls}
-      >
-        <div className="footer-content">
-          <div className="footer-info">
-            <p>Taul Company</p>
-            <p>owner:hong jae wook / kim wan jun</p>
-            <p>bussiness license:149-88-02941</p>
-            <p>6, Achasan-ro 11ga-gil, Seongdong-gu, Seoul, Republic of Korea</p>
-            <p>TEL:(010) 3101-9551 | <a href="mailto:taulcontact@gmail.com">taulcontact@gmail.com</a></p>
+      <div>
+        <div className="footersection spacer" ref={ref}></div>
+        <motion.footer
+          className="footersection c-footer"
+          initial={{ opacity: 0, y: 10 }}
+          animate={controls}
+        >
+          <div className="footer-content">
+            <div className="footer-info">
+              <p>Taul Company</p>
+              <p>owner:hong jae wook / kim wan jun</p>
+              <p>bussiness license:149-88-02941</p>
+              <p>6, Achasan-ro 11ga-gil, Seongdong-gu, Seoul, Republic of Korea</p>
+              <p>TEL:(010) 3101-9551 | <a href="mailto:taulcontact@gmail.com">taulcontact@gmail.com</a></p>
+            </div>
           </div>
-        </div>
-      </motion.footer>
+        </motion.footer>
 
 
 
-      
-    </div>
-     {/* Kakao Pixel */}
-     <Script
+
+      </div>
+      {/* Kakao Pixel */}
+      <Script
         src="//t1.daumcdn.net/kas/static/kp.js"
         strategy="afterInteractive"
         onLoad={() => {
@@ -88,10 +88,26 @@ const Home = () => {
         `}
       </Script>
       <noscript>
-        <img height="1" width="1" style={{display:'none'}}
+        <img height="1" width="1" style={{ display: 'none' }}
           src="https://www.facebook.com/tr?id=1442522209958810&ev=PageView&noscript=1"
         />
       </noscript>
+
+
+      <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (!wcs_add) var wcs_add={};
+              wcs_add["wa"] = "s_4f484c53bd37";
+              if (!_nasa) var _nasa={};
+              if(window.wcs){
+                wcs.inflow();
+                wcs_do(_nasa);
+              }
+            `,
+          }}
+        />
     </>
   );
 };
