@@ -166,7 +166,7 @@ const Home: React.FC<PropType> = (props) => {
                         {fileList.map((link, index) => (
                            
                                 <div className="embla__slide" key={index}>
-                                    <Image
+                                    <img
                                         alt="description"
                                         src={replaceWord(link, 'public', '')}
                                         className={`image-container ${cursorClass}`}
@@ -175,10 +175,10 @@ const Home: React.FC<PropType> = (props) => {
                                             maxWidth: '100%',
                                             objectFit: 'contain',
                                         }}
-                                        // layout="responsive"
-                                        width={700}
-                                        height={475}
-                                        loading="lazy"
+                                        // // layout="responsive"
+                                        // width={700}
+                                        // height={475}
+                                        // loading="lazy"
                                         // placeholder="blur"
                                         // onLoad={() => setIsLoaded(true)}
                                     />
