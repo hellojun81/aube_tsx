@@ -11,6 +11,8 @@ import ScrollToTopButton from './components/ScrollToTopButton';
 
 export const metadata: Metadata = {
   title: "aubestudio",
+  // author:"어브 스튜디오",
+  keywords:"어브 스튜디오, 성수동 스튜디오, 400평 스튜디오, 크리에이티브 공간, 이벤트, 렌탈 스튜디오,팝업,룩북",
   description: "성수동에 위치한 400평 규모에 현재와 과거가 조화롭게 믹스 되어있는 무엇이든 가능한 공간 이에요.",
   viewport: "width=device-width, initial-scale=1.0, user-scalable=no",
 };
