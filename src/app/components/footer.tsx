@@ -4,6 +4,8 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './footer.css';
 import Script from 'next/script';
+import GoogleTagManager from './GoogleTagManager';
+
 const Home = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
@@ -48,7 +50,7 @@ const Home = () => {
 
 
 
-
+        <GoogleTagManager />
       </div>
       {/* Kakao Pixel */}
       <Script
@@ -92,6 +94,8 @@ const Home = () => {
           src="https://www.facebook.com/tr?id=1442522209958810&ev=PageView&noscript=1"
         />
       </noscript>
+
+
 
 
       <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
