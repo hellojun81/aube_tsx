@@ -2,7 +2,9 @@
 
 
 #floor0{background-color: #fff;}
-
+a{color:#333;
+text-decoration: none;
+}
 .scroll-downs {
     /* display: flex; */
     flex-direction: column;

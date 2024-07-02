@@ -43,7 +43,7 @@ const Home = () => {
               <p>owner:hong jae wook / kim wan jun</p>
               <p>bussiness license:149-88-02941</p>
               <p>6, Achasan-ro 11ga-gil, Seongdong-gu, Seoul, Republic of Korea</p>
-              <p>TEL:(010) 3101-9551 | <a href="mailto:taulcontact@gmail.com">taulcontact@gmail.com</a></p>
+              <p>TEL:<a href="tel:+821031019551">(010) 3101-9551</a> | <a href="mailto:taulcontact@gmail.com">taulcontact@gmail.com</a></p>
             </div>
           </div>
         </motion.footer>

@@ -56,7 +56,11 @@ const ApiEmailPage = () => {
   };
 
   return (
+
+    <>
+    
     <div className="container" id='sendEmail'>
+    <div style={{color:'#333'}}><p>TEL:<a href="tel:+821031019551">(010) 3101-9551</a> | <a href="mailto:taulcontact@gmail.com">taulcontact@gmail.com</a></p></div>
       <form onSubmit={handleSubmit} className='form'>
         <div className="form-group">
           <TextField
@@ -117,6 +121,7 @@ const ApiEmailPage = () => {
       </form>
       {status && <p>{status}</p>}
     </div>
+    </>
   );
 };
 
