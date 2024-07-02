@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
+// import Fade from 'embla-carousel-fade';
 import Image from 'next/image';
 import './newCarouse.css';
 import {
@@ -30,7 +32,7 @@ const Home: React.FC<PropType> = (props) => {
     const [loop, setLoop] = useState(props.loop);
     const [screenMode, setScreenMode] = useState(props.screenMode);
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const emblaOptions = { loop: true };
+    const emblaOptions = { loop: true , duration: 0 };
     const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions);
     const [cursorClass, setCursorClass] = useState<string>('');
     const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
