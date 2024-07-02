@@ -24,7 +24,9 @@ export default {
       for (const dir of directories) {
         const directoryPath = path.join(process.cwd(), dir);
         const files = fs.readdirSync(directoryPath);
-        const filePaths = files.map(file => path.join(dir, file));
+        // .jpg 확장자 필터링 추가
+        const jpgFiles = files.filter(file => path.extname(file).toLowerCase() === '.jpg');
+        const filePaths = jpgFiles.map(file => path.join(dir, file));
         allFiles[dir] = filePaths;
       }
 
