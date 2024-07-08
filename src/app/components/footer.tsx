@@ -112,6 +112,21 @@ const Home = () => {
             `,
           }}
         />
+
+<script type="text/javascript">
+var sc_project=13016063; 
+var sc_invisible=1; 
+var sc_security="a21d5454"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div className="statcounter"><a title="Web Analytics Made Easy -
+Statcounter" href="https://statcounter.com/" target="_blank"><img
+className="statcounter" src="https://c.statcounter.com/13016063/0/a21d5454/1/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade" /></a></div></noscript>
+
+
     </>
   );
 };
