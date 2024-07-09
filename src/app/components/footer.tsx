@@ -97,11 +97,27 @@ const Home = () => {
 
 
 
+      {/* statcounter:start */}
+      <Script >
+        {`
+        var sc_project=13016362;
+        var sc_invisible=1;
+        var sc_security="97d7152a";
+        `}
+      </Script>
+      <Script type="text/javascript"
+        src="https://www.statcounter.com/counter/counter.js" async></Script>
+      <noscript><div className="statcounter"><a title="Web Analytics"
+        href="https://statcounter.com/" target="_blank"><img className="statcounter"
+          src="https://c.statcounter.com/13016362/0/97d7152a/1/" alt="Web Analytics"
+          referrerPolicy="no-referrer-when-downgrade" /></a></div></noscript>
+      {/* statcounter:end */}
+
 
       <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
               if (!wcs_add) var wcs_add={};
               wcs_add["wa"] = "s_4f484c53bd37";
               if (!_nasa) var _nasa={};
@@ -110,20 +126,10 @@ const Home = () => {
                 wcs_do(_nasa);
               }
             `,
-          }}
-        />
+        }}
+      />
 
-<script type="text/javascript">
-var sc_project=13016362; 
-var sc_invisible=1; 
-var sc_security="97d7152a"; 
-</script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js" async></script>
-<noscript><div className="statcounter"><a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img className="statcounter"
-src="https://c.statcounter.com/13016362/0/97d7152a/1/" alt="Web Analytics"
-referrerPolicy="no-referrer-when-downgrade" /></a></div></noscript>
+
 
     </>
   );
