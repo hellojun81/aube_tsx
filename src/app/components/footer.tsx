@@ -114,8 +114,8 @@ const Home = () => {
       {/* statcounter:end */}
 
 
-      <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-      <script
+      <Script type="text/javascript" src="//wcs.naver.net/wcslog.js"></Script>
+      <Script
         dangerouslySetInnerHTML={{
           __html: `
               if (!wcs_add) var wcs_add={};
