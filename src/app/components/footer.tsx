@@ -96,6 +96,21 @@ const Home = () => {
       </noscript>
 
 
+      <Script type="text/javascript" src="//wcs.naver.net/wcslog.js"></Script>
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `
+              if (!wcs_add) var wcs_add={};
+              wcs_add["wa"] = "s_4f484c53bd37";
+              if (!_nasa) var _nasa={};
+              if(window.wcs){
+                wcs.inflow();
+                wcs_do(_nasa);
+              }
+            `,
+        }}
+      />
+
 
       {/* statcounter:start */}
       <Script >
@@ -112,23 +127,6 @@ const Home = () => {
           src="https://c.statcounter.com/13016362/0/97d7152a/1/" alt="Web Analytics"
           referrerPolicy="no-referrer-when-downgrade" /></a></div></noscript>
       {/* statcounter:end */}
-
-
-      <Script type="text/javascript" src="//wcs.naver.net/wcslog.js"></Script>
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: `
-              if (!wcs_add) var wcs_add={};
-              wcs_add["wa"] = "s_4f484c53bd37";
-              if (!_nasa) var _nasa={};
-              if(window.wcs){
-                wcs.inflow();
-                wcs_do(_nasa);
-              }
-            `,
-        }}
-      />
-
 
 
     </>
