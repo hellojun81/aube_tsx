@@ -40,7 +40,7 @@ const Home = () => {
           <div className="footer-content">
             <div className="footer-info">
               <p>Taul Company</p>
-              <p>owner:hong jae wook / kim wan jun</p>
+              <p>owner:Hong jae wook / Kim wan jun</p>
               <p>bussiness license:149-88-02941</p>
               <p>6, Achasan-ro 11ga-gil, Seongdong-gu, Seoul, Republic of Korea</p>
               <p>TEL:<a href="tel:+821031019551">(010) 3101-9551</a> | <a href="mailto:taulcontact@gmail.com">taulcontact@gmail.com</a></p>
