@@ -233,7 +233,6 @@ const App: React.FC = () => {
             className={floorpadding}
             style={{
               backgroundColor:'#fff'
-              // position: 'relative'
             }}
           >
             <div style={{

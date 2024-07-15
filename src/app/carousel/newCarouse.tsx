@@ -177,12 +177,7 @@ const Home: React.FC<PropType> = (props) => {
                                             maxWidth: '100%',
                                             objectFit: 'contain',
                                         }}
-                                        // layout="responsive"
-                                        // width={700}
-                                        // height={475}
                                         loading="lazy"
-                                        // placeholder="blur"
-                                        // onLoad={() => setIsLoaded(true)}
                                     />
                                 </div>
                            

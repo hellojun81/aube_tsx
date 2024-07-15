@@ -5,6 +5,11 @@
   padding: 20px;
   background-color: #ffffff;
 }
+#sendEmail .info{
+  font-size: 12px;
+  line-height:15px;
+  margin-top:15px;
+}
 
 #sendEmail h1 {
   text-align: center;
