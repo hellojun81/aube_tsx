@@ -103,12 +103,19 @@ const Home: React.FC<PropType> = (props) => {
 
 
     const scrollToPrevious = useCallback(() => {
-        if (emblaApi) emblaApi.scrollPrev();
-    }, [emblaApi]);
+        if (api) api.scrollPrev();
+    }, [api]);
 
     const scrollToNext = useCallback(() => {
-        if (emblaApi) emblaApi.scrollNext();
-    }, [emblaApi]);
+        if (api) api.scrollNext();
+    }, [api]);
+    // const scrollToPrevious = useCallback(() => {
+    //     if (emblaApi) emblaApi.scrollPrev();
+    // }, [emblaApi]);
+
+    // const scrollToNext = useCallback(() => {
+    //     if (emblaApi) emblaApi.scrollNext();
+    // }, [emblaApi]);
 
     const {
         prevBtnDisabled,

@@ -84,12 +84,20 @@ h1 {
 .mainsection2 {
     padding: 20px !important;
     margin-top:100px;
+    position: relative;
 }
 .mainsection {
     position: relative;
     margin-top:100px;
 }
-
+.mainsection2 .button_center{
+    position: absolute;
+    z-index: 10;
+    text-align: center;
+    width:100%;
+    bottom:20px;
+    color:#fff;
+}
 
 .c-intro {
     position: absolute;
