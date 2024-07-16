@@ -63,11 +63,8 @@ h1 {
 .ns-parallax-image__inner {
     object-fit: contain !important;
 }
+.floorinfo{padding:10px;}
 
-
-.mainsection {
-    padding: 10px;
-}
 
 .mainsection2 {
     padding: 20px !important;

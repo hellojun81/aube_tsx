@@ -198,7 +198,7 @@ const Home: React.FC<PropType> = (props) => {
     return (
         <>
             <div className={`${props.classname}`} id={props.id}>
-                <div>
+                <div className='floorinfo'>
                     {renderFloorInfo()}
                 </div>
                 {/* {screenMode === 'height' && floor < 99 ? (
