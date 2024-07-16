@@ -145,11 +145,11 @@ const App: React.FC = () => {
         images.push(img);
       }
     };
-  
+
     preloadImages();
 
 
-  }, [imagesPath,controls1, controls2, controls3, controls4, scrollY, isClient]);
+  }, [imagesPath, controls1, controls2, controls3, controls4, scrollY, isClient]);
 
   if (!isClient) {
     // 서버 측에서는 아무것도 렌더링하지 않음
@@ -167,8 +167,28 @@ const App: React.FC = () => {
         <Naverbar />
         <ScrollContainer >
           <></>
+
+            <div className="button_container">
+              <section
+                style={{
+                  height: "100%",
+                  backgroundColor: '#fff'
+                }}
+              >
+                <EmblaCarousel
+                  floor={99}
+                  loop={10}
+                  screenMode={screenMode}
+                  id='home'
+                  key={99}
+                  fileCount={10}
+                  classname='fullimage'
+                />
+              </section>
+            </div>
+       
+
           <section
-            id='home'
             className={firstpage}
             style={{
               alignItems: "center",
@@ -176,14 +196,11 @@ const App: React.FC = () => {
               position: 'relative',
               backgroundColor: '#171717',
               zIndex: '99',
-              // height:'200vh'
-              // height: '300vh',
-              // overflowY: 'auto'
             }}
           >
 
 
-            <div className="titleMain" >
+            {/* <div className="titleMain" >
               {motionInfo.map((link, index) => (
                 <div className={`${link.name} ${link.name1}`} key={index}>
                   <motion.div
@@ -197,8 +214,8 @@ const App: React.FC = () => {
                     AUBE
                   </motion.div>
                 </div>
-              ))}
-              <div className='Hero_title_center Hero_titlecenter' key={4}>
+              ))} */}
+              {/* <div className='Hero_title_center Hero_titlecenter' key={4}>
                 <div
                   className='titleCSub'
                   style={{ fontSize: '1.5rem' }}
@@ -215,82 +232,82 @@ const App: React.FC = () => {
                   </div>
 
                 </div>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
 
 
 
-          <SequenceSection
-            // end="80%"
-            imagesPath={imagesPath}
-            imagesCount={30}
-            imagesType="jpg" />
+            <SequenceSection
+              // end="80%"
+              imagesPath={imagesPath}
+              imagesCount={30}
+              imagesType="jpg" />
           </section>
         </ScrollContainer>
 
+        <section
+          id='floor0'
+          className={floorpadding}
+          style={{
+            backgroundColor: '#fff'
+          }}
+        >
+          <div style={{
+            fontSize: '7em',
+            fontWeight: '900',
+            textAlign: 'center',
+            paddingTop: '10px'
+          }}>AUBE</div>
+          <p>
+            Aube Studio 건축물은 1974년 공장으로 시작되었습니다. 이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층, 2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다. 산업화를 상징하는 붉은 벽돌 위에 근대 건축의 거장 르코르뷔제를 오마주 하는 창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며, 710㎡의 대지 위에 3층으로 지어진 두 개의 건물과 마당은 거의 모든 것을 하기에 가능한 특별한 공간으로 제공됩니다.<br /><br /> Aube Studio began as a factory in 1974. This interesting building, each in a different style, was expanded with a second floor in 1986 and a third floor in 2013, inviting visitors to explore the corridors of time. Windows and doors that pay homage to the master of modern architecture, Le Corbusier, on red bricks symbolizing industrialization present a functionalistic yet organic formative beauty, and the two three-story buildings and yard built on a 710㎡ site provide almost everything. Therefore, it is provided as a special space.
+          </p>
+          <div style={{ color: "#fff" }}>
+            어브 스튜디오 성수동 팝업 행사 스튜디오 aube studio 룩북 패션화보 광고 촬영
+          </div>
+        </section>
+
+        {Carousel.map((link, index) => (
           <section
-            id='floor0'
-            className={floorpadding}
+            // id={link.id}
+            // className={floorpadding}
             style={{
-              backgroundColor:'#fff'
+              height: "100%",
+              backgroundColor: '#fff'
+              // position: 'relative'
             }}
           >
-            <div style={{
-              fontSize: '7em',
-              fontWeight: '900',
-              textAlign: 'center',
-              paddingTop: '10px'
-            }}>AUBE</div>
-            <p>
-              Aube Studio 건축물은 1974년 공장으로 시작되었습니다. 이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층, 2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다. 산업화를 상징하는 붉은 벽돌 위에 근대 건축의 거장 르코르뷔제를 오마주 하는 창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며, 710㎡의 대지 위에 3층으로 지어진 두 개의 건물과 마당은 거의 모든 것을 하기에 가능한 특별한 공간으로 제공됩니다.<br /><br /> Aube Studio began as a factory in 1974. This interesting building, each in a different style, was expanded with a second floor in 1986 and a third floor in 2013, inviting visitors to explore the corridors of time. Windows and doors that pay homage to the master of modern architecture, Le Corbusier, on red bricks symbolizing industrialization present a functionalistic yet organic formative beauty, and the two three-story buildings and yard built on a 710㎡ site provide almost everything. Therefore, it is provided as a special space.
-            </p>
-<div style={{color:"#fff"}}>
-  어브 스튜디오 성수동 팝업 행사 스튜디오 aube studio 룩북 패션화보 광고 촬영
-</div>
+            <EmblaCarousel
+              fileCount={link.loop}
+              classname={floorpadding}
+              floor={link.floor}
+              loop={link.loop}
+              screenMode={screenMode}
+              id={link.id}
+              key={index}
+            />
           </section>
+        ))}
 
-          {Carousel.map((link, index) => (
-            <section
-              // id={link.id}
-              // className={floorpadding}
-              style={{
-                height: "100%",
-                 backgroundColor:'#fff'
-                // position: 'relative'
-              }}
-            >
-              <EmblaCarousel
-                fileCount={link.loop}
-                classname={floorpadding}
-                floor={link.floor}
-                loop={link.loop}
-                screenMode={screenMode}
-                id={link.id}
-                key={index}
-              />
-            </section>
-          ))}
+        <section
+          id='Contact'
+          style={{
 
-          <section
-            id='Contact'
-            style={{
+            marginBottom: "100px"
+          }}
+          className={floorpadding}
+        >
+          <div><h1>Contact US</h1></div>
+          <Email />
+        </section>
 
-              marginBottom: "100px"
-            }}
-            className={floorpadding}
-          >
-            <div><h1>Contact US</h1></div>
-            <Email />
-          </section>
+        <section
+          style={{
 
-          <section
-            style={{
+          }}
+        >
+          <Footer />
+        </section>
 
-            }}
-          >
-            <Footer />
-          </section>
-  
 
       </div>
     </>

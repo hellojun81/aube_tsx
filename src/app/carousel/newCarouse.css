@@ -90,7 +90,19 @@
     width: 20%;
     /* height: 50%; */
 }
-
+.fullimage{
+    position: relative;
+}
+.full_button_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    position: absolute;
+    z-index: 99;
+    bottom:0px;
+    color:#fff
+}
 .button_container {
     display: flex;
     justify-content: space-between;

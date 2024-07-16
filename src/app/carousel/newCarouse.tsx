@@ -1,13 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
-// import Fade from 'embla-carousel-fade';
+import Fade from 'embla-carousel-fade';
+import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image';
 import './newCarouse.css';
 import {
     SelectedSnapDisplay,
-    useSelectedSnapDisplay
+    useSelectedSnapDisplay,
 } from './EmblaCarouselSelectedSnapDisplay';
+
+
 
 import {
     PrevButton,
@@ -21,7 +24,8 @@ type PropType = {
     loop: number,
     screenMode: string,
     classname: string,
-    id: string
+    id: string,
+
 };
 interface ImageLink {
     path: string;
@@ -32,14 +36,26 @@ const Home: React.FC<PropType> = (props) => {
     const [loop, setLoop] = useState(props.loop);
     const [screenMode, setScreenMode] = useState(props.screenMode);
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const emblaOptions = { loop: true , duration: 0 };
+    const emblaOptionsAuto = { loop: true, duration: 0, autoplay: true };
+    const emblaOptions = { loop: true, duration: 0 };
     const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions);
+    const [emblaRef2, emblaApi2] = useEmblaCarousel({ loop: true }, [
+        Fade(),
+        Autoplay({ playOnInit: true, delay: 3000 })
+    ]);
     const [cursorClass, setCursorClass] = useState<string>('');
-    const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
+    
+    let api=emblaApi
+    if (floor === 99) {
+      api=emblaApi2
+    }
+
+    const { selectedSnap, snapCount } = useSelectedSnapDisplay(api);
+    const [isPlaying, setIsPlaying] = useState(true)
     const [fileList, setFileList] = useState<string[]>([]);
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(false);
-
+    const autoplayDelay = 3000
     const fetchFileList = useCallback(() => {
         const link = `public/${floor}floor/${screenMode}`;
         fetch('/fileList.json')
@@ -54,6 +70,37 @@ const Home: React.FC<PropType> = (props) => {
     useEffect(() => {
         fetchFileList();
     }, [fetchFileList]);
+
+    useEffect(() => {
+        const autoplay = emblaApi2?.plugins()?.autoplay
+        if (!autoplay) return
+    
+        setIsPlaying(autoplay.isPlaying())
+        emblaApi2
+          .on('autoplay:play', () => setIsPlaying(true))
+          .on('autoplay:stop', () => setIsPlaying(false))
+          .on('reInit', () => setIsPlaying(autoplay.isPlaying()))
+      }, [emblaApi2])
+
+
+
+    // useEffect(() => {
+    //     if (!emblaApi2) return
+
+    //     const autoplay = () => {
+    //         if (emblaApi2) {
+    //             emblaApi2.scrollNext()
+    //         }
+    //     }
+
+    //     const timer = setInterval(autoplay, autoplayDelay)
+
+    //     return () => {
+    //         clearInterval(timer)
+    //     }
+    // }, [emblaApi2, autoplayDelay])
+
+
 
     const scrollToPrevious = useCallback(() => {
         if (emblaApi) emblaApi.scrollPrev();
@@ -100,6 +147,7 @@ const Home: React.FC<PropType> = (props) => {
     const renderFloorInfo = () => {
         switch (floor) {
             case 10:
+                console.log('fileList', fileList)
                 return;
             case 1:
                 return (
@@ -147,14 +195,13 @@ const Home: React.FC<PropType> = (props) => {
                 return null;
         }
     };
-
     return (
         <>
             <div className={`${props.classname}`} id={props.id}>
                 <div>
                     {renderFloorInfo()}
                 </div>
-                {screenMode === 'height' ? (
+                {/* {screenMode === 'height' && floor < 99 ? (
                     <div className="button_container">
                         <div className="button_left"> <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} /></div>
                         <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
@@ -162,11 +209,43 @@ const Home: React.FC<PropType> = (props) => {
                     </div>
                 ) :
                     <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
-                }
-                <div className="embla" ref={emblaRef} onClick={handleMouseClick}>
-                    <div className="embla__container">
-                        {fileList.map((link, index) => (
-                           
+                } */}
+                {screenMode === 'height' && floor < 99 ? (
+                    <div className="button_container">
+                        <div className="button_left">
+                            <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+                        </div>
+                        <div className="button_center">
+                            <SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} />
+                        </div>
+                        <div className="button_right">
+                            <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+                        </div>
+                    </div>
+                ) : floor < 99 ? (
+                    <div className="button_center">
+                        <SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} />
+                    </div>
+                ) : (
+                    <div className="full_button_container">
+                        <div className="button_left">
+                            <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+                        </div>
+                        <div className="full_button_center">
+                            <SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} />
+                        </div>
+                        <div className="full_button_right">
+                            <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+                        </div>
+                    </div>
+                )}
+
+
+                {floor === 99 ? (
+                    <div className="embla" ref={emblaRef2} onClick={handleMouseClick}>
+                        <div className="embla__container">
+                            {fileList.map((link, index) => (
+
                                 <div className="embla__slide" key={index}>
                                     <img
                                         alt="description"
@@ -180,10 +259,36 @@ const Home: React.FC<PropType> = (props) => {
                                         loading="lazy"
                                     />
                                 </div>
-                           
-                        ))}
+
+                            ))}
+                        </div>
                     </div>
-                </div>
+
+
+
+                ) :
+                    <div className="embla" ref={emblaRef} onClick={handleMouseClick}>
+                        <div className="embla__container">
+                            {fileList.map((link, index) => (
+
+                                <div className="embla__slide" key={index}>
+                                    <img
+                                        alt="description"
+                                        src={replaceWord(link, 'public', '')}
+                                        className={`image-container ${cursorClass}`}
+                                        onMouseMove={handleMouseMove}
+                                        style={{
+                                            maxWidth: '100%',
+                                            objectFit: 'contain',
+                                        }}
+                                        loading="lazy"
+                                    />
+                                </div>
+
+                            ))}
+                        </div>
+                    </div>
+                }
             </div>
         </>
     );

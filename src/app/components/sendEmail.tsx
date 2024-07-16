@@ -89,7 +89,7 @@ const ApiEmailPage = () => {
         <div className="form-group">
     
           <TextField
-            label="subject"
+            label="Subject"
             variant="standard"
             margin="normal"
             fullWidth
@@ -101,7 +101,7 @@ const ApiEmailPage = () => {
         <div className="form-group"  style={{marginBottom:'10px'}}>
        
           <TextField
-            id="message"
+            id="Message"
             label="message"
             value={message}
             multiline
