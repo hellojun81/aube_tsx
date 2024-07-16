@@ -75,13 +75,18 @@ h1 {
 #Stairs .floorinfo
 {padding:10px;}
 
-
+.mainsection .button_container{
+    position: absolute;
+    bottom:10px;
+    z-index: 10;
+    color:#fff;
+}
 .mainsection2 {
     padding: 20px !important;
     margin-top:100px;
 }
 .mainsection {
-
+    position: relative;
     margin-top:100px;
 }
 
