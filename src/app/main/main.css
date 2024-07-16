@@ -63,7 +63,17 @@ h1 {
 .ns-parallax-image__inner {
     object-fit: contain !important;
 }
-.floorinfo{padding:10px;}
+
+
+
+.floorinfo:nth-child(1){padding:0px;}
+#floor1 .floorinfo,
+#floor2 .floorinf,
+#floor3 .floorinfo,
+#Outside .floorinfo,
+#Other .floorinfo,
+#Stairs .floorinfo
+{padding:10px;}
 
 
 .mainsection2 {
@@ -192,7 +202,3 @@ div.ns-horizontal-section__item {
     /* transform: rotate(-45deg); */
 }
 
-#1floor,
-#3floor {
-    background-color: #f9f9f9;
-}

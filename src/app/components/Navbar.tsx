@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 
 const menuLinks = [
     { path: "#main", label: "home" },
-    { path: "#1floor", label: "1Floor" },
-    { path: "#2floor", label: "2Floor" },
-    { path: "#3floor", label: "3Floor" },
+    { path: "#floor1", label: "1Floor" },
+    { path: "#floor2", label: "2Floor" },
+    { path: "#floor3", label: "3Floor" },
     { path: "#Other", label: "Other" },
     { path: "#Stairs", label: "Stairs" },
     { path: "#Outside", label: "Outside" },
