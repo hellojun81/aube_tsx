@@ -165,6 +165,7 @@ const App: React.FC = () => {
     <>
       <div>
         <Naverbar />
+        {screenMode === 'height'  ? (
         <div className="button_container">
               <section
                 style={{
@@ -182,10 +183,28 @@ const App: React.FC = () => {
                   classname='fullimage'
                 />
               </section>
-            </div>
+            </div>):<></>}
         <ScrollContainer >
           <></>
-
+          {screenMode === 'width'  ? (
+        <div className="button_container">
+              <section
+                style={{
+                  height: "100%",
+                  backgroundColor: '#fff'
+                }}
+              >
+                <EmblaCarousel
+                  floor={99}
+                  loop={10}
+                  screenMode={screenMode}
+                  id='home'
+                  key={99}
+                  fileCount={10}
+                  classname='fullimage'
+                />
+              </section>
+            </div>):<></>}
          
        
 
@@ -241,7 +260,7 @@ const App: React.FC = () => {
             <SequenceSection
               // end="80%"
               imagesPath={imagesPath}
-              imagesCount={30}
+              imagesCount={25}
               imagesType="jpg" />
           </section>
         </ScrollContainer>
