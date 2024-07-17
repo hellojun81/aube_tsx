@@ -297,20 +297,24 @@ const Home: React.FC = () => {
     let usersfee = GetUserFee(phototype, users, hour)
     const getresult = GetplaceMoney(phototype, floor_fee, hour, floortype, basic_fee);
     setResult(getresult);
-    console.log('대관료',getresult?.place)
+    console.log({'대관료':getresult?.place,'기본대관료':getresult?.placeOriginfee})
     let GetPlaceMoney = getresult?.place ?? 0;
     let GetOriginPlaceMoney = getresult?.placeOriginfee ?? 0;
+
+
+
     let tmoney = GetPlaceMoney + usersfee
-    GetOriginPlaceMoney = GetOriginPlaceMoney + usersfee
     const origin_Tmoney = tmoney
     setOriginTmoney(origin_Tmoney)
     setTmoney(tmoney)
     let tMoney2 = (tmoney / 4) * useHour2
     GetOriginPlaceMoney = (GetOriginPlaceMoney / 4) * useHour2
+    GetOriginPlaceMoney = GetOriginPlaceMoney + usersfee
     console.log({ tmoney: tmoney, useHour2: useHour2, tMoney2: tMoney2 })
     setOriginTmoney(origin_Tmoney)
     setOriginTmoney(GetOriginPlaceMoney)
-    console.log({ 렌탈장소: floortype, '4시간_기본사용료': GetPlaceMoney, 사용시간: hour, 총인원수추가요금: usersfee, 할인전가격: GetOriginPlaceMoney, 총인원수: users, 촬영구분: phototype })
+    console.log({ 렌탈장소: floortype, '4시간_기본사용료': GetPlaceMoney, 사용시간: hour, 
+      총인원수추가요금: usersfee, 할인전가격: GetOriginPlaceMoney, 총인원수: users, 촬영구분: phototype })
     if (hour == 'all') {
       setTmoney(tmoney)
     } else {
