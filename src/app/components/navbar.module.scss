@@ -7,7 +7,7 @@
     position: fixed;
     top: 0;
     transition: 0.5s height;
-    z-index: 9;
+    z-index: 100;
 
     .navigation {
         position: absolute;
@@ -51,7 +51,7 @@
                 background: #171717;
                 position: absolute;
                 width: 30px;
-                height: 2px;
+                height: 3px;
                 z-index: 0;
                 top: calc(25px / 2 - 1.5px);
                 transition: 0.25s width ease-in-out,
@@ -63,7 +63,7 @@
                 background-color: #171717;
                 position: absolute;
                 width: 30px;
-                height: 2px;
+                height: 3px;
                 transform: translateY(8px);
                 z-index: 0;
                 transition: 0.25s transform ease-in-out,
@@ -75,7 +75,7 @@
                 background-color: #171717;
                 position: absolute;
                 width: 30px;
-                height: 2px;
+                height: 3px;
                 transform: translateY(-8px);
                 z-index: 0;
                 transition: 0.25s transform ease-in-out,
