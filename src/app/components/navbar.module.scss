@@ -64,7 +64,7 @@
                 position: absolute;
                 width: 30px;
                 height: 2px;
-                transform: translateY(5px);
+                transform: translateY(8px);
                 z-index: 0;
                 transition: 0.25s transform ease-in-out,
                     0.5s background-color ease-in-out;
@@ -76,7 +76,7 @@
                 position: absolute;
                 width: 30px;
                 height: 2px;
-                transform: translateY(-5px);
+                transform: translateY(-8px);
                 z-index: 0;
                 transition: 0.25s transform ease-in-out,
                     0.5s background-color ease-in-out;
