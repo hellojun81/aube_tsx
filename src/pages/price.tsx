@@ -5,8 +5,6 @@ interface GetplaceMoneyResult {
   placeOriginfee: number;
 }
 
-
-
 const Home: React.FC = () => {
   const [inputValues, setInputValues] = useState<string[]>(['', '']);
   const [phototype, setphototype] = useState<string>('1');
@@ -46,80 +44,11 @@ const Home: React.FC = () => {
   };
 
 
-  const handleButtonClick = () => {
-    console.log({ phototype: phototype, floortype: floortype, hour: userCnt, users: useHour })
-    console.log('user', userCnt);
-
-    let hour = useHour
-    let users = parseInt(userCnt)
-    let floor_fee = []
-    let basic_fee=[]
-    basic_fee[0] = 300000;
-    basic_fee[1] = 1200000;
-    basic_fee[2] = 800000;
-    basic_fee[3] = 800000;
-    if (phototype == '1') {
-      if (hour == 'all') {
-        floor_fee[0] = 500000;  ///별채
-        floor_fee[1] = 1900000; //1층
-        floor_fee[2] = 1300000; //2층
-        floor_fee[3] = 1300000; //3층
-
-      } else {
-        floor_fee[0] = 300000;
-        floor_fee[1] = 1200000;
-        floor_fee[2] = 800000;
-        floor_fee[3] = 800000;
-
-      }
-    }
-
-    if (phototype == '2') {
-      if (hour == 'all') {
-        floor_fee[0] = 600000;
-        floor_fee[1] = 2300000;
-        floor_fee[2] = 1600000;
-        floor_fee[3] = 1600000;
-
-      } else {
-        floor_fee[0] = 350000;
-        floor_fee[1] = 1500000;
-        floor_fee[2] = 1000000;
-        floor_fee[3] = 1000000;
-      }
-    }
-
-    console.log('floor_fee', floor_fee)
-    let usersfee = GetUserFee(phototype, users, hour)
-    // let GetPlaceMoney = GetplaceMoney(phototype, floor_fee, hour, floortype)
-
-    const getresult = GetplaceMoney(phototype, floor_fee, hour, floortype,basic_fee);
-    setResult(getresult);
-    let GetPlaceMoney = result?.place ?? 0;
-    let GetOriginPlaceMoney = result?.placeOriginfee ?? 0;
-    let tmoney = GetPlaceMoney + usersfee
-    GetOriginPlaceMoney = GetOriginPlaceMoney + usersfee
-    const origin_Tmoney = tmoney
-    setOriginTmoney(origin_Tmoney)
-    setTmoney(tmoney)
-    let tMoney2 = (tmoney / 4) * useHour2
-    GetOriginPlaceMoney = (GetOriginPlaceMoney / 4) * useHour2
-    console.log({ tmoney: tmoney, useHour2: useHour2, tMoney2: tMoney2 })
-    setOriginTmoney(origin_Tmoney)
-    setOriginTmoney(GetOriginPlaceMoney)
-    console.log({ 렌탈장소:floortype,'4시간_기본사용료': GetPlaceMoney, 사용시간: hour, 총인원수추가요금: usersfee, 할인전가격: GetOriginPlaceMoney,총인원수: users, 촬영구분: phototype })
-    if (hour == 'all') {
-      setTmoney(tmoney)
-    } else {
-      setTmoney(tMoney2)
-    }
-  };
-
 
 
   const GetUserFee = (phototype: string, usersCnt: number, hour: string): number => {
     let UsersFee = 0
-
+    console.log('GetUserFee사용인원:', usersCnt)
     if (usersCnt <= 10) {
       usersCnt = 0
       UsersFee = 0
@@ -175,13 +104,13 @@ const Home: React.FC = () => {
 
   }
 
-  const GetplaceMoney = (phototype: string, floor_fee: number[], hour: string, floor: string,basic_fee: number[],): GetplaceMoneyResult => {
+  const GetplaceMoney = (phototype: string, floor_fee: number[], hour: string, floor: string, basic_fee: number[],): GetplaceMoneyResult => {
     console.log({ floor_fee: floor_fee, hour: hour, floor: floor })
     let place = 0
     let placeOriginfee = 0
     place = floor_fee[parseInt(floortype)];
     placeOriginfee = basic_fee[parseInt(floortype)];
-    console.log('placeOriginfee', placeOriginfee)
+    // console.log('placeOriginfee', placeOriginfee)
     if (phototype == '1') {
       if (hour == 'all') {
         switch (floortype) {
@@ -315,13 +244,83 @@ const Home: React.FC = () => {
       }
 
     }
-    console.log('placeOriginfee', placeOriginfee)
+     console.log({'GetplaceMoney_Place':place,'GetplaceMoeny_placeOriginfee': placeOriginfee})
     return { place: place, placeOriginfee: placeOriginfee }
   };
 
   const formatMoney = (amount: number): string => {
     return amount.toLocaleString('ko-KR', { style: 'currency', currency: 'KRW' });
   }
+
+  const handleButtonClick = () => {
+    let hour = useHour
+    let users = parseInt(userCnt)
+    console.log('사용인원', userCnt)
+    let floor_fee = []
+    let basic_fee = []
+    basic_fee[0] = 300000;
+    basic_fee[1] = 1200000;
+    basic_fee[2] = 800000;
+    basic_fee[3] = 800000;
+    if (phototype == '1') {
+      if (hour == 'all') {
+        floor_fee[0] = 500000;  ///별채
+        floor_fee[1] = 1900000; //1층
+        floor_fee[2] = 1300000; //2층
+        floor_fee[3] = 1300000; //3층
+
+      } else {
+        floor_fee[0] = 300000;
+        floor_fee[1] = 1200000;
+        floor_fee[2] = 800000;
+        floor_fee[3] = 800000;
+
+      }
+    }
+
+    if (phototype == '2') {
+      if (hour == 'all') {
+        floor_fee[0] = 600000;
+        floor_fee[1] = 2300000;
+        floor_fee[2] = 1600000;
+        floor_fee[3] = 1600000;
+
+      } else {
+        floor_fee[0] = 350000;
+        floor_fee[1] = 1500000;
+        floor_fee[2] = 1000000;
+        floor_fee[3] = 1000000;
+      }
+    }
+
+    console.log({ '기본전체대관료': floor_fee, '사용인원': users, '사용시간': hour ,'촬영구분':floortype,'4시간 기본사용료':basic_fee})
+    let usersfee = GetUserFee(phototype, users, hour)
+    const getresult = GetplaceMoney(phototype, floor_fee, hour, floortype, basic_fee);
+    setResult(getresult);
+    console.log('대관료',getresult?.place)
+    let GetPlaceMoney = getresult?.place ?? 0;
+    let GetOriginPlaceMoney = getresult?.placeOriginfee ?? 0;
+    let tmoney = GetPlaceMoney + usersfee
+    GetOriginPlaceMoney = GetOriginPlaceMoney + usersfee
+    const origin_Tmoney = tmoney
+    setOriginTmoney(origin_Tmoney)
+    setTmoney(tmoney)
+    let tMoney2 = (tmoney / 4) * useHour2
+    GetOriginPlaceMoney = (GetOriginPlaceMoney / 4) * useHour2
+    console.log({ tmoney: tmoney, useHour2: useHour2, tMoney2: tMoney2 })
+    setOriginTmoney(origin_Tmoney)
+    setOriginTmoney(GetOriginPlaceMoney)
+    console.log({ 렌탈장소: floortype, '4시간_기본사용료': GetPlaceMoney, 사용시간: hour, 총인원수추가요금: usersfee, 할인전가격: GetOriginPlaceMoney, 총인원수: users, 촬영구분: phototype })
+    if (hour == 'all') {
+      setTmoney(tmoney)
+    } else {
+      setTmoney(tMoney2)
+    }
+  };
+
+
+
+
 
   return (
     <div style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
