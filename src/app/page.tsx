@@ -14,14 +14,14 @@ export default function Home() {
 
   useEffect(() => {
 // 이미지 프리로드
-const preloadImages = (srcs: string[]) => {
-  srcs.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
+// const preloadImages = (srcs: string[]) => {
+//   srcs.forEach((src) => {
+//     const img = new Image();
+//     img.src = src;
+//   });
+// };
 
-preloadImages(imagesPaths);
+// preloadImages(imagesPaths);
 
     const timer = setTimeout(() => {
       router.push('/main'); // 이동할 페이지 경로를 지정합니다.
