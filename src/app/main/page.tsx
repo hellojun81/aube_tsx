@@ -189,7 +189,7 @@ const App: React.FC = () => {
          
        
 
-          {/* <section
+          <section
             className={firstpage}
             style={{
               alignItems: "center",
@@ -198,7 +198,7 @@ const App: React.FC = () => {
               backgroundColor: '#171717',
               zIndex: '99',
             }}
-          > */}
+          >
 
 
             {/* <div className="titleMain" >
@@ -238,12 +238,12 @@ const App: React.FC = () => {
 
 
 
-            {/* <SequenceSection
+            <SequenceSection
               // end="80%"
               imagesPath={imagesPath}
               imagesCount={30}
               imagesType="jpg" />
-          </section> */}
+          </section>
         </ScrollContainer>
 
         <section

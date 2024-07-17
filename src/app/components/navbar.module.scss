@@ -29,7 +29,7 @@
 
         .burgerMenuContainer {
             content: "";
-            width: 20px;
+            width: 30px;
             height: 3px;
             position: relative;
             right: 0;
@@ -38,7 +38,7 @@
 
             .burgerMenuTrigger {
                 content: "";
-                width: 20px;
+                width: 30px;
                 height: 3px;
                 position: relative;
                 right: 0;
@@ -50,7 +50,7 @@
                 content: "";
                 background: #171717;
                 position: absolute;
-                width: 20px;
+                width: 30px;
                 height: 2px;
                 z-index: 0;
                 top: calc(25px / 2 - 1.5px);
@@ -62,7 +62,7 @@
                 content: "";
                 background-color: #171717;
                 position: absolute;
-                width: 20px;
+                width: 30px;
                 height: 2px;
                 transform: translateY(5px);
                 z-index: 0;
@@ -74,7 +74,7 @@
                 content: "";
                 background-color: #171717;
                 position: absolute;
-                width: 20px;
+                width: 30px;
                 height: 2px;
                 transform: translateY(-5px);
                 z-index: 0;
@@ -83,7 +83,7 @@
             }
 
             .burgerMenuTrigger:hover ~ .burgerMenu {
-                width: 20px;
+                width: 30px;
             }
         }
     }
