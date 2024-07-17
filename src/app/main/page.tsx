@@ -165,7 +165,7 @@ const App: React.FC = () => {
     <>
       <div>
         <Naverbar />
-        {screenMode === 'height' ? (
+       
           <div className="button_container">
             <section
               style={{
@@ -183,8 +183,8 @@ const App: React.FC = () => {
                 classname='fullimage'
               />
             </section>
-          </div>) : <></>}
-        <ScrollContainer >
+          </div>
+        {/* <ScrollContainer >
           <></>
           {screenMode === 'width' ? (
             <div className="button_container">
@@ -204,11 +204,11 @@ const App: React.FC = () => {
                   classname='fullimage'
                 />
               </section>
-            </div>) : <></>}
+            </div>) : <></>} */}
 
 
 
-          <section
+          {/* <section
             className={firstpage}
             style={{
               alignItems: "center",
@@ -217,7 +217,7 @@ const App: React.FC = () => {
               backgroundColor: '#171717',
               zIndex: '99',
             }}
-          >
+          > */}
 
 
             {/* <div className="titleMain" >
@@ -259,18 +259,18 @@ const App: React.FC = () => {
 
 
 
-            {screenMode === 'height' ? (
+            {/* {screenMode === 'height' ? (
               <SequenceSection
                 // end="80%"
                 imagesPath={imagesPath}
                 imagesCount={25}
-                imagesType="jpg" />) : <></>}
+                imagesType="jpg" />) : <></>} */}
 
 
 
-
+{/* 
           </section>
-        </ScrollContainer>
+        </ScrollContainer> */}
 
         <section
           id='floor0'
