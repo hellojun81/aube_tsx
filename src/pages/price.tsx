@@ -53,19 +53,25 @@ const Home: React.FC = () => {
     let hour = useHour
     let users = parseInt(userCnt)
     let floor_fee = []
+    let basic_fee=[]
+    basic_fee[0] = 300000;
+    basic_fee[1] = 1200000;
+    basic_fee[2] = 800000;
+    basic_fee[3] = 800000;
+    if (phototype == '1') {
+      if (hour == 'all') {
+        floor_fee[0] = 500000;  ///별채
+        floor_fee[1] = 1900000; //1층
+        floor_fee[2] = 1300000; //2층
+        floor_fee[3] = 1300000; //3층
 
-    if (hour == 'all') {
-      floor_fee[0] = 500000;
-      floor_fee[1] = 1900000;
-      floor_fee[2] = 1300000;
-      floor_fee[3] = 1300000;
+      } else {
+        floor_fee[0] = 300000;
+        floor_fee[1] = 1200000;
+        floor_fee[2] = 800000;
+        floor_fee[3] = 800000;
 
-    } else {
-      floor_fee[0] = 300000;
-      floor_fee[1] = 1200000;
-      floor_fee[2] = 800000;
-      floor_fee[3] = 800000;
-
+      }
     }
 
     if (phototype == '2') {
@@ -87,21 +93,21 @@ const Home: React.FC = () => {
     let usersfee = GetUserFee(phototype, users, hour)
     // let GetPlaceMoney = GetplaceMoney(phototype, floor_fee, hour, floortype)
 
-    const getresult = GetplaceMoney(phototype, floor_fee, hour, floortype);
+    const getresult = GetplaceMoney(phototype, floor_fee, hour, floortype,basic_fee);
     setResult(getresult);
-    let GetPlaceMoney=result?.place ?? 0;
-    let GetOriginPlaceMoney=result?.placeOriginfee ?? 0;
+    let GetPlaceMoney = result?.place ?? 0;
+    let GetOriginPlaceMoney = result?.placeOriginfee ?? 0;
     let tmoney = GetPlaceMoney + usersfee
-    GetOriginPlaceMoney=GetOriginPlaceMoney+usersfee
+    GetOriginPlaceMoney = GetOriginPlaceMoney + usersfee
     const origin_Tmoney = tmoney
     setOriginTmoney(origin_Tmoney)
     setTmoney(tmoney)
     let tMoney2 = (tmoney / 4) * useHour2
-    GetOriginPlaceMoney=(GetOriginPlaceMoney/4)*useHour2
+    GetOriginPlaceMoney = (GetOriginPlaceMoney / 4) * useHour2
     console.log({ tmoney: tmoney, useHour2: useHour2, tMoney2: tMoney2 })
     setOriginTmoney(origin_Tmoney)
     setOriginTmoney(GetOriginPlaceMoney)
-    console.log({ GetPlaceMoney: GetPlaceMoney, hour: hour, usersfee: usersfee,GetOriginPlaceMoney:GetOriginPlaceMoney, users: users, phototype: phototype })
+    console.log({ 렌탈장소:floortype,'4시간_기본사용료': GetPlaceMoney, 사용시간: hour, 총인원수추가요금: usersfee, 할인전가격: GetOriginPlaceMoney,총인원수: users, 촬영구분: phototype })
     if (hour == 'all') {
       setTmoney(tmoney)
     } else {
@@ -169,12 +175,13 @@ const Home: React.FC = () => {
 
   }
 
-  const GetplaceMoney = (phototype: string, floor_fee: number[], hour: string, floor: string): GetplaceMoneyResult => {
+  const GetplaceMoney = (phototype: string, floor_fee: number[], hour: string, floor: string,basic_fee: number[],): GetplaceMoneyResult => {
     console.log({ floor_fee: floor_fee, hour: hour, floor: floor })
     let place = 0
     let placeOriginfee = 0
     place = floor_fee[parseInt(floortype)];
-    placeOriginfee = floor_fee[parseInt(floortype)];
+    placeOriginfee = basic_fee[parseInt(floortype)];
+    console.log('placeOriginfee', placeOriginfee)
     if (phototype == '1') {
       if (hour == 'all') {
         switch (floortype) {
@@ -308,7 +315,7 @@ const Home: React.FC = () => {
       }
 
     }
-console.log('placeOriginfee',placeOriginfee)
+    console.log('placeOriginfee', placeOriginfee)
     return { place: place, placeOriginfee: placeOriginfee }
   };
 
@@ -387,7 +394,7 @@ console.log('placeOriginfee',placeOriginfee)
         </select>
       </div>
 
-      {/* <h1>견적가:{formatMoney(originTmoney)}원</h1> */}
+      <h1>견적가:{formatMoney(originTmoney)}원</h1>
       <h1>할인가:{formatMoney(tmoney)}원</h1>
       <button onClick={handleButtonClick} style={{ padding: '10px 20px' }}>
         계산
