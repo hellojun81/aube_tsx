@@ -1,5 +1,11 @@
 "use client"
 import React, { useState } from 'react';
+interface GetplaceMoneyResult {
+  place: number;
+  placeOriginfee: number;
+}
+
+
 
 const Home: React.FC = () => {
   const [inputValues, setInputValues] = useState<string[]>(['', '']);
@@ -7,8 +13,10 @@ const Home: React.FC = () => {
   const [floortype, setfloortype] = useState<string>('1');
   const [userCnt, setuserCnt] = useState<string>('10');
   const [useHour, setuseHour] = useState<string>('half');
+  const [useHour2, setuseHour2] = useState<number>(4);
   const [tmoney, setTmoney] = useState<number>(0);
   const [originTmoney, setOriginTmoney] = useState<number>(0);
+  const [result, setResult] = useState<GetplaceMoneyResult | null>(null);
 
   const handleChange = (index: number) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const newValues = [...inputValues];
@@ -24,7 +32,13 @@ const Home: React.FC = () => {
     setfloortype(e.target.value);
   };
   const handleSelectChange3 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    const description = selectedOption.getAttribute('data-description');
+
     setuseHour(e.target.value);
+    if (description != null) {
+      setuseHour2(parseInt(description));
+    }
   };
 
   const handleSelectChange4 = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -40,44 +54,66 @@ const Home: React.FC = () => {
     let users = parseInt(userCnt)
     let floor_fee = []
 
-    if (hour =='half') {
-      floor_fee[0] = 300000;
-      floor_fee[1] = 1200000;
-      floor_fee[2] = 800000;
-      floor_fee[3] = 800000;
-    } else {
+    if (hour == 'all') {
       floor_fee[0] = 500000;
       floor_fee[1] = 1900000;
       floor_fee[2] = 1300000;
       floor_fee[3] = 1300000;
+
+    } else {
+      floor_fee[0] = 300000;
+      floor_fee[1] = 1200000;
+      floor_fee[2] = 800000;
+      floor_fee[3] = 800000;
+
     }
 
     if (phototype == '2') {
-      if (hour =='half') {
-        floor_fee[0] = 350000;
-        floor_fee[1] = 1500000;
-        floor_fee[2] = 1000000;
-        floor_fee[3] = 1000000;
-      } else {
+      if (hour == 'all') {
         floor_fee[0] = 600000;
         floor_fee[1] = 2300000;
         floor_fee[2] = 1600000;
         floor_fee[3] = 1600000;
+
+      } else {
+        floor_fee[0] = 350000;
+        floor_fee[1] = 1500000;
+        floor_fee[2] = 1000000;
+        floor_fee[3] = 1000000;
       }
     }
 
     console.log('floor_fee', floor_fee)
-    let usersfee=GetUserFee(phototype,users,hour)
-    let GetPlaceMoney = GetplaceMoney(phototype, floor_fee, hour, floortype)
-    console.log({ GetPlaceMoney: GetPlaceMoney, hour: hour, usersfee: usersfee, users: users,phototype:phototype })
+    let usersfee = GetUserFee(phototype, users, hour)
+    // let GetPlaceMoney = GetplaceMoney(phototype, floor_fee, hour, floortype)
+
+    const getresult = GetplaceMoney(phototype, floor_fee, hour, floortype);
+    setResult(getresult);
+    let GetPlaceMoney=result?.place ?? 0;
+    let GetOriginPlaceMoney=result?.placeOriginfee ?? 0;
     let tmoney = GetPlaceMoney + usersfee
+    GetOriginPlaceMoney=GetOriginPlaceMoney+usersfee
     const origin_Tmoney = tmoney
     setOriginTmoney(origin_Tmoney)
     setTmoney(tmoney)
+    let tMoney2 = (tmoney / 4) * useHour2
+    GetOriginPlaceMoney=(GetOriginPlaceMoney/4)*useHour2
+    console.log({ tmoney: tmoney, useHour2: useHour2, tMoney2: tMoney2 })
+    setOriginTmoney(origin_Tmoney)
+    setOriginTmoney(GetOriginPlaceMoney)
+    console.log({ GetPlaceMoney: GetPlaceMoney, hour: hour, usersfee: usersfee,GetOriginPlaceMoney:GetOriginPlaceMoney, users: users, phototype: phototype })
+    if (hour == 'all') {
+      setTmoney(tmoney)
+    } else {
+      setTmoney(tMoney2)
+    }
   };
-  const GetUserFee = (phototype: string, usersCnt: number,hour:string): number => {
+
+
+
+  const GetUserFee = (phototype: string, usersCnt: number, hour: string): number => {
     let UsersFee = 0
-    
+
     if (usersCnt <= 10) {
       usersCnt = 0
       UsersFee = 0
@@ -86,8 +122,8 @@ const Home: React.FC = () => {
       UsersFee = 300000
       if (floortype == '10') {
         UsersFee = 500000
-        if(phototype=='2'&& hour=='all'){
-          UsersFee=700000
+        if (phototype == '2' && hour == 'all') {
+          UsersFee = 700000
         }
       }
     }
@@ -95,8 +131,8 @@ const Home: React.FC = () => {
       UsersFee = 500000
       if (floortype == '10') {
         UsersFee = 1000000
-        if(phototype=='2'&& hour=='all'){
-          UsersFee=1400000
+        if (phototype == '2' && hour == 'all') {
+          UsersFee = 1400000
         }
       }
     }
@@ -104,8 +140,8 @@ const Home: React.FC = () => {
       UsersFee = 800000
       if (floortype == '10') {
         UsersFee = 1500000
-        if(phototype=='2'&& hour=='all'){
-          UsersFee=2100000
+        if (phototype == '2' && hour == 'all') {
+          UsersFee = 2100000
         }
       }
     }
@@ -113,8 +149,8 @@ const Home: React.FC = () => {
       UsersFee = 1000000
       if (floortype == '10') {
         UsersFee = 2000000
-        if(phototype=='2'&& hour=='all'){
-          UsersFee=2800000
+        if (phototype == '2' && hour == 'all') {
+          UsersFee = 2800000
         }
       }
     }
@@ -122,127 +158,158 @@ const Home: React.FC = () => {
       UsersFee = 1300000
       if (floortype == '10') {
         UsersFee = 2500000
-        console.log({GetUserFee_phototype:phototype,hour:hour})
-        if(phototype=='2' && hour=='all'){
-          UsersFee=3500000
+        console.log({ GetUserFee_phototype: phototype, hour: hour })
+        if (phototype == '2' && hour == 'all') {
+          UsersFee = 3500000
         }
       }
     }
-    console.log('GetUserFee',UsersFee)
+    console.log('GetUserFee', UsersFee)
     return UsersFee;
-    
+
   }
 
-  const GetplaceMoney = (phototype: string, floor_fee: number[], hour: string, floor: string): number => {
+  const GetplaceMoney = (phototype: string, floor_fee: number[], hour: string, floor: string): GetplaceMoneyResult => {
     console.log({ floor_fee: floor_fee, hour: hour, floor: floor })
     let place = 0
+    let placeOriginfee = 0
     place = floor_fee[parseInt(floortype)];
+    placeOriginfee = floor_fee[parseInt(floortype)];
     if (phototype == '1') {
-      if (hour  =='half') {
-        switch (floor) {
+      if (hour == 'all') {
+        switch (floortype) {
           case '4':   //1층+별채
-            place = floor_fee[1] + floor_fee[0];
+            placeOriginfee = floor_fee[1] + floor_fee[0];
+            place = placeOriginfee
             break;
           case '5':   //1층+2층
-            place = floor_fee[1] + floor_fee[2] - 300000;
+            placeOriginfee = floor_fee[1] + floor_fee[2];
+            place = placeOriginfee - 500000;
             break;
           case '6':   //1층+3층
-            place = floor_fee[1] + floor_fee[3] - 300000;
+            placeOriginfee = floor_fee[1] + floor_fee[3]
+            place = placeOriginfee - 500000;
             break;
           case '7':   //2층+3층
-            place = floor_fee[2] + floor_fee[3] - 400000;
+            placeOriginfee = floor_fee[2] + floor_fee[3];
+            place = placeOriginfee - 700000;
             break;
           case '8':   //1층+2층+별채
-            place = floor_fee[1] + floor_fee[2] + floor_fee[0] - 400000;
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[0];
+            place = placeOriginfee - 600000;
             break;
           case '9':   //1층+3층+별채
-            place = floor_fee[1] + floor_fee[2] + floor_fee[0] - 400000;
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[0];
+            place = placeOriginfee - 600000;
             break;
           case '10':   //ALL
-            place = floor_fee[1] + floor_fee[2] + floor_fee[3] + floor_fee[0] - 600000;
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[3] + floor_fee[0];
+            place = placeOriginfee - 1200000;
             break;
         }
       } else {
-        switch (floortype) {
+        switch (floor) {
           case '4':   //1층+별채
-            place = floor_fee[1] + floor_fee[0];
+            placeOriginfee = floor_fee[1] + floor_fee[0];
+            place = placeOriginfee;
             break;
           case '5':   //1층+2층
-            place = floor_fee[1] + floor_fee[2] - 500000;
+            placeOriginfee = floor_fee[1] + floor_fee[2];
+            place = placeOriginfee - 300000;
             break;
           case '6':   //1층+3층
-            place = floor_fee[1] + floor_fee[3] - 500000;
+            placeOriginfee = floor_fee[1] + floor_fee[3];
+            place = placeOriginfee - 300000;
             break;
           case '7':   //2층+3층
-            place = floor_fee[2] + floor_fee[3] - 700000;
+            placeOriginfee = floor_fee[2] + floor_fee[3];
+            place = placeOriginfee - 400000;
             break;
           case '8':   //1층+2층+별채
-            place = floor_fee[1] + floor_fee[2] + floor_fee[0] - 600000;
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[0];
+            place = placeOriginfee - 400000;
             break;
           case '9':   //1층+3층+별채
-            place = floor_fee[1] + floor_fee[2] + floor_fee[0] - 600000;
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[0];
+            place = placeOriginfee - 400000;
             break;
           case '10':   //ALL
-            place = floor_fee[1] + floor_fee[2] + floor_fee[3] + floor_fee[0] - 1200000;
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[3] + floor_fee[0];
+            place = placeOriginfee - 600000;
             break;
         }
       }
     }
 
     if (phototype == '2') {
-      if (hour =='half') {
-        switch (floor) {
-          case '4':   //1층+별채
-            place = floor_fee[1] + floor_fee[0];
-            break;
-          case '5':   //1층+2층
-            place = floor_fee[1] + floor_fee[2] - 500000;
-            break;
-          case '6':   //1층+3층
-            place = floor_fee[1] + floor_fee[3] - 500000;
-            break;
-          case '7':   //2층+3층
-            place = floor_fee[2] + floor_fee[3] - 600000;
-            break;
-          case '8':   //1층+2층+별채
-            place = floor_fee[1] + floor_fee[2] + floor_fee[0] - 550000;
-            break;
-          case '9':   //1층+3층+별채
-            place = floor_fee[1] + floor_fee[2] + floor_fee[0] - 550000;
-            break;
-          case '10':   //ALL
-            place = floor_fee[1] + floor_fee[2] + floor_fee[3] + floor_fee[0] - 850000;
-            break;
-        }
-      } else {
+      if (hour == 'all') {
         switch (floortype) {
           case '4':   //1층+별채
-            place = floor_fee[1] + floor_fee[0];
+            placeOriginfee = floor_fee[1] + floor_fee[0];
+            place = placeOriginfee;
             break;
           case '5':   //1층+2층
-            place = floor_fee[1] + floor_fee[2] - 700000;
+            placeOriginfee = floor_fee[1] + floor_fee[2];
+            place = placeOriginfee - 700000;
             break;
           case '6':   //1층+3층
-            place = floor_fee[1] + floor_fee[3] - 700000;
+            placeOriginfee = floor_fee[1] + floor_fee[3];
+            place = placeOriginfee - 700000;
             break;
           case '7':   //2층+3층
-            place = floor_fee[2] + floor_fee[3] - 900000;
+            placeOriginfee = floor_fee[2] + floor_fee[3];
+            place = placeOriginfee - 900000;
             break;
           case '8':   //1층+2층+별채
-            place = floor_fee[1] + floor_fee[2] + floor_fee[0] - 800000;
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[0];
+            place = placeOriginfee - 800000;
             break;
           case '9':   //1층+3층+별채
-            place = floor_fee[1] + floor_fee[2] + floor_fee[0] - 800000;
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[0];
+            place = placeOriginfee - 800000;
             break;
           case '10':   //ALL
-            place = floor_fee[1] + floor_fee[2] + floor_fee[3] + floor_fee[0] - 1500000;
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[3] + floor_fee[0];
+            place = placeOriginfee - 1500000;
+            break;
+        }
+
+      } else {
+        switch (floor) {
+          case '4':   //1층+별채
+            placeOriginfee = floor_fee[1] + floor_fee[0];
+            place = placeOriginfee;
+            break;
+          case '5':   //1층+2층
+            placeOriginfee = floor_fee[1] + floor_fee[2];
+            place = placeOriginfee - 500000;
+            break;
+          case '6':   //1층+3층
+            placeOriginfee = floor_fee[1] + floor_fee[3];
+            place = placeOriginfee - 500000;
+            break;
+          case '7':   //2층+3층
+            placeOriginfee = floor_fee[2] + floor_fee[3];
+            place = placeOriginfee - 600000;
+            break;
+          case '8':   //1층+2층+별채
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[0];
+            place = placeOriginfee - 550000;
+            break;
+          case '9':   //1층+3층+별채
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[0];
+            place = placeOriginfee - 550000;
+            break;
+          case '10':   //ALL
+            placeOriginfee = floor_fee[1] + floor_fee[2] + floor_fee[3] + floor_fee[0];
+            place = placeOriginfee - 850000;
             break;
         }
       }
 
     }
-
-    return place
+console.log('placeOriginfee',placeOriginfee)
+    return { place: place, placeOriginfee: placeOriginfee }
   };
 
   const formatMoney = (amount: number): string => {
@@ -293,8 +360,12 @@ const Home: React.FC = () => {
           onChange={handleSelectChange3}
           style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
         >
-          <option value='half'>4시간(HALF)</option>
-          <option value='all'>9시간(ALL)</option>
+          <option value='half' data-description='4'>4시간(HALF)</option>
+          <option value='5' data-description='5'>5시간</option>
+          <option value='6' data-description='6'>6시간</option>
+          <option value='7' data-description='7'>7시간</option>
+          <option value='8' data-description='8'>8시간</option>
+          <option value='all' data-description='9'>9시간(ALL)</option>
         </select>
       </div>
       <div style={{ marginBottom: '20px' }}>
@@ -316,7 +387,7 @@ const Home: React.FC = () => {
         </select>
       </div>
 
-      <h1>견적가:{formatMoney(originTmoney)}원</h1>
+      {/* <h1>견적가:{formatMoney(originTmoney)}원</h1> */}
       <h1>할인가:{formatMoney(tmoney)}원</h1>
       <button onClick={handleButtonClick} style={{ padding: '10px 20px' }}>
         계산
