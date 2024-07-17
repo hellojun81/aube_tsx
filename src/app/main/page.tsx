@@ -165,29 +165,29 @@ const App: React.FC = () => {
     <>
       <div>
         <Naverbar />
-        {screenMode === 'height'  ? (
-        <div className="button_container">
-              <section
-                style={{
-                  height: "100%",
-                  backgroundColor: '#fff'
-                }}
-              >
-                <EmblaCarousel
-                  floor={99}
-                  loop={10}
-                  screenMode={screenMode}
-                  id='home'
-                  key={99}
-                  fileCount={10}
-                  classname='fullimage'
-                />
-              </section>
-            </div>):<></>}
+        {screenMode === 'height' ? (
+          <div className="button_container">
+            <section
+              style={{
+                height: "100%",
+                backgroundColor: '#fff'
+              }}
+            >
+              <EmblaCarousel
+                floor={99}
+                loop={10}
+                screenMode={screenMode}
+                id='home'
+                key={99}
+                fileCount={10}
+                classname='fullimage'
+              />
+            </section>
+          </div>) : <></>}
         <ScrollContainer >
           <></>
-          {screenMode === 'width'  ? (
-        <div className="button_container">
+          {screenMode === 'width' ? (
+            <div className="button_container">
               <section
                 style={{
                   height: "100%",
@@ -204,9 +204,9 @@ const App: React.FC = () => {
                   classname='fullimage'
                 />
               </section>
-            </div>):<></>}
-         
-       
+            </div>) : <></>}
+
+
 
           <section
             className={firstpage}
@@ -235,7 +235,7 @@ const App: React.FC = () => {
                   </motion.div>
                 </div>
               ))} */}
-              {/* <div className='Hero_title_center Hero_titlecenter' key={4}>
+            {/* <div className='Hero_title_center Hero_titlecenter' key={4}>
                 <div
                   className='titleCSub'
                   style={{ fontSize: '1.5rem' }}
@@ -257,11 +257,18 @@ const App: React.FC = () => {
 
 
 
-            <SequenceSection
-              // end="80%"
-              imagesPath={imagesPath}
-              imagesCount={25}
-              imagesType="jpg" />
+
+
+            {screenMode === 'height' ? (
+              <SequenceSection
+                // end="80%"
+                imagesPath={imagesPath}
+                imagesCount={25}
+                imagesType="jpg" />) : <></>}
+
+
+
+
           </section>
         </ScrollContainer>
 
