@@ -60,16 +60,20 @@ const ApiEmailPage = () => {
     <>
 
       <div className="container" id='sendEmail'>
-        <div style={{ color: '#333' }}><p>TEL:<a href="tel:+821031019551">
-          (010) 3101-9551</a> <br/> <a href="mailto:taulcontact@gmail.com">taulcontact@gmail.com</a> <br/> 
-    
-            <a href='https://www.instagram.com/aube._studio/' style={{lineHeight:'20px'}}>
-              <img src='/insta.png' style={{width:'20px',
-                lineHeight:'20px' ,
-                verticalAlign:'middle'
-              }}/>
-              @aube._studio</a>
-          </p>
+        <div style={{ color: '#333' }}>
+          <p>
+          <a href="http://pf.kakao.com/_tVLcG">kakao</a><br />
+            TEL:<a href="tel:+821031019551">   (010) 3101-9551</a> <br />
+          <a href="mailto:taulcontact@gmail.com">taulcontact@gmail.com</a> <br />
+          <a href='https://www.instagram.com/aube._studio/' style={{ lineHeight: '20px' }}>
+            <img src='/insta.png' style={{
+              width: '20px',
+              lineHeight: '20px',
+              verticalAlign: 'middle'
+            }} />
+            aube._studio</a><br />
+          
+        </p>
         </div>
         <form onSubmit={handleSubmit} className='form'>
           <div className="form-group">
