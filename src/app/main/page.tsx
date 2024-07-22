@@ -27,7 +27,7 @@ const App: React.FC = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
   const [screenMode, setscreenMode] = useState('height')     //층별안내padding사이즈
   const [floorpadding, setfloorpadding] = useState('mainsection')     //층별안내padding사이즈
-  const [imagesPath, setimagesPath] = useState('/images/jpg_bk')  //메인aubebuild이미지
+  const [imagesPath, setimagesPath] = useState('/images/jpg_bk800')  //메인aubebuild이미지
   const [firstpage, setfirstpage] = useState('firstpage')
 
 
@@ -165,50 +165,28 @@ const App: React.FC = () => {
     <>
       <div>
         <Naverbar />
-       
-          <div className="button_container">
-            <section
-              style={{
-                height: "100%",
-                backgroundColor: '#fff'
-              }}
-            >
-              <EmblaCarousel
-                floor={99}
-                loop={10}
-                screenMode={screenMode}
-                id='home'
-                key={99}
-                fileCount={10}
-                classname='fullimage'
-              />
-            </section>
-          </div>
-        {/* <ScrollContainer >
-          <></>
-          {screenMode === 'width' ? (
-            <div className="button_container">
-              <section
-                style={{
-                  height: "100%",
-                  backgroundColor: '#fff'
-                }}
-              >
-                <EmblaCarousel
-                  floor={99}
-                  loop={10}
-                  screenMode={screenMode}
-                  id='home'
-                  key={99}
-                  fileCount={10}
-                  classname='fullimage'
-                />
-              </section>
-            </div>) : <></>} */}
 
-
-
-          {/* <section
+        <div className="button_container">
+          <section
+            style={{
+              height: "100%",
+              backgroundColor: '#fff'
+            }}
+          >
+            <EmblaCarousel
+              floor={99}
+              loop={10}
+              screenMode={screenMode}
+              id='home'
+              key={99}
+              fileCount={10}
+              classname='fullimage'
+            />
+          </section>
+        </div>
+        {screenMode === 'height' ? (
+        <ScrollContainer >
+          <section
             className={firstpage}
             style={{
               alignItems: "center",
@@ -217,7 +195,7 @@ const App: React.FC = () => {
               backgroundColor: '#171717',
               zIndex: '99',
             }}
-          > */}
+          >
 
 
             {/* <div className="titleMain" >
@@ -255,22 +233,14 @@ const App: React.FC = () => {
               </div> */}
             {/* </div> */}
 
-
-
-
-
-            {/* {screenMode === 'height' ? (
+          
               <SequenceSection
                 // end="80%"
                 imagesPath={imagesPath}
                 imagesCount={25}
-                imagesType="jpg" />) : <></>} */}
-
-
-
-{/* 
+                imagesType="jpg" />
           </section>
-        </ScrollContainer> */}
+        </ScrollContainer>) : <></>}
 
         <section
           id='floor0'
