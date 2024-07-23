@@ -55,7 +55,6 @@ h1 {
     align-items: center;
 }
 
-
 .ns-parallax-image {
     width: 100vw;
 }
@@ -64,9 +63,8 @@ h1 {
     object-fit: contain !important;
 }
 
-
-
 .floorinfo:nth-child(1){padding:0px;}
+
 #floor0,
 #floor1 .floorinfo,
 #floor2 .floorinfo,
