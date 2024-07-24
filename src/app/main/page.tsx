@@ -243,7 +243,7 @@ const App: React.FC = () => {
         </ScrollContainer>) : <></>}
 
         <section
-          id='floor0'
+          id='main'
           className={floorpadding}
           style={{
             backgroundColor: '#fff'
