@@ -83,25 +83,6 @@ const Home: React.FC<PropType> = (props) => {
       }, [emblaApi2])
 
 
-
-    // useEffect(() => {
-    //     if (!emblaApi2) return
-
-    //     const autoplay = () => {
-    //         if (emblaApi2) {
-    //             emblaApi2.scrollNext()
-    //         }
-    //     }
-
-    //     const timer = setInterval(autoplay, autoplayDelay)
-
-    //     return () => {
-    //         clearInterval(timer)
-    //     }
-    // }, [emblaApi2, autoplayDelay])
-
-
-
     const scrollToPrevious = useCallback(() => {
         if (api) api.scrollPrev();
     }, [api]);
@@ -152,6 +133,7 @@ const Home: React.FC<PropType> = (props) => {
     };
 
     const renderFloorInfo = () => {
+        // console.log({screenMode:screenMode,floor:floor})
         switch (floor) {
             case 10:
                 console.log('fileList', fileList)
@@ -202,6 +184,7 @@ const Home: React.FC<PropType> = (props) => {
                 return null;
         }
     };
+   
     return (
         <>
             <div className={`${props.classname}`} id={props.id}>
@@ -236,13 +219,13 @@ const Home: React.FC<PropType> = (props) => {
                 ) : (
                     <div className="full_button_container">
                         <div className="button_left">
-                            <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+                            {/* <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} /> */}
                         </div>
                         <div className="full_button_center">
                             <SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} />
                         </div>
                         <div className="full_button_right">
-                            <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+                            {/* <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} /> */}
                         </div>
                     </div>
                 )}
