@@ -65,11 +65,11 @@ const Navbar = () => {
             className={`${Styles.navbar} ${burgerMenuActive ? Styles.active : ""
                 }`}
         >
-            <div className={Styles.navigation}>
+            <div className={Styles.navigation}      onClick={() => toggleBurgerMenu()}>
 
                 <div
                     className={Styles.burgerMenuContainer}
-                    onClick={() => toggleBurgerMenu()}
+               
                 >
                     <div className={Styles.burgerMenuTrigger}></div>
                     <div className={Styles.burgerMenu}></div>
