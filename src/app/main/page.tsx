@@ -30,7 +30,6 @@ const App: React.FC = () => {
   const [imagesPath, setimagesPath] = useState('/images/jpg_bk800')  //메인aubebuild이미지
   const [firstpage, setfirstpage] = useState('firstpage')
 
-
   const motionInfo = [
     { name: "Hero_titleContainer", name2: 'title1Sub', name1: 'Hero_title1', animate: controls1, rotate: -45, key: 0 },
     { name: "Hero_titleContainer", name2: 'title2Sub', name1: 'Hero_title2', animate: controls2, rotate: 45, key: 1 },
@@ -48,7 +47,6 @@ const App: React.FC = () => {
   ]
 
   useEffect(() => {
-
     setIsClient(true); // 클라이언트 측에서만 true로 설정
     const div = divRef.current as HTMLDivElement;
     const elements = document.querySelectorAll('.ns-container');
@@ -65,12 +63,8 @@ const App: React.FC = () => {
       setfirstpage('firstpage2')
       setimagesPath('/images/jpg_width')
     }
-
     // console.log({ titleRefs: titleRefs.current })
     let index = 0;
-
-
-
     titleRefs.current.forEach(ref => {
       // console.log('titleRefs123')
       index++;
