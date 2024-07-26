@@ -44,10 +44,10 @@ const Home: React.FC<PropType> = (props) => {
         Autoplay({ playOnInit: true, delay: 3000 })
     ]);
     const [cursorClass, setCursorClass] = useState<string>('');
-    
-    let api=emblaApi
+
+    let api = emblaApi
     if (floor === 99) {
-      api=emblaApi2
+        api = emblaApi2
     }
 
     const { selectedSnap, snapCount } = useSelectedSnapDisplay(api);
@@ -74,13 +74,13 @@ const Home: React.FC<PropType> = (props) => {
     useEffect(() => {
         const autoplay = emblaApi2?.plugins()?.autoplay
         if (!autoplay) return
-    
+
         setIsPlaying(autoplay.isPlaying())
         emblaApi2
-          .on('autoplay:play', () => setIsPlaying(true))
-          .on('autoplay:stop', () => setIsPlaying(false))
-          .on('reInit', () => setIsPlaying(autoplay.isPlaying()))
-      }, [emblaApi2])
+            .on('autoplay:play', () => setIsPlaying(true))
+            .on('autoplay:stop', () => setIsPlaying(false))
+            .on('reInit', () => setIsPlaying(autoplay.isPlaying()))
+    }, [emblaApi2])
 
 
     const scrollToPrevious = useCallback(() => {
@@ -184,7 +184,7 @@ const Home: React.FC<PropType> = (props) => {
                 return null;
         }
     };
-   
+
     return (
         <>
             <div className={`${props.classname}`} id={props.id}>
@@ -235,6 +235,17 @@ const Home: React.FC<PropType> = (props) => {
                     <div className="embla" ref={emblaRef2} onClick={handleMouseClick}>
                         <div className="embla__container">
                             {fileList.map((link, index) => (
+                                // <div className="embla__slide" key={index}>
+                                //     <Image
+                                //         key={index}
+                                //         src={replaceWord(link, 'public', '')}
+                                //         alt="description"
+                                //         width={500} // 원하는 크기로 설정
+                                //         height={300} // 원하는 크기로 설정
+                                //         placeholder="blur" // blur placeholder 사용
+                                //         // blurDataURL={replaceWord(replaceWord(link, 'public', ''),'height','height/lower')} // 저화질 이미지 URL
+                                //     />
+                                // </div>
 
                                 <div className="embla__slide" key={index}>
                                     <img
