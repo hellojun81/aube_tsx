@@ -193,7 +193,7 @@ const App: React.FC = () => {
 
 
             {/* <div className="titleMain" >
-              {motionInfo.map((link, index) => (
+              {motionInfo.map((link, index) => (234
                 <div className={`${link.name} ${link.name1}`} key={index}>
                   <motion.div
                     className={link.name2}
