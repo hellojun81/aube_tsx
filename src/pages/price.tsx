@@ -32,17 +32,14 @@ const Home: React.FC = () => {
   const handleSelectChange3 = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedOption = e.target.options[e.target.selectedIndex];
     const description = selectedOption.getAttribute('data-description');
-
     setuseHour(e.target.value);
     if (description != null) {
       setuseHour2(parseInt(description));
     }
   };
-
   const handleSelectChange4 = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setuserCnt(e.target.value);
   };
-
 
 
 
@@ -56,7 +53,7 @@ const Home: React.FC = () => {
     if (usersCnt > 10 && usersCnt <= 15) {
       UsersFee = 300000
       if (floortype == '10') {
-        UsersFee = 500000
+        UsersFee = 250000
         if (phototype == '2' && hour == 'all') {
           UsersFee = 700000
         }
@@ -65,7 +62,7 @@ const Home: React.FC = () => {
     if (usersCnt > 15 && usersCnt <= 20) {
       UsersFee = 500000
       if (floortype == '10') {
-        UsersFee = 1000000
+        UsersFee = 500000
         if (phototype == '2' && hour == 'all') {
           UsersFee = 1400000
         }
@@ -74,7 +71,7 @@ const Home: React.FC = () => {
     if (usersCnt > 20 && usersCnt <= 25) {
       UsersFee = 800000
       if (floortype == '10') {
-        UsersFee = 1500000
+        UsersFee = 750000
         if (phototype == '2' && hour == 'all') {
           UsersFee = 2100000
         }
@@ -83,7 +80,7 @@ const Home: React.FC = () => {
     if (usersCnt > 25 && usersCnt <= 30) {
       UsersFee = 1000000
       if (floortype == '10') {
-        UsersFee = 2000000
+        UsersFee = 1000000
         if (phototype == '2' && hour == 'all') {
           UsersFee = 2800000
         }
@@ -92,7 +89,7 @@ const Home: React.FC = () => {
     if (usersCnt >= 31) {
       UsersFee = 1300000
       if (floortype == '10') {
-        UsersFee = 2500000
+        UsersFee = 1250000
         console.log({ GetUserFee_phototype: phototype, hour: hour })
         if (phototype == '2' && hour == 'all') {
           UsersFee = 3500000
