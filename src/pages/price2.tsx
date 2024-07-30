@@ -23,8 +23,8 @@ const Home: React.FC = () => {
     const [result, setResult] = useState<GetplaceMoneyResult | null>(null);
     basic_fee[0] = 40000;
     basic_fee[1] = 210000;
-    basic_fee[2] = 145000;
-    basic_fee[3] = 145000;
+    basic_fee[2] = 140000;
+    basic_fee[3] = 140000;
     floor_fee_half[0] = 50000
     floor_fee_half[1] = 300000
     floor_fee_half[2] = 200000
