@@ -39,4 +39,7 @@ export default {
     }
     return config;
   },
+  output: 'export',
+  trailingSlash: true,
 };
+
