@@ -22,7 +22,7 @@ const Home: React.FC = () => {
     const [originTmoney, setOriginTmoney] = useState<number>(0);
     const [result, setResult] = useState<GetplaceMoneyResult | null>(null);
     basic_fee[0] = 40000;
-    basic_fee[1] = 220000;
+    basic_fee[1] = 210000;
     basic_fee[2] = 145000;
     basic_fee[3] = 145000;
     floor_fee_half[0] = 50000
@@ -93,10 +93,8 @@ const Home: React.FC = () => {
         let place = 0
         let discountMoney = 0
         if (useHour >= 9) {
-            placeOriginfee = basic_fee[parseInt(floortype)]
             place = basic_fee[parseInt(floortype)];
         } else {
-            placeOriginfee = floor_fee[parseInt(floortype)];
             place = floor_fee[parseInt(floortype)];
         }
         let arr = []
@@ -105,6 +103,7 @@ const Home: React.FC = () => {
         } else {
             arr = floor_fee
         }
+        placeOriginfee = basic_fee[parseInt(floortype)]
         switch (floortype) {   ///묶음 할인가 적용
             case '4':   //1층+별채
                 place = arr[1] + arr[0];
@@ -124,17 +123,17 @@ const Home: React.FC = () => {
             case '7':   //2층+3층
                 place = arr[2] + arr[3];
                 placeOriginfee = basic_fee[2] + basic_fee[3];
-                if (useHour >= 9) { discountMoney = 700000 } else { discountMoney = 500000 }
+                if (useHour >= 9) { discountMoney = 700000 } else { discountMoney = 400000 }
                 break;
             case '8':   //1층+2층+별채
                 place = arr[1] + arr[2] + arr[0];
                 placeOriginfee = basic_fee[1] + basic_fee[2] + basic_fee[0];
-                if (useHour >= 9) { discountMoney = 600000 } else { discountMoney = 400000 }
+                if (useHour >= 9) { discountMoney = 500000 } else { discountMoney = 300000 }
                 break;
             case '9':   //1층+3층+별채
                 place = arr[1] + arr[3] + arr[0];
                 placeOriginfee = basic_fee[1] + basic_fee[3] + basic_fee[0];
-                if (useHour >= 9) { discountMoney = 600000 } else { discountMoney = 400000 }
+                if (useHour >= 9) { discountMoney = 500000 } else { discountMoney = 300000 }
                 break;
             case '10':   //ALL
                 place = arr[1] + arr[2] + arr[3] + arr[0];
@@ -174,22 +173,38 @@ const Home: React.FC = () => {
         if (useHour >= 9) {
             GetPlaceMoney = GetOriginPlaceMoney
         }
+     
+
+        totalMoney = (totalMoney + (GetPlaceMoney * (useHour - overTime)) + usersfee)
+
+
+
+        let photoyypefee=300000
+        if (useHour >= 9) {
+            photoyypefee = 500000
+        }
+
         console.log({
             '오버타임': overTime, '오버타임사용료': totalMoney,
-            렌탈장소: floortype, '4시간_기본사용료': GetPlaceMoney, 사용시간: useHour,
-            총인원수추가요금: usersfee, '9시간_기본사용료': GetOriginPlaceMoney,
-            총사용인원: users, 촬영구분: phototype,
-            '할인금액': discountMoney
+            '렌탈장소':floortype, '4시간_기본사용료': GetPlaceMoney, 사용시간: useHour,
+            '총인원수추가요금': usersfee, '9시간_기본사용료': GetOriginPlaceMoney,
+            '총사용인원': users, '촬영구분': phototype,'영상촬영추가요금':photoyypefee,
+            '할인금액': discountMoney,
+            '반올림전 금액':totalMoney
         })
-        totalMoney = (totalMoney + (GetPlaceMoney * (useHour - overTime)) + usersfee)
+
+        totalMoney = roundUpToTenThousand(totalMoney);
         if (phototype === '1') {
             setTmoney(totalMoney - discountMoney)
         } else {
-            setTmoney(totalMoney - discountMoney + 300000)
+            setTmoney(totalMoney - discountMoney + photoyypefee)
         }
     };
 
-
+    function roundUpToTenThousand(won: number): number {
+        return Math.ceil(won / 100000) * 100000;
+    }
+    
 
 
 
