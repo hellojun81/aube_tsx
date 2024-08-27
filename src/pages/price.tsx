@@ -18,6 +18,7 @@ const Home: React.FC = () => {
     const [userCnt, setuserCnt] = useState<string>('10');
     const [useHour, setuseHour] = useState<number>(4);
     const [tmoney, setTmoney] = useState<number>(0);
+    const [UserCnt, setUserCnt] = useState<number>(0);
     // const [disCountMoney, setdisCountMoney] = useState<number>(0);
     const [originTmoney, setOriginTmoney] = useState<number>(0);
     const [result, setResult] = useState<GetplaceMoneyResult | null>(null);
@@ -80,7 +81,13 @@ const Home: React.FC = () => {
             UsersFee = 1000000
         }
         if (usersCnt >= 31) {
-            UsersFee = 1250000
+            UsersFee = 1500000
+        }
+        if (usersCnt >= 51) {
+            UsersFee = 1750000
+        }
+        if (usersCnt >= 100) {
+            UsersFee = 2500000
         }
         console.log('GetUserFee', UsersFee)
         return UsersFee;
@@ -154,6 +161,7 @@ const Home: React.FC = () => {
 
     const handleButtonClick = () => {
         let users = parseInt(userCnt)
+        setUserCnt(users)
         let usersfee = GetUserFee(phototype, users, useHour)
         const getresult = GetplaceMoney(phototype, floor_fee_half, useHour, floortype, basic_fee);
         setResult(getresult);
@@ -183,6 +191,13 @@ const Home: React.FC = () => {
         if (useHour >= 9) {
             photoyypefee = 500000
         }
+        // if(UserCnt>=31){
+        //     photoyypefee=photoyypefee+500000
+        // }if(UserCnt>=51){
+        //     photoyypefee=photoyypefee+1000000
+        // }if(UserCnt>=100){
+        //     photoyypefee=photoyypefee+1500000
+        // }
 
         console.log({
             '오버타임': overTime, '오버타임사용료': totalMoney,
@@ -202,7 +217,7 @@ const Home: React.FC = () => {
     };
 
     function roundUpToTenThousand(won: number): number {
-        return Math.ceil(won / 100000) * 100000;
+        return Math.ceil(won / 50000) * 50000;
     }
     
 
@@ -273,7 +288,10 @@ const Home: React.FC = () => {
                     <option value={16}>16~20인</option>
                     <option value={21}>21~25인</option>
                     <option value={26}>26~30인</option>
-                    <option value={31}>31이상 협의</option>
+                    <option value={31}>31인 이상</option>
+                    {/* <option value={51}>50~80인</option>
+                    <option value={100}>100이상</option> */}
+           
                     {/* <option value={40}>40~50인</option>
           <option value={50}>50인이상</option> */}
                 </select>
