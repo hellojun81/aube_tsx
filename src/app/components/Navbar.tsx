@@ -5,15 +5,15 @@ import { motion } from "framer-motion";
 
 
 const menuLinks = [
-    { path: "#main", label: "home" },
-    { path: "#floor1", label: "1Floor" },
-    { path: "#floor2", label: "2Floor" },
-    { path: "#floor3", label: "3Floor" },
-    { path: "#Other", label: "Other" },
-    { path: "#Stairs", label: "Stairs" },
-    { path: "#Outside", label: "Outside" },
-    { path: "#Contact", label: "Contact" },
-    { path: "#archives", label: "Archives" },
+    { path: "/main/#main", label: "home" },
+    { path: "/main/#floor1", label: "1Floor" },
+    { path: "/main/#floor2", label: "2Floor" },
+    { path: "/main/#floor3", label: "3Floor" },
+    { path: "/main/#Other", label: "Other" },
+    { path: "/main/#Stairs", label: "Stairs" },
+    { path: "/main/#Outside", label: "Outside" },
+    { path: "/main/#Contact", label: "Contact" },
+    { path: "/archives", label: "Archives" },
     { path: "http://pf.kakao.com/_tVLcG", label: "Kakao" },
 ];
 

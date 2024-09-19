@@ -1,0 +1,166 @@
+/* General layout for archive items */
+.archive-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 100px;
+    max-height: 80vh; /* 최대 높이를 설정 */
+    overflow: auto; /* 스크롤 가능하도록 설정 */
+  }
+  
+  .archive-item {
+    position: relative;
+    width: 300px;
+    margin: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Image Styling */
+  .archive-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .archive-title {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 100px solid rgba(0, 0, 0, 0.6); /* 삼각형 모양을 만듭니다 */
+    border-bottom: 100px solid transparent;
+    /* transform: rotate(-45deg); 텍스트를 45도 기울입니다 */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.archive-title span {
+    position: absolute;
+    top:30px;
+    left: -95px;
+    /* transform: rotate(-45deg); */
+    font-size: 0.8em;
+    font-weight: normal;
+    /* top: -45px;
+    left: -30px;
+    transform: rotate(45deg);  */
+}
+
+
+  
+  
+  .archive-client {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    padding: 10px 0;
+    font-style: italic;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Hover Effects */
+  .archive-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .archive-item:hover .archive-image {
+    transform: scale(1.1);
+  }
+  
+  /* .archive-item:hover .archive-title {
+    background-color: rgba(0, 0, 0, 0.9);
+  } */
+  
+  .archive-item:hover .archive-client {
+    opacity: 1;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .archive-item {
+      width: 90%;
+    }
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    .archive-item {
+      width: 45%;
+    }
+  }
+  
+  @media screen and (min-width: 1201px) {
+    .archive-item {
+      width: 30%;
+    }
+  }
+  /* Embla Carousel styles */
+.embla {
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  position: relative;
+  flex: 0 0 100%;
+  padding: 10px;
+}
+
+.embla__slide__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Modal styles */
+.modal {
+  position: relative;
+  background: white;
+  padding: 20px;
+  max-width: 80%;
+  margin: auto;
+  border-radius: 10px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}

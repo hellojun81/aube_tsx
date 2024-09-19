@@ -5,6 +5,7 @@ import Head from 'next/head';
 import "./globals.css";
 import React from 'react';
 import ScrollToTopButton from './components/ScrollToTopButton';
+import Naverbar from '../app/components/Navbar'
 // import { DefaultSeo } from 'next-seo';
 // import SEO from '../../next-seo.config'
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children, }: Readonly<{
           <meta name="naver-site-verification" content="e808184e05e12a1bc6c1829b326f5d6bae1d63af" />
         </head>
         <body>
+
           {children}
           <ScrollToTopButton />
         </body>

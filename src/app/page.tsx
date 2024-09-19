@@ -31,6 +31,7 @@ export default function Home() {
   }, [router, imagesPaths]);
   return (
     <>
+    
       <div className='c-intro'></div>
       <Script src='/script/intromove.js' id='tys-home-js' strategy="afterInteractive" />
       <Script src='/script/intro.js' id='tys-js' strategy="afterInteractive" />
