@@ -40,9 +40,14 @@ const archiveItems = [
   },
 ];
 
+type EmblaCarouselProps = {
+  slides: string[]; // 'slides'가 문자열 배열이라고 가정
+};
+
+
 // Embla Carousel component
-const EmblaCarouselComponent = ({ slides }) => {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+const EmblaCarouselComponent: React.FC<EmblaCarouselProps> = ({ slides }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   
     const scrollPrev = useCallback(() => {
       if (emblaApi) emblaApi.scrollPrev();
@@ -77,17 +82,17 @@ const EmblaCarouselComponent = ({ slides }) => {
 
 const ArchivePage = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [modalImages, setModalImages] = useState([]);
+  const [modalImages, setModalImages] = useState<string[]>([]);
   
   // Open modal and load images from the clicked folder
-  const openDialog = async (folderPath) => {
+  const openDialog = async (folderPath:string) => {
     const images = await fetchImagesFromFolder(folderPath);
     setModalImages(images);
     setIsDialogOpen(true);
   };
 
   // Simulate fetching images from the folder (replace with real API call)
-  const fetchImagesFromFolder = async (folderPath) => {
+  const fetchImagesFromFolder = async (folderPath:string) => {
     return [
       `${folderPath}/1.jpg`,
       `${folderPath}/2.jpg`,

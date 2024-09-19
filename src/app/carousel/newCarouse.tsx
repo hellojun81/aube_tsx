@@ -10,8 +10,6 @@ import {
     useSelectedSnapDisplay,
 } from './EmblaCarouselSelectedSnapDisplay';
 
-
-
 import {
     PrevButton,
     NextButton,
@@ -90,13 +88,6 @@ const Home: React.FC<PropType> = (props) => {
     const scrollToNext = useCallback(() => {
         if (api) api.scrollNext();
     }, [api]);
-    // const scrollToPrevious = useCallback(() => {
-    //     if (emblaApi) emblaApi.scrollPrev();
-    // }, [emblaApi]);
-
-    // const scrollToNext = useCallback(() => {
-    //     if (emblaApi) emblaApi.scrollNext();
-    // }, [emblaApi]);
 
     const {
         prevBtnDisabled,
@@ -191,15 +182,6 @@ const Home: React.FC<PropType> = (props) => {
                 <div className='floorinfo'>
                     {renderFloorInfo()}
                 </div>
-                {/* {screenMode === 'height' && floor < 99 ? (
-                    <div className="button_container">
-                        <div className="button_left"> <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} /></div>
-                        <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
-                        <div className="button_right"> <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} /></div>
-                    </div>
-                ) :
-                    <div className="button_center"><SelectedSnapDisplay selectedSnap={selectedSnap} snapCount={snapCount} /></div>
-                } */}
                 {screenMode === 'height' && floor < 99 ? (
                     <div className="button_container">
                         <div className="button_left">
@@ -235,17 +217,7 @@ const Home: React.FC<PropType> = (props) => {
                     <div className="embla" ref={emblaRef2} onClick={handleMouseClick}>
                         <div className="embla__container">
                             {fileList.map((link, index) => (
-                                // <div className="embla__slide" key={index}>
-                                //     <Image
-                                //         key={index}
-                                //         src={replaceWord(link, 'public', '')}
-                                //         alt="description"
-                                //         width={500} // 원하는 크기로 설정
-                                //         height={300} // 원하는 크기로 설정
-                                //         placeholder="blur" // blur placeholder 사용
-                                //         // blurDataURL={replaceWord(replaceWord(link, 'public', ''),'height','height/lower')} // 저화질 이미지 URL
-                                //     />
-                                // </div>
+                
 
                                 <div className="embla__slide" key={index}>
                                     <img

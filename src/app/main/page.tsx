@@ -10,6 +10,15 @@ import Email from '../components/sendEmail'
 import Footer from '../components/footer'
 import Naverbar from '../components/Navbar'
 import { ScrollContainer } from "react-nice-scroll"
+// import ScrollToElement from '../components/ScrolltoElement';  // 해시 스크롤 기능 가져오기
+const ScrollToElement = dynamic(() => import('../components/ScrollToElement'), {
+  ssr: false,  // 서버 사이드 렌더링을 비활성화
+});
+
+
+
+
+
 // import styles from './ScrollIcon.module.scss';
 const SequenceSection = dynamic(() => import('react-nice-scroll').then(mod => mod.SequenceSection), { ssr: false });
 
@@ -45,6 +54,8 @@ const App: React.FC = () => {
     { floor: 5, loop: 3, classname: floorpadding, id: 'Stairs' },
     { floor: 6, loop: 3, classname: floorpadding, id: 'Outside' },
   ]
+
+
 
   useEffect(() => {
     setIsClient(true); // 클라이언트 측에서만 true로 설정
@@ -179,20 +190,20 @@ const App: React.FC = () => {
           </section>
         </div>
         {screenMode === 'height' ? (
-        <ScrollContainer >
-          <section
-            className={firstpage}
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              position: 'relative',
-              backgroundColor: '#171717',
-              zIndex: '99',
-            }}
-          >
+          <ScrollContainer >
+            <section
+              className={firstpage}
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                position: 'relative',
+                backgroundColor: '#171717',
+                zIndex: '99',
+              }}
+            >
 
 
-            {/* <div className="titleMain" >
+              {/* <div className="titleMain" >
               {motionInfo.map((link, index) => (234
                 <div className={`${link.name} ${link.name1}`} key={index}>
                   <motion.div
@@ -207,7 +218,7 @@ const App: React.FC = () => {
                   </motion.div>
                 </div>
               ))} */}
-            {/* <div className='Hero_title_center Hero_titlecenter' key={4}>
+              {/* <div className='Hero_title_center Hero_titlecenter' key={4}>
                 <div
                   className='titleCSub'
                   style={{ fontSize: '1.5rem' }}
@@ -225,23 +236,23 @@ const App: React.FC = () => {
 
                 </div>
               </div> */}
-            {/* </div> */}
+              {/* </div> */}
 
-          
+
               <SequenceSection
                 // end="80%"
                 imagesPath={imagesPath}
                 imagesCount={30}
                 imagesType="jpg" />
-          </section>
-        </ScrollContainer>) : <></>}
+            </section>
+          </ScrollContainer>) : <></>}
 
         <section
           id='main'
           className={floorpadding}
           style={{
             backgroundColor: '#fff',
-            padding:'10px'
+            padding: '10px'
           }}
         >
           <div style={{
@@ -249,7 +260,7 @@ const App: React.FC = () => {
             fontWeight: '900',
             textAlign: 'center',
             paddingTop: '10px'
-          }}><img src='/images/logo.gif' style={{maxWidth:'100%'}}/></div>
+          }}><img src='/images/logo.gif' style={{ maxWidth: '100%' }} /></div>
           <p>
             Aube Studio 건축물은 1974년 공장으로 시작되었습니다. 이 흥미로운 건축물은 각각 다른 양식으로 1986년에 2층, 2013년 3층이 증축되어 방문자를 시간의 회랑으로 초대합니다. 산업화를 상징하는 붉은 벽돌 위에 근대 건축의 거장 르코르뷔제를 오마주 하는 창문과 문들은 기능주의적이면서 유기적인 조형적 아름다움을 선사하며, 710㎡의 대지 위에 3층으로 지어진 두 개의 건물과 마당은 거의 모든 것을 하기에 가능한 특별한 공간으로 제공됩니다.<br /><br /> Aube Studio began as a factory in 1974. This interesting building, each in a different style, was expanded with a second floor in 1986 and a third floor in 2013, inviting visitors to explore the corridors of time. Windows and doors that pay homage to the master of modern architecture, Le Corbusier, on red bricks symbolizing industrialization present a functionalistic yet organic formative beauty, and the two three-story buildings and yard built on a 710㎡ site provide almost everything. Therefore, it is provided as a special space.
           </p>
@@ -260,7 +271,7 @@ const App: React.FC = () => {
 
         {Carousel.map((link, index) => (
           <section
-            // id={link.id}
+             id={link.id}
             // className={floorpadding}
             style={{
               height: "100%",
@@ -299,8 +310,7 @@ const App: React.FC = () => {
         >
           <Footer />
         </section>
-
-
+<ScrollToElement/>
       </div>
     </>
   );
