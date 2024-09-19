@@ -56,18 +56,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
       const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT),
-        secure: process.env.SMTP_SECURE === 'true',
+        host: 'smtp.gmail.com',
+        port: Number(587),
+        secure: process.env.SMTP_SECURE === 'false',
         auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
+          user: 'taulcontact',
+          pass: 'mbjv fyre bkhk kurw',
         },
       });
 
       const mailOptions = {
-        from: process.env.SMTP_USER,
-        to: process.env.CONTACT_EMAIL,
+        from: 'taulcontact',
+        to: 'taulcontact@gmail.com',
         replyTo: email, // 고객의 이메일 주소를 Reply-To 필드에 설정
         cc: cc, // CC 필드 추가
         bcc: bcc, // BCC 필드 추가
