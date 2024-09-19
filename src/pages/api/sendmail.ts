@@ -4,6 +4,10 @@ import nodemailer from 'nodemailer';
 import multiparty from 'multiparty';
 import fs from 'fs';
 
+// CORS 설정을 위한 예시 코드
+
+
+
 export const config = {
   api: {
     bodyParser: false,
@@ -11,7 +15,14 @@ export const config = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   if (req.method !== 'POST') {
+    console.log('백애드Post')
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
@@ -29,6 +40,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const message = fields.message[0];
     const cc = fields.cc ? fields.cc[0] : ''; // CC 필드 추가
     const bcc = fields.bcc ? fields.bcc[0] : ''; // BCC 필드 추가
+
+
 
     if (!name || !email || !subject || !message) {
       return res.status(400).json({ message: 'All fields are required' });

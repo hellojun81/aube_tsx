@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import './sendEmail.css';
 // import { makeStyles } from '@mui/styles';
 import { Button, Container, Typography, TextField, Box } from '@mui/material';
+
+
 const ApiEmailPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -10,10 +12,6 @@ const ApiEmailPage = () => {
   const [message, setMessage] = useState('');
   const [attachment, setAttachment] = useState<File | null>(null);
   const [status, setStatus] = useState('');
-
-
-
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,20 +26,18 @@ const ApiEmailPage = () => {
     if (attachment) {
       formData.append('attachment', attachment);
     }
+    // const countFiles = fetch('/api/countFiles?folder=public/1floor/height', {
+    //   method: 'get',
+    // });
+    // console.log('countFiles', countFiles)
+    console.log('formData',formData)
 
-
-
-    const countFiles = fetch('/api/countFiles?folder=public/1floor/height', {
-      method: 'get',
-    });
-
-    console.log('countFiles', countFiles)
-
-
+    
     const res = await fetch('/api/sendmail', {
       method: 'POST',
       body: formData,
     });
+
 
     if (res.status === 200) {
       setStatus('Email sent successfully!');
@@ -56,9 +52,7 @@ const ApiEmailPage = () => {
   };
 
   return (
-
     <>
-
       <div className="container" id='sendEmail'>
         <div style={{ color: '#333' }}>
           <p>
