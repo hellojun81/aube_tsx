@@ -13,6 +13,7 @@ const menuLinks = [
     { path: "#Stairs", label: "Stairs" },
     { path: "#Outside", label: "Outside" },
     { path: "#Contact", label: "Contact" },
+    { path: "#archives", label: "Archives" },
     { path: "http://pf.kakao.com/_tVLcG", label: "Kakao" },
 ];
 
