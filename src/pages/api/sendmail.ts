@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   form.parse(req, async (err, fields, files) => {
     if (err) {
       console.error('Error parsing the files', err);
-      return res.status(500).json({ message: 'Error parsing the files' });
+      return res.status(500).json({ message: err});
     }
 
     const name = fields.name[0];
