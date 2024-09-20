@@ -16,6 +16,7 @@ const archiveItems = [
     client: "dazedkorea",
     imageUrl: "/archives/20240919/main.jpg",
     folderPath: "/archives/20240919",  // Folder path containing images
+    imageCount:5
   },
   {
     id: 2,
@@ -23,6 +24,7 @@ const archiveItems = [
     client: "shinsegae",
     imageUrl: "/archives/20240918/main.jpg",
     folderPath: "/archives/20240918",
+    imageCount:6
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const archiveItems = [
     client: "singleskorea",
     imageUrl: "/archives/20240902/main.jpg",
     folderPath: "/archives/20240902",
+    imageCount:2
   },
   {
     id: 4,
@@ -37,6 +40,7 @@ const archiveItems = [
     client: "oio",
     imageUrl: "/archives/20240801/main.jpg",
     folderPath: "/archives/20240801",
+    imageCount:7
   },
 ];
 
@@ -85,20 +89,24 @@ const ArchivePage = () => {
   const [modalImages, setModalImages] = useState<string[]>([]);
   
   // Open modal and load images from the clicked folder
-  const openDialog = async (folderPath:string) => {
-    const images = await fetchImagesFromFolder(folderPath);
+  const openDialog = async (folderPath:string, imageCount: number) => {
+    const images = await fetchImagesFromFolder(folderPath,imageCount);
+    // console.log({folderPath:folderPath,imageCount:imageCount})
     setModalImages(images);
     setIsDialogOpen(true);
   };
 
   // Simulate fetching images from the folder (replace with real API call)
-  const fetchImagesFromFolder = async (folderPath:string) => {
-    return [
-      `${folderPath}/1.jpg`,
-      `${folderPath}/2.jpg`,
-      `${folderPath}/3.jpg`,
-    ];
+  const fetchImagesFromFolder = async (folderPath: string, imageCount: number) => {
+    const images: string[] = [];
+  
+    for (let i = 1; i <= imageCount; i++) {
+      images.push(`${folderPath}/${i}.jpg`);
+    }
+  
+    return images;
   };
+  
 
   const closeDialog = () => {
     setIsDialogOpen(false);
@@ -109,7 +117,7 @@ const ArchivePage = () => {
     
     <div className="archive-container">
       {archiveItems.map((item) => (
-        <div key={item.id} className="archive-item" onClick={() => openDialog(item.folderPath)}>
+        <div key={item.id} className="archive-item" onClick={() => openDialog(item.folderPath,item.imageCount)}>
           <img src={item.imageUrl} alt={item.title} className="archive-image" />
           <div className="archive-title"><span>{item.title}</span></div>
           <div className="archive-client">{item.client}</div>

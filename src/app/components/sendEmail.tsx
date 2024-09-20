@@ -33,7 +33,7 @@ const ApiEmailPage = () => {
     console.log('formData',formData)
 
     
-    const res = await fetch('https://aube-tsx.vercel.app/api/sendmail/', {
+    const res = await fetch('https://send-mail-wheat.vercel.app/api/hello', {
       method: 'POST',
       body: formData,
     });

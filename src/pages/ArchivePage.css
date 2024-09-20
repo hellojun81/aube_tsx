@@ -27,7 +27,7 @@
   
   .archive-title {
     position: absolute;
-    top: -20px;
+    top: 0px;
     left: 0;
     width: 0;
     height: 0;
@@ -35,10 +35,10 @@
     border-bottom: 100px solid transparent;
     /* transform: rotate(-45deg); 텍스트를 45도 기울입니다 */
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
-    padding: 10px;
+    /* padding: 10px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +46,7 @@
 
 .archive-title span {
     position: absolute;
-    top:30px;
+    top:20px;
     left: -95px;
     /* transform: rotate(-45deg); */
     font-size: 0.8em;
@@ -111,7 +111,7 @@
     }
   }
   /* Embla Carousel styles */
-.embla {
+/* .embla {
   overflow: hidden;
   width: 100%;
   max-width: 600px;
@@ -132,7 +132,65 @@
   display: block;
   width: 100%;
   height: auto;
+} */
+
+.embla {
+  position: relative;
+  width: 100%;
 }
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  position: relative;
+  min-width: 100%;
+}
+
+.embla__slide__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.embla__button {
+  position: absolute;
+  /* top: 50%; */
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0); /* 버튼의 반투명 배경 */
+  border: none;
+  color: rgb(15, 15, 15);
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1; /* 이미지 위에 화살표가 나오도록 설정 */
+  display: none;
+}
+
+/* 버튼 중앙위치 */
+/* .embla__button--prev {
+  left: 10px; 
+  opacity: 0.8;
+}
+
+.embla__button--next {
+  right: 10px; 
+  opacity: 0.8;
+} */
+
+
+
+.MuiDialogActions-root  button{
+  color:#000;
+}
+
+
 
 /* Modal styles */
 .modal {
