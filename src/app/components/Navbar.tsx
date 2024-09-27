@@ -12,8 +12,8 @@ const menuLinks = [
     { path: "/main/#Other", label: "Other" },
     { path: "/main/#Stairs", label: "Stairs" },
     { path: "/main/#Outside", label: "Outside" },
+    { path: "/archives", label: "Archives" },
     { path: "/main/#Contact", label: "Contact" },
-    // { path: "/archives", label: "Archives" },
     { path: "http://pf.kakao.com/_tVLcG", label: "Kakao" },
 ];
 

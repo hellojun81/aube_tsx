@@ -30,10 +30,7 @@ const Home: React.FC = () => {
     floor_fee_half[1] = 300000
     floor_fee_half[2] = 200000
     floor_fee_half[3] = 200000
-    // useEffect(() => {
-    //     console.log('disCountMoney', disCountMoney);
-    //     setTmoney(tmoney-disCountMoney)
-    // }, [disCountMoney]);
+ 
 
 
 
@@ -191,13 +188,7 @@ const Home: React.FC = () => {
         if (useHour >= 9) {
             photoyypefee = 500000
         }
-        // if(UserCnt>=31){
-        //     photoyypefee=photoyypefee+500000
-        // }if(UserCnt>=51){
-        //     photoyypefee=photoyypefee+1000000
-        // }if(UserCnt>=100){
-        //     photoyypefee=photoyypefee+1500000
-        // }
+      
 
         console.log({
             '오버타임': overTime, '오버타임사용료': totalMoney,

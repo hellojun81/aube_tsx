@@ -14,8 +14,11 @@ const directories = [
   'public/4floor/width',
   'public/5floor/width',
   'public/6floor/width',
+  'public/7floor/width',
+  'public/7floor/height',
   'public/99floor/height',
   'public/99floor/width',
+
   // 다른 폴더들을 계속 추가할 수 있습니다.
 ];
 

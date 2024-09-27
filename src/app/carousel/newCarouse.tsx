@@ -54,11 +54,22 @@ const Home: React.FC<PropType> = (props) => {
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(false);
     const autoplayDelay = 3000
+
     const fetchFileList = useCallback(() => {
         const link = `public/${floor}floor/${screenMode}`;
         fetch('/fileList.json')
             .then(response => response.json())
-            .then(data => setFileList(data[link] || []))
+            .then(data => {
+                if (floor === 99) {
+                    const shuffledFileList = (data[link] || []).sort(() => Math.random() - 0.5); // 배열을 랜덤으로 섞음
+                    setFileList(shuffledFileList); // 랜덤으로 섞인 배열을 상태에 설정
+                } else {
+                    setFileList(data[link] || [])
+                }
+            })
+            // .then(
+            //     data => setFileList(data[link] || [])
+            // )
             .catch(error => {
                 console.error('Error loading the file list:', error);
                 setError('Error loading the file list');
@@ -171,6 +182,13 @@ const Home: React.FC<PropType> = (props) => {
                         시간에 흐름이 온전히 느껴지는 회전계단이 있는 마당은 최대 10대의 차량을 수용할 수 있는 넓은 공간을 자랑합니다. 이 마당에는 12개의 세련된 외부 조명과 6개의 3미터 길이의 깃발을 설치할 수 있는 여건이 마련되어 있어, 다양한 행사를 품격 있게 연출할 수 있습니다.
                     </div>
                 );
+            case 7:
+                return (
+                    <div>
+                        <h1>Archives</h1>
+                        {/* 시간에 흐름이 온전히 느껴지는 회전계단이 있는 마당은 최대 10대의 차량을 수용할 수 있는 넓은 공간을 자랑합니다. 이 마당에는 12개의 세련된 외부 조명과 6개의 3미터 길이의 깃발을 설치할 수 있는 여건이 마련되어 있어, 다양한 행사를 품격 있게 연출할 수 있습니다. */}
+                    </div>
+                );
             default:
                 return null;
         }
@@ -217,7 +235,7 @@ const Home: React.FC<PropType> = (props) => {
                     <div className="embla" ref={emblaRef2} onClick={handleMouseClick}>
                         <div className="embla__container">
                             {fileList.map((link, index) => (
-                
+
 
                                 <div className="embla__slide" key={index}>
                                     <img

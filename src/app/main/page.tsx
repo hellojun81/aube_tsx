@@ -53,6 +53,7 @@ const App: React.FC = () => {
     { floor: 4, loop: 3, classname: floorpadding, id: 'Other' },
     { floor: 5, loop: 3, classname: floorpadding, id: 'Stairs' },
     { floor: 6, loop: 3, classname: floorpadding, id: 'Outside' },
+    { floor: 7, loop: 3, classname: floorpadding, id: 'archive' },
   ]
 
 
@@ -203,42 +204,6 @@ const App: React.FC = () => {
             >
 
 
-              {/* <div className="titleMain" >
-              {motionInfo.map((link, index) => (234
-                <div className={`${link.name} ${link.name1}`} key={index}>
-                  <motion.div
-                    className={link.name2}
-                    style={{ fontSize: '2.5rem' }}
-                    animate={link.animate}
-                    initial={{ rotate: (link.rotate) }}
-                    ref={setTitleRef(link.key)}
-                    key={index}
-                  >
-                    AUBE
-                  </motion.div>
-                </div>
-              ))} */}
-              {/* <div className='Hero_title_center Hero_titlecenter' key={4}>
-                <div
-                  className='titleCSub'
-                  style={{ fontSize: '1.5rem' }}
-
-                  // initial={0}
-                  ref={setTitleRef(4)}
-                  key={4}
-                >
-                  <div className="scroll-downs">
-                    <div className="mousey">
-                      <div className="scroller"></div>
-                    </div>234
-                    <div>Scroll Down</div>
-                  </div>
-
-                </div>
-              </div> */}
-              {/* </div> */}
-
-
               <SequenceSection
                 // end="80%"
                 imagesPath={imagesPath}
@@ -290,6 +255,11 @@ const App: React.FC = () => {
             />
           </section>
         ))}
+
+
+
+
+
 
         <section
           id='Contact'
