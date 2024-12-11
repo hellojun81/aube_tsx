@@ -10,7 +10,13 @@
   /* cursor: pointer; */
   /* 스크롤 가능하도록 설정 */
 }
-
+.slogun{color: #000000;
+  width:100%;
+  text-align: right;
+  padding-top:10px;
+  padding-right: 10px;
+  font-size: 1.5em;
+  }
 .archive-item ,.archive-list{
   position: relative;
   width: 300px;

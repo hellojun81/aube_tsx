@@ -53,7 +53,7 @@ const App: React.FC = () => {
     { floor: 4, loop: 3, classname: floorpadding, id: 'Other' },
     { floor: 5, loop: 3, classname: floorpadding, id: 'Stairs' },
     { floor: 6, loop: 3, classname: floorpadding, id: 'Outside' },
-    { floor: 7, loop: 3, classname: floorpadding, id: 'archive' },
+    { floor: 7, loop: 9, classname: floorpadding, id: 'archive' },
   ]
 
 

@@ -9,6 +9,15 @@ import useEmblaCarousel from 'embla-carousel-react';  // Correct hook import
 
 const archiveItems = [
   {
+    id: 7,
+    title: "Magazine",
+    client: "VOGUE",
+    imageUrl: "/archives/20241115/main.jpg",
+    folderPath: "/archives/20241115",  // Folder path containing images
+    imageCount: 23,
+    movie: 'https://www.youtube.com/embed/vWoKW-vsS_g?si=BqYhrloCfw3LALqk?autoplay=1',
+  },
+  {
     id: 1,
     title: "Magazine",
     client: "DAZED",

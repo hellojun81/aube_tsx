@@ -5,6 +5,13 @@
 a{color:#333;
 text-decoration: none;
 }
+.slogun{color: #fff;
+width:100%;
+text-align: right;
+padding-top:10px;
+padding-right: 10px;
+font-size: 1.5em;
+}
 .scroll-downs {
     /* display: flex; */
     flex-direction: column;
