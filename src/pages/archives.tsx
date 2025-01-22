@@ -8,26 +8,36 @@ import useEmblaCarousel from 'embla-carousel-react';  // Correct hook import
 
 
 const archiveItems = [
+
   {
-    id: 7,
+    id: 1,
     title: "Magazine",
     client: "VOGUE",
     imageUrl: "/archives/20241115/main.jpg",
     folderPath: "/archives/20241115",  // Folder path containing images
     imageCount: 23,
-    movie: 'https://www.youtube.com/embed/vWoKW-vsS_g?si=BqYhrloCfw3LALqk?autoplay=1',
+    movie: 'https://www.youtube.com/embed/u_EDFYtow6U',
   },
   {
-    id: 1,
+    id: 2,
+    title: "LOOKBOOK",
+    client: "MICHAA",
+    imageUrl: "/archives/20250108/main.jpg",
+    folderPath: "/archives/20250108",  // Folder path containing images
+    imageCount: 5,
+    movie: 'https://www.youtube.com/embed/IfvS3614Syo',
+  },
+  {
+    id: 3,
     title: "Magazine",
     client: "DAZED",
     imageUrl: "/archives/20240919/main.jpg",
     folderPath: "/archives/20240919",  // Folder path containing images
     imageCount: 5,
-    movie: 'https://www.youtube.com/embed/vWoKW-vsS_g?si=BqYhrloCfw3LALqk?autoplay=1',
+    movie: 'https://www.youtube.com/embed/vWoKW-vsS_g',
   },
   {
-    id: 2,
+    id: 4,
     title: "Magazine",
     client: "GQ",
     imageUrl: "/archives/20240920/main.jpg",
@@ -35,7 +45,7 @@ const archiveItems = [
     imageCount: 5,
   },
   {
-    id: 3,
+    id: 5,
     title: "Magazine",
     client: "SINGLES",
     imageUrl: "/archives/20240902/main.jpg",
@@ -43,7 +53,7 @@ const archiveItems = [
     imageCount: 9
   },
   {
-    id: 4,
+    id: 6,
     title: "Magazine",
     client: "SHINSEGAE",
     imageUrl: "/archives/20240918/main.jpg",
@@ -51,7 +61,7 @@ const archiveItems = [
     imageCount: 5
   },
   {
-    id: 5,
+    id: 7,
     title: "LookBook",
     client: "oio",
     imageUrl: "/archives/20240801/main.jpg",
@@ -59,7 +69,7 @@ const archiveItems = [
     imageCount: 7
   },
   {
-    id: 6,
+    id: 8,
     title: "LookBook",
     client: "NewBalance",
     imageUrl: "/archives/20240910/main.jpg",
@@ -89,9 +99,12 @@ const EmblaCarouselComponent: React.FC<EmblaCarouselComponentProps> = ({ slides,
   }, [emblaApi]);
 
   const newArchiveItems = archiveItems[index - 1];
-
+  // const newArchiveItems = archiveItems[index];
+  console.log({index:index,newArchiveItems:newArchiveItems,movie:newArchiveItems.movie,slides:slides})
   return (
     <>
+
+    
       <button className="embla__button embla__button--prev" onClick={scrollPrev}>
         ◀
       </button>
@@ -103,6 +116,7 @@ const EmblaCarouselComponent: React.FC<EmblaCarouselComponentProps> = ({ slides,
         {/* 좌우 화살표 추가 */}
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">
+         
             {newArchiveItems.movie ? (
               // movie가 있을 경우, 첫 번째 슬라이드로 YouTube 비디오 표시
               <>
@@ -181,7 +195,8 @@ const ArchivePage = () => {
   return (
 
     <div className="archive-container">
-      {archiveItems.map((item) => (
+
+     {archiveItems.map((item) => (
         <>
         <div key={item.id} className="archive-item" onClick={() => openDialog(item.folderPath, item.imageCount, item.id)}>
           <img src={item.imageUrl} alt={item.title} className="archive-image" />

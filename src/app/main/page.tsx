@@ -211,6 +211,28 @@ const App: React.FC = () => {
                 imagesType="jpg" />
             </section>
           </ScrollContainer>) : <></>}
+          {screenMode === 'width' ? (
+          <ScrollContainer >
+            <section
+              className={firstpage}
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                position: 'relative',
+                backgroundColor: '#171717',
+                zIndex: '99',
+              }}
+            >
+
+
+              <SequenceSection
+                // end="80%"
+                imagesPath={imagesPath}
+                imagesCount={30}
+                imagesType="jpg" />
+            </section>
+          </ScrollContainer>) : <></>}
+
 
         <section
           id='main'
