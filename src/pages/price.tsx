@@ -31,9 +31,6 @@ const Home: React.FC = () => {
     floor_fee_half[2] = 200000
     floor_fee_half[3] = 200000
  
-
-
-
     const handleChange = (index: number) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const newValues = [...inputValues];
         newValues[index] = e.target.value;
