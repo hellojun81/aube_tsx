@@ -119,7 +119,7 @@ const Home: React.FC = () => {
     
         if (selectedFloors.length > 1) {
             totalMsg += `
-                <p style="color: black; font-weight: bold; font-size: 16px;">합계금: <span style="color: red;">${formatMoney(totalMoney)}</span></p>
+                <p style="color: black; font-weight: bold; font-size: 30px;">합계금: <span style="color: red;">${formatMoney(totalMoney)}</span></p>
                 <p style="color: green;">10% 할인: <span style="font-weight: bold;">${formatMoney(discount10)}</span> | 시간당 금액: ${formatMoney(discount10 / useHour)}</p>
                 <p style="color: orange;">15% 할인: <span style="font-weight: bold;">${formatMoney(discount15)}</span> | 시간당 금액: ${formatMoney(discount15 / useHour)}</p>
                 <p style="color: red;">20% 할인: <span style="font-weight: bold;">${formatMoney(discount20)}</span> | 시간당 금액: ${formatMoney(discount20 / useHour)}</p>
