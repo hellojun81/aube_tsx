@@ -94,7 +94,7 @@ const Navbar = () => {
                 </motion.ul>
             </div>
             <div className="slogun">
-Our Space,Your Canvas</div>
+<a href="/main">Our Space,Your Canvas</a></div>
         </div>
     );
 };

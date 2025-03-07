@@ -256,7 +256,7 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {Carousel.map((link, index) => (
+        {/* {Carousel.map((link, index) => (
           <section
              id={link.id}
             // className={floorpadding}
@@ -275,11 +275,31 @@ const App: React.FC = () => {
               id={link.id}
               key={index}
             />
-          </section>
-        ))}
+          </sect
+          ion>
+        ))} */}
 
 
 
+{Carousel.map((link, index) => (
+  <section
+     key={link.id}  // <-- key 추가
+     id={link.id}
+     style={{
+       height: "100%",
+       backgroundColor: '#fff'
+     }}
+  >
+    <EmblaCarousel
+      fileCount={link.loop}
+      classname={floorpadding}
+      floor={link.floor}
+      loop={link.loop}
+      screenMode={screenMode}
+      id={link.id}
+    />
+  </section>
+))}
 
 
 
