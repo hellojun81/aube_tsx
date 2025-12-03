@@ -54,19 +54,30 @@ const Home: React.FC<PropType> = (props) => {
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(false);
     const autoplayDelay = 3000
+const sortByNumber = (list: string[]) => {
+  const getNum = (s: string) => {
+    const m = s.match(/(\d+)/);  // 파일명 안의 숫자 찾기
+    return m ? Number(m[1]) : 0;
+  };
 
+  return [...list].sort((a, b) => getNum(a) - getNum(b));
+};
     const fetchFileList = useCallback(() => {
         const link = `public/${floor}floor/${screenMode}`;
         fetch('/fileList.json')
             .then(response => response.json())
-            .then(data => {
-                if (floor === 99) {
-                    const shuffledFileList = (data[link] || []).sort(() => Math.random() - 0.5); // 배열을 랜덤으로 섞음
-                    setFileList(shuffledFileList); // 랜덤으로 섞인 배열을 상태에 설정
-                } else {
-                    setFileList(data[link] || [])
-                }
-            })
+          .then(data => {
+  const files = data[link] || [];
+
+  if (floor === 99) {
+    // 99층은 랜덤 섞기
+    const shuffledFileList = [...files].sort(() => Math.random() - 0.5);
+    setFileList(shuffledFileList);
+  } else {
+    // 나머지는 숫자 기준으로 정렬
+    setFileList(sortByNumber(files));
+  }
+})
             // .then(
             //     data => setFileList(data[link] || [])
             // )

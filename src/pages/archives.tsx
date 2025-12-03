@@ -12,6 +12,46 @@ const archiveItems = [
   {
     id: 1,
     title: "Magazine",
+    client: "W",
+    imageUrl: "/archives/20251201/1.jpg",
+    folderPath: "/archives/20251201",  // Folder path containing images
+    imageCount: 13,
+    movie: 'https://www.youtube.com/embed/jx3aw_uFMAs',
+  },
+
+  {
+    id: 2,
+    title: "Magazine",
+    client: "BAZAAR",
+    imageUrl: "/archives/20251202/1.jpg",
+    folderPath: "/archives/20251202",  // Folder path containing images
+    imageCount: 5,
+    // movie: 'https://www.youtube.com/embed/u_EDFYtow6U',
+  },
+
+  {
+    id: 3,
+    title: "LOOKBOOK",
+    client: "GIORDANO",
+    imageUrl: "/archives/20251203/1.jpg",
+    folderPath: "/archives/20251203",  // Folder path containing images
+    imageCount: 12,
+    movie: 'https://www.youtube.com/embed/TjNYmPciXUE', //TjNYmPciXUE
+  },
+
+  {
+    id: 4,
+    title: "Magazine",
+    client: "VOGUE",
+    imageUrl: "/archives/20251204/1.jpg",
+    folderPath: "/archives/20251204",  // Folder path containing images
+    imageCount: 5,
+    // movie: 'https://www.youtube.com/embed/u_EDFYtow6U',
+  },
+
+  {
+    id: 5,
+    title: "Magazine",
     client: "VOGUE",
     imageUrl: "/archives/20241115/main.jpg",
     folderPath: "/archives/20241115",  // Folder path containing images
@@ -19,7 +59,7 @@ const archiveItems = [
     movie: 'https://www.youtube.com/embed/u_EDFYtow6U',
   },
   {
-    id: 2,
+    id: 6,
     title: "LOOKBOOK",
     client: "MICHAA",
     imageUrl: "/archives/20250108/main.jpg",
@@ -28,7 +68,7 @@ const archiveItems = [
     movie: 'https://www.youtube.com/embed/IfvS3614Syo',
   },
   {
-    id: 3,
+    id: 7,
     title: "Magazine",
     client: "DAZED",
     imageUrl: "/archives/20240919/main.jpg",
@@ -37,7 +77,7 @@ const archiveItems = [
     movie: 'https://www.youtube.com/embed/vWoKW-vsS_g',
   },
   {
-    id: 4,
+    id: 8,
     title: "Magazine",
     client: "GQ",
     imageUrl: "/archives/20240920/main.jpg",
@@ -45,7 +85,7 @@ const archiveItems = [
     imageCount: 5,
   },
   {
-    id: 5,
+    id: 9,
     title: "Magazine",
     client: "SINGLES",
     imageUrl: "/archives/20240902/main.jpg",
@@ -53,7 +93,7 @@ const archiveItems = [
     imageCount: 9
   },
   {
-    id: 6,
+    id: 10,
     title: "Magazine",
     client: "SHINSEGAE",
     imageUrl: "/archives/20240918/main.jpg",
@@ -61,21 +101,14 @@ const archiveItems = [
     imageCount: 5
   },
   {
-    id: 7,
+    id: 11,
     title: "LookBook",
     client: "oio",
     imageUrl: "/archives/20240801/main.jpg",
     folderPath: "/archives/20240801",
     imageCount: 7
   },
-  {
-    id: 8,
-    title: "LookBook",
-    client: "NewBalance",
-    imageUrl: "/archives/20240910/main.jpg",
-    folderPath: "/archives/20240910",
-    imageCount: 6
-  },
+
 ];
 
 // type EmblaCarouselProps = {
@@ -105,12 +138,18 @@ const EmblaCarouselComponent: React.FC<EmblaCarouselComponentProps> = ({ slides,
     <>
 
     
-      <button className="embla__button embla__button--prev" onClick={scrollPrev}>
+      <button className="AR_embla__button" onClick={scrollPrev}>
+        ◀
+      </button>
+      <button className="AR_embla__button" onClick={scrollNext}>
+        ▶
+      </button>
+      {/* <button className="embla__button embla__button--prev" onClick={scrollPrev}>
         ◀
       </button>
       <button className="embla__button embla__button--next" onClick={scrollNext}>
         ▶
-      </button>
+      </button> */}
 
       <div className="embla">
         {/* 좌우 화살표 추가 */}

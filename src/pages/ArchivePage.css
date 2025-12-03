@@ -17,6 +17,9 @@
   padding-right: 10px;
   font-size: 1.5em;
   }
+  .slogun a{color: #000000;
+    text-decoration: none;
+    }
 .archive-item ,.archive-list{
   position: relative;
   width: 300px;
@@ -175,22 +178,25 @@
   object-fit: contain;
 }
 
-.embla__button {
-  position: absolute;
-  top: 30px;
+.AR_embla__button {
+  /* position: absolute; */
+  /* top: 30px; */
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0);
+  /* background-color:#c31515;  */
   /* 버튼의 반투명 배경 */
   border: none;
-  color: rgb(15, 15, 15);
-  font-size: 1.5rem;
+  color: rgb(0, 0, 0)!important;
+  /* font-size: 3rem; */
   padding: 10px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 100;
+  line-height: 10PX;
   /* 이미지 위에 화살표가 나오도록 설정 */
   /* display: none; */
 }
-
+body {
+  font-family: 'YDGothic520', sans-serif;
+}
 /* 버튼 중앙위치 */
 .embla__button--prev {
   left: 10px;

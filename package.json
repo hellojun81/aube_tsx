@@ -58,6 +58,7 @@
     "@types/react-image-gallery": "^1.2.4",
     "@types/react-scroll-rotate": "^0.0.5",
     "@types/react-slick": "^0.23.13",
+    "commander": "^14.0.2",
     "next": "^15.2.0",
     "react": "latest",
     "react-dom": "latest",
